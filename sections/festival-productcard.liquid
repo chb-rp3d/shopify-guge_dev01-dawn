@@ -1,0 +1,359 @@
+{{ 'festival-productcard.css' | asset_url | stylesheet_tag }}
+<style>
+       .section-{{section.id}} .page-layout-content{
+         padding-top: 53px;
+         padding-bottom: 40px;
+         max-width: 1200px;
+    }
+    #shopify-section-{{section.id}} {
+      background: {{ section.settings.color }};
+    }
+    #countdown {
+      display: {% if section.settings.isHideTime == false %}flex;{% else %}none;{% endif %}
+  }
+  .fsimgmode {
+    margin-bottom: 50px;
+  }
+</style>
+<festival-productcard>
+  <div class="page-layout section-{{section.id}}">
+    <div class="page-layout-content">
+      <div class="cla-title">{{ section.settings.title }}</div>
+      <div class="cla-title1">{{ section.settings.title1 }}</div>
+      <div class="fsimgmode">
+       <div class="fsimg-pc">{% render 'img-lazyload', image_url: section.settings.img2%}</div>
+      <div class="fsimg-mb">{% render 'img-lazyload', image_url: section.settings.img3%}</div>
+     <div class="fsimg-text1"> 
+       {{ section.settings.title2 }}
+       {{ section.settings.text4 }}
+      <div class="fsimg-button">
+            <a href="{{ section.settings.url2 }}">{{ section.settings.text5 }}</a>
+       </div>
+     </div>
+      </div>
+      {% if section.settings.isHideTime == false %}
+        <div id="countdown">
+          <div class="time-item">
+            <div class="time-section">
+              <div id="days-tens" class="time-number">0</div>
+              <div id="days-ones" class="time-number">0</div>
+              <p>:</p>
+            </div>
+            <div class="time-text">
+              <span class="time-label">{{ section.settings.timetext1 }}</span>
+            </div>
+          </div>
+          <div class="time-item">
+            <div class="time-section">
+              <div id="hours-tens" class="time-number">0</div>
+              <div id="hours-ones" class="time-number">0</div>
+              <p>:</p>
+            </div>
+            <div class="time-text">
+              <span class="time-label">{{ section.settings.timetext2 }}</span>
+            </div>
+          </div>
+          <div class="time-item">
+            <div class="time-section">
+              <div id="minutes-tens" class="time-number">0</div>
+              <div id="minutes-ones" class="time-number">0</div>
+              <p>:</p>
+            </div>
+            <div class="time-text">
+              <span class="time-label">{{ section.settings.timetext3 }}</span>
+            </div>
+          </div>
+          <div class="time-item">
+            <div class="time-section">
+              <div id="seconds-tens" class="time-number">0</div>
+              <div id="seconds-ones" class="time-number">0</div>
+            </div>
+            <div class="time-text">
+              <span class="time-label">{{ section.settings.timetext4 }}</span>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      <div class="cla-pcard">
+        {% for block in section.blocks %}
+          <div class="cla-pcard-item" style="position: relative;">
+            <div class="product-img">
+              {% render 'img-lazyload', image_url: block.settings.img %}
+            </div>
+            <div class="dis-pcard">
+              {% render 'img-lazyload', image_url: block.settings.img1 %}
+              {{ block.settings.distext }}
+            </div>
+            <div class="pcard-text">
+              {{ block.settings.text1 }}
+              {{ block.settings.text2 }}
+            </div>
+            <div class="pcard-price">
+              {{ block.settings.text3 }}
+              {{ block.settings.text4 }}
+              {{ block.settings.text5 }}
+              {{ block.settings.text6 }}
+              {{ block.settings.text7 }}
+              {{ block.settings.text8 }}
+            </div>
+            <div class="pcard-button">
+              <a href="{{ block.settings.url }}">{{ block.settings.text9 }}</a>
+            </div>
+          </div>
+        {% endfor %}
+        <div class="cla-pcard-item">
+          <div class="lscard-text">
+            {{ section.settings.text1 }}
+            {{ section.settings.text2 }}
+          </div>
+          {% render 'img-lazyload', image_url: section.settings.img %}
+          <div
+            class="pcard-button"
+            style="position: absolute;bottom: 28px;left: 0;right: 0;width: 87%;margin: 0 auto;text-align: center;"
+          >
+            <a href="{{ section.settings.url }}">{{ section.settings.text }}</a>
+          </div>
+        </div>
+      </div>
+      <div class="pcard-img">{% render 'img-lazyload', image_url: section.settings.img1 %}</div>
+    </div>
+  </div>
+</festival-productcard>
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+      function countdown(targetDate) {
+          const daysTensElement = document.getElementById('days-tens');
+          const daysOnesElement = document.getElementById('days-ones');
+          const hoursTensElement = document.getElementById('hours-tens');
+          const hoursOnesElement = document.getElementById('hours-ones');
+          const minutesTensElement = document.getElementById('minutes-tens');
+          const minutesOnesElement = document.getElementById('minutes-ones');
+          const secondsTensElement = document.getElementById('seconds-tens');
+          const secondsOnesElement = document.getElementById('seconds-ones');
+          const countdownElement = document.getElementById('countdown');
+
+          function updateCountdown() {
+              const now = new Date();
+              const timeRemaining = targetDate - now;
+
+              if (timeRemaining < 0) {
+                  clearInterval(interval);
+                  countdownElement.style.display = 'none'; // 倒计时结束后隐藏
+                  return;
+              }
+
+              const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+              const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+              const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+              const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+              daysTensElement.textContent = Math.floor(days / 10).toString(); // 转换为字符串
+              daysOnesElement.textContent = (days % 10).toString(); // 转换为字符串
+              hoursTensElement.textContent = Math.floor(hours / 10).toString(); // 转换为字符串
+              hoursOnesElement.textContent = (hours % 10).toString(); // 转换为字符串
+              minutesTensElement.textContent = Math.floor(minutes / 10).toString(); // 转换为字符串
+              minutesOnesElement.textContent = (minutes % 10).toString(); // 转换为字符串
+              secondsTensElement.textContent = Math.floor(seconds / 10).toString(); // 转换为字符串
+              secondsOnesElement.textContent = (seconds % 10).toString(); // 转换为字符串
+          }
+
+          updateCountdown();
+          const interval = setInterval(updateCountdown, 1000);
+      }
+
+      const targetDate = new Date('{{ section.settings.text3 }}'); // 设置你的目标日期和时间
+      countdown(targetDate);
+  });
+</script>
+{% schema %}
+    {
+  "name": "festival-productcard",
+  "settings": [
+    {
+      "type": "color",
+      "id": "color",
+      "label": "bgcolor"
+    },
+    {
+      "type": "text",
+      "id": "timetext1",
+      "label": "倒计时底部文案"
+    },
+    {
+      "type": "text",
+      "id": "timetext2",
+      "label": "倒计时底部文案"
+    },
+    {
+      "type": "text",
+      "id": "timetext3",
+      "label": "倒计时底部文案"
+    },
+    {
+      "type": "text",
+      "id": "timetext4",
+      "label": "倒计时底部文案"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "标题"
+    },
+    {
+      "type": "richtext",
+      "id": "title1",
+      "label": "标题"
+    },
+    {
+      "type": "richtext",
+      "id": "title2",
+      "label": "会员标题"
+    },
+    {
+      "type": "image_picker",
+      "id": "img",
+      "label": "最后产品图"
+    },
+    {
+      "type": "image_picker",
+      "id": "img1",
+      "label": "图片"
+    },
+    {
+      "type": "image_picker",
+      "id": "img2",
+      "label": "会员图"
+    },
+    {
+      "type": "image_picker",
+      "id": "img3",
+      "label": "会员图移动端"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+       "label": "最后产品链接文案"
+     },
+    {
+      "type": "url",
+      "id": "url",
+       "label": "最后产品链接"
+     },
+     {
+      "type": "url",
+      "id": "url2",
+       "label": "会员"
+     },
+    {
+      "type": "richtext",
+      "id": "text1",
+       "label": "最后产品悬浮文案"
+     },
+    {
+      "type": "richtext",
+      "id": "text2",
+       "label": "最后产品悬浮文案"
+     },
+    {
+      "type": "richtext",
+      "id": "text4",
+       "label": "会员文案"
+     },
+    {
+      "type": "richtext",
+      "id": "text5",
+       "label": "会员文案"
+     },
+     {
+       "type": "checkbox",
+       "id": "isHideTime",
+       "label": "是否隐藏倒计时",
+       "default": true
+        },
+    {
+      "type": "text",
+      "id": "text3",
+       "label": "时间,格式: 2024-07-31T23:59:59"
+     }
+  ],
+     "blocks": [
+    {
+      "name": "items",
+      "type": "items",
+      "settings": [
+      {
+         "type": "image_picker",
+          "id": "img",
+         "label": "产品图"
+       },
+        {
+         "type": "image_picker",
+          "id": "img1",
+         "label": "折扣图"
+       },
+        {
+          "type": "richtext",
+          "id": "distext",
+          "label": "标题"
+        },
+        {
+          "type": "richtext",
+          "id": "text1",
+          "label": "标题"
+        },
+        {
+          "type": "richtext",
+          "id": "text2",
+          "label": "文本内容"
+        },
+        {
+          "type": "richtext",
+          "id": "text3",
+          "label": "文本内容"
+        },
+        {
+          "type": "richtext",
+          "id": "text4",
+          "label": "文本内容"
+        },
+        {
+          "type": "richtext",
+          "id": "text5",
+          "label": "文本内容"
+        },
+        {
+          "type": "richtext",
+          "id": "text6",
+          "label": "文本内容"
+        },
+        {
+          "type": "richtext",
+          "id": "text7",
+          "label": "文本内容"
+        },
+        {
+          "type": "richtext",
+          "id": "text8",
+          "label": "文本内容"
+        },
+        {
+          "type": "richtext",
+          "id": "text9",
+          "label": "链接文案"
+        },
+        {
+           "type": "url",
+            "id": "url",
+            "label": "产品链接"
+     }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "festival-productcard"
+    }
+  ]
+}
+{% endschema %}

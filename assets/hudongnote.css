@@ -1,0 +1,41 @@
+.huodongnote {
+    background: #fffbf3;
+    border-radius: 30px;
+    padding: 50px 0;
+    position: relative;
+}
+.page-layout-content img {
+  width: 100%;
+}
+.huodongnote p {
+  font-size: 28px;
+  text-align: center;
+  color: #000;
+  line-height: 50px;
+  width: 800px;
+  margin: auto;
+}
+.huodongnote p:nth-child(1),
+.huodongnote p:nth-child(2),
+.huodongnote p:nth-child(3),
+.huodongnote p:nth-child(5){
+  color: #7E4600;
+}
+.msxf {
+  position: absolute;
+    bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .huodongnote p {
+    font-size: 16px;
+    line-height: 36px;
+    width: 100%;
+}
+  .msxf img {
+    width: 30%;
+  }
+  .huodongnote {
+    padding: 50px 20px;
+}
+}

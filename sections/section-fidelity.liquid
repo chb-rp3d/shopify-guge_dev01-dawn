@@ -1,0 +1,103 @@
+{{ 'section-fidelity.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .section-{{section.id}}{
+      padding:{{section.settings.padding}};
+  }
+
+  @media screen and (max-width: 768px) {
+      .section-{{section.id}}{
+      padding:{{section.settings.md_padding}};
+  }
+  }
+</style>
+<div class="page-layout section-{{section.id}}">
+  <div class="page-layout-content">
+    {% if section.settings.title != blank %}
+      <h2 class="section-fidelity-h2">{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.settings.text != blank %}
+      <div class="section-fidelity-text">{{ section.settings.text }}</div>
+    {% endif %}
+    <div class="section-fidelity-container">
+      {% for item in section.blocks %}
+        <div class="section-fidelity-item{{forloop.index}}">
+          {% render 'img-lazyload', image_url: item.settings.img %}
+          <div
+            class="
+              section-fidelity-ward
+              {%if section.settings.is_show_tip == true %}show{% endif %}
+            "
+          >
+            <div class="section-fidelity-item-title">{{ item.settings.title }}</div>
+            {% if item.settings.text != blank %}
+              <div class="section-fidelity-item-text">{{ item.settings.text }}</div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "section-fidelity",
+  "settings": [
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "模块内边距",
+      "default": "120px 20px"
+    },
+    {
+      "type": "text",
+      "id": "md_padding",
+      "label": "移动端模块内边距",
+      "default": "50px 20px"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "标题"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "段落"
+    },
+    {
+      "type": "checkbox",
+      "id": "is_show_tip",
+      "label": "移动端是否显示图片上的文案"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "item",
+      "type": "item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "配图"
+        },
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "小标题"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "配文"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "section-fidelity"
+    }
+  ]
+}
+{% endschema %}

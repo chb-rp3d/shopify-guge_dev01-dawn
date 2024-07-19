@@ -1,0 +1,126 @@
+
+.cla {
+    display: flex;
+    gap: 20px;
+}
+
+.cla-item {
+    height: 420px;
+    cursor: pointer;
+    perspective: 1000px;
+    flex: 1;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+.cla-num img {
+  margin: 10px auto;
+}
+.card-front,
+.card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.front-text {
+  position: absolute;
+  text-align: center;
+}
+.cla-title {
+  font-size: 48px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.cla-line {
+    border: solid 5px #E5E9ED;
+    flex: 1;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.card-back {
+    transform: rotateY(180deg);
+}
+.cla-date {
+  display: flex;
+}
+.cla-num {
+    text-align: center;
+    flex: 1;
+}
+.cla-num p {
+    font-size: 22px;
+}
+.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+.card-front .front-text p:nth-child(1),
+.card-front .front-text p:nth-child(2) {
+  font-size: 32px;
+  color: #D16907;
+  font-weight: 600;
+}
+.front-text p:last-of-type {
+  font-size: 14px;
+}
+.card-front .front-text p:nth-child(2) {
+    margin-bottom: 25px;
+}
+.card-back .front-text {
+  bottom: 15px;
+}
+.card-back .front-text img {
+  width: 239px;
+  margin: auto;
+}
+.card-back .front-text p:nth-child(1) {
+  font-size: 16px;
+}
+.card-back .front-text p:nth-child(2) {
+  font-size: 26px;
+  font-weight: 600;
+  margin-top: 5px;
+  margin-bottom: 11px;
+}
+.card-back .front-text p:nth-child(3) {
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+.cla-line-mode {
+  margin-bottom: 43px;
+}
+.cla-line-mode img {
+  width: 100%;
+}
+#main {
+  overflow: hidden;
+}
+@media screen and (max-width: 768px) {
+  .cla {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+  }
+  .cla-line-mode {
+    width: 1200px;
+}
+  .cla-sl {
+    overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+  }
+  .cla-item {
+    width: 375px;
+  }
+
+}

@@ -1,0 +1,70 @@
+{{ 'home-mblog.css' | asset_url | stylesheet_tag }}
+<style>
+   .section-{{section.id}} .page-layout-content{
+}
+  section-mblog {
+    display: none;
+  }
+  @media screen and (max-width: 768px) {
+    section-mblog {
+    display: block;
+  }
+  }
+</style>
+<section-mblog>
+  <div class="page-layout section-{{section.id}}">
+    <div class="page-layout-content">
+       <h2 class="section-mblog-h2">{{ section.settings.title }}</h2>
+      <div class="mbolg">
+        {% render 'img-lazyload', image_url: section.settings.img %}
+        <div class="mblog-text">
+          <p>{{ section.settings.text }}</p>
+        </div>
+        
+        <a href="{{ section.settings.url }}" class="mblog-url">
+          <p>{{ section.settings.text1 }}</p>
+         </a>
+      </div>
+    </div>
+  </div>
+</section-mblog>
+{% schema %}
+
+    {
+  "name": "section-mblog",
+  "settings": [
+    
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "标题"
+    },
+    {
+      "type": "image_picker",
+      "id": "img",
+      "label": "图片"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "标题"
+    },
+    {
+      "type": "richtext",
+      "id": "text1",
+      "label": "链接文案"
+    },
+    {
+          "type": "url",
+          "id": "url",
+          "label": "链接"
+        }
+  ],
+  "presets": [
+    {
+      "name": "section-mblog"
+    }
+  ]
+}
+
+{% endschema %}

@@ -1,0 +1,125 @@
+{{ 'section-faq.css' | asset_url | stylesheet_tag }}
+
+<script src="{{'section-faq.js' | asset_url}}" defer></script>
+<style>
+  .section-{{section.id}}{
+      padding:{{section.settings.padding}};
+  }
+
+  @media screen and (max-width: 768px) {
+      .section-{{section.id}}{
+      padding:{{section.settings.md_padding}};
+  }
+  }
+</style>
+
+<section-faq>
+  <div class="page-layout section-{{section.id}}">
+    <div class="page-layout-content">
+      <h2 class="section-faq-h2">{{ section.settings.title }}</h2>
+      <div class="section-faq-container">
+        {% liquid
+          assign faq_titles = section.blocks | where: 'type', 'faq_title'
+          assign faq_contents = section.blocks | where: 'type', 'faq_content'
+        %}
+        <div class="section-faq-tabs">
+          {% for titles in faq_titles %}
+            <div data-index="{{forloop.index0}}" class="section-faq-tab {%if forloop.index == 1%}active{%endif%}">
+              {{ titles.settings.title }}
+            </div>
+          {% endfor %}
+        </div>
+        <div class="section-faq-content">
+          {% for titles in faq_titles %}
+            {% assign faq_number = forloop.index %}
+            <div class="section-faq-item ">
+              <div class="section-faq-title" data-index="{{forloop.index0}}">
+                <span>{{ titles.settings.title }}</span>
+                {% render 'arrow-icon' %}
+              </div>
+              <div class="section-faq-ward">
+                {% for item in faq_contents %}
+                  {% if item.settings.faq_number == faq_number %}
+                    <div class="section-faq-ward-item">
+                      <div class="section-faq-ward-title">
+                        <span>{{ item.settings.sub_title }}</span>
+                        {% render 'arrow-icon' %}
+                      </div>
+                      <div class="section-faq-ward-text">
+                        {{ item.settings.content }}
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section-faq>
+{% schema %}
+{
+  "name": "section-faq",
+  "settings": [
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "模块内边距",
+      "default": "120px 20px 0"
+    },
+    {
+      "type": "text",
+      "id": "md_padding",
+      "label": "移动端模块内边距",
+      "default": "60px 20px 0"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "标题"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "faq 标题",
+      "type": "faq_title",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "title",
+          "label": "faq 标题"
+        }
+      ]
+    },
+    {
+      "name": "faq 内容",
+      "type": "faq_content",
+      "settings": [
+        {
+          "type": "number",
+          "id": "faq_number",
+          "label": "对应一级标题序号 必填",
+          "default": 1
+        },
+        {
+          "type": "inline_richtext",
+          "id": "sub_title",
+          "label": "faq 二级标题"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "faq 内容"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "section-faq"
+    }
+  ]
+}
+{% endschema %}

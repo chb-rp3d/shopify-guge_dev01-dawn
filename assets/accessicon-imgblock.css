@@ -1,0 +1,10 @@
+.imgblock-img img {
+  width: 100%;
+}
+.imgblocktitle p {
+    font-size: 24px;
+    color: #4D4D4D;
+    text-align: center;
+    margin-top: 50px;
+   font-family: 'Poppins';
+}

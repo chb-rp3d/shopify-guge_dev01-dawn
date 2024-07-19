@@ -1,0 +1,90 @@
+{{ 'section-applications.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .section-{{section.id}}{
+      padding:{{section.settings.padding}};
+  }
+
+  @media screen and (max-width: 768px) {
+      .section-{{section.id}}{
+      padding:{{section.settings.md_padding}};
+  }
+  }
+</style>
+
+<div class="page-layout section-{{section.id}}">
+  <div class="page-layout-content">
+    <h2 class="section-applications-h2">{{ section.settings.title }}</h2>
+    <div class="section-applications-container">
+      {% for block in section.blocks %}
+        <div class="section-applications-item">
+          <div class="section-applications-img">
+            {% render 'img-lazyload', image_url: block.settings.img, class_name: 'pc-media' %}
+            {% render 'img-lazyload', image_url: block.settings.md_img, class_name: 'mobile-media' %}
+          </div>
+          <div class="section-applications-ward">
+            <div class="section-applications-title">{{ block.settings.title }}</div>
+            <div class="section-applications-text">{{ block.settings.text }}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "section-applications",
+  "settings": [
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "模块内边距",
+      "default": "120px 20px 0"
+    },
+    {
+      "type": "text",
+      "id": "md_padding",
+      "label": "移动端模块内边距",
+      "default": "47px 20px 0"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "标题"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "item",
+      "type": "item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "配图"
+        },
+        {
+          "type": "image_picker",
+          "id": "md_img",
+          "label": "移动端配图"
+        },
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "标题"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "文本"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "section-applications"
+    }
+  ]
+}
+{% endschema %}

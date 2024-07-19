@@ -1,0 +1,373 @@
+<style>
+  .section-ohc__features {
+    --w-line1: 200px;
+    --w-line2: 100px;
+    --w-line3: 200px;
+    --w-line4: 300px;
+    
+    --line-1-1-w: 60px;
+    --line-2-1-w: 40px;
+    --line-1-1-h: 180px;
+    --line-2-1-h: 60px;
+  }
+
+  .section-ohc__features .section-ohc__features-wrap {
+    position: relative;
+  }
+
+  .section-ohc__features .section-ohc__features-header {
+    text-align: center;
+    font: normal normal 600 48px/50px Poppins;
+    letter-spacing: 0px;
+    color: #000000;
+    padding-block-start: 40px;
+    padding-block-end: 40px;
+  }
+  .section-ohc__header-desc {
+    font: normal normal normal 30px/50px Poppins;
+    color: #888888;
+  }
+
+  .section-ohc__features .section-ohc__features-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+  }
+
+  .section-ohc__features-mainimg {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .section-ohc__features-mainimg img {
+    height: 100%;
+    text-align: center;
+  }
+
+  .section-ohc__features-items {
+    position: absolute;
+    /* max-width: 45%; */
+    width: 50%;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+  }
+
+  /* .section-ohc__features-items>div {
+    width: 80%;
+  } */
+
+  .section-ohc__features-container [class^="line-"] {
+    height: 1px;
+    flex: 1;
+    background-color: #dbdbdb;
+    position: absolute;
+  }
+
+  .section-ohc__features-container .line-1 {
+    top: 49.4%;
+    left: 50.8%;
+    width: calc(var(--w-line1) - var(--line-1-1-w));
+  }
+
+  .section-ohc__features-container .line-1::before, .section-ohc__features-container .line-1::after,  .section-ohc__features-container .line-3::before, .section-ohc__features-container .line-3::after{
+    position: absolute;
+    content: '';
+    display: block;
+    background-color: #dbdbdb;
+  }
+
+  .section-ohc__features-container .line-1::before,  .section-ohc__features-container .line-3:before{
+    width: 1px;
+    height: var(--line-1-1-h);
+    right: 0;
+    bottom: 0;
+  }
+  .section-ohc__features-container .line-1::before {
+    height: var(--line-1-1-h);
+  }
+   .section-ohc__features-container .line-3:before{
+    height: var( --line-2-1-h);
+  }
+
+  .section-ohc__features-container .line-1::after {
+    height: 1px;
+    width: var(--line-1-1-w);
+    right: calc(-1 * var(--line-1-1-w));
+    bottom: var(--line-1-1-h);
+  }
+   .section-ohc__features-container .line-3::after{
+    height: 1px;
+    width: var(--line-2-1-w);
+    right: calc(-1 * var(--line-2-1-w));
+    bottom: var( --line-2-1-h);
+  }
+
+  .section-ohc__features-container .line-2 {
+    top: 57%;
+    right: 58%;
+    width: var(--w-line2);
+  }
+
+  .section-ohc__features-container .line-3 {
+    top: 56.8%;
+    left: 51.2%;
+    /* width: var(--w-line3); */
+    width: calc(var(--w-line3) - var(--line-2-1-w));
+  }
+
+  .section-ohc__features-container .line-4 {
+    top: 80%;
+    right: 50%;
+    width: var(--w-line4);
+  }
+
+
+  /* .section-ohc__features-items-1,
+  .section-ohc__features-items-3 {
+    flex-direction: row-reverse;
+  } */
+  .section-ohc__features-items-1 {
+    bottom: 60%;
+    right: 0;
+    padding-left: calc(var(--w-line1) + 20px);
+  }
+  .section-ohc__features-items-1, .section-ohc__features-items-3, .section-ohc__features-items-5 {
+    padding-left: 250px;
+  }
+
+  .section-ohc__features-items-1>div {
+    transform: translateY(calc(-100% + 40px));
+  }
+
+  .section-ohc__features-items-2>div {
+    transform: translateY(calc(-100% + 80px));
+  }
+
+  .section-ohc__features-items-4>div {
+    transform: translateY(calc(-100% + 10px));
+  }
+
+  /* .section-ohc__features-items .section-ohc__content-icon img {
+    width: 24px;
+  } */
+
+  .section-ohc__features-items-2 {
+    top: 54%;
+    /* padding-right: calc(var(--w-line1) + 30px); */
+    width: calc(40% - var(--w-line2) - 10px)
+  }
+
+  .section-ohc__features-items-3, .section-ohc__features-items-5{
+    bottom: 46%;
+    right: 0;
+  }
+
+  .section-ohc__features-items-4 {
+    top: 80%;
+    /* padding-right: calc(var(--w-line4) + 10px); */
+    width: calc(50% - var(--w-line4) - 10px)
+  }
+
+  .section-ohc__features-items-5 {
+    top: unset;
+    right: 0;
+    bottom: 0;
+  }
+
+  .section-ohc__features-items-5 .section-ohc__content-icon{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-ohc__content-icon{
+    padding-bottom: 10px;
+  }
+  .section-ohc__features-items-5 .section-ohc__features-content{
+    padding-top: 10px;
+  }
+  .section-ohc__features-items-5 .section-ohc__features-content img{
+    width: 100%;
+  }
+  .section-ohc__features-body-m {
+    
+  }
+  .ohc__main-img-m img{
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+  }
+  .section-ohc__features-body-m {
+    display: none
+  }
+  .section-ohc__features-body-m .ohc__body-m-items {
+      padding: 15px;
+      background-color: #f5f5f7;
+      margin-bottom: 12px;
+      border-radius: 10px
+  }
+  .ohc__body-m-icon {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+    @media screen and (max-width: 768px) {
+      h2 {
+        font-size: 28px;
+      }
+      .section-ohc__features-body {
+        display: none;
+      }
+      .section-ohc__features-body-m {
+        display: block
+      }
+    }
+</style>
+
+<one-handed-control class="section-{{section.id}}">
+  <section class="shopify-section section-ohc__features">
+    <div class="page-layout section-ohc__features-wrap">
+      <div class="section-ohc__features-header">
+        <h2>{{ section.settings.title }}</h2>
+        <div class="section-ohc__header-desc">{{ section.settings.desc }}</div>
+      </div>
+
+      <div class="page-layout-content section-ohc__features-body" style="position: relative; padding-top: 50%">
+        <div class="section-ohc__features-container">
+          {% for i in (1..4) %}
+            <div class="line-{{ i }}"></div>
+          {% endfor %}
+
+          {% for block in section.blocks %}
+            <div class="section-ohc__features-items section-ohc__features-items-{{ forloop.index }}">
+              <div>
+                <div class="section-ohc__content-icon">
+                  {% render 'img-lazyload', image_url: block.settings.item_icon %}
+                  {{ block.settings.item_title }}
+                </div>
+
+                <div class="section-ohc__features-content">
+                  {% if  block.settings.item_video != blank %}
+                    <video-media autoplay>
+                      {{- block.settings.item_video | video_tag: playsinline: true, muted: true, loop: true, preload: 'metadata' -}}
+                    </video-media>
+                  {% endif %}
+
+                  {% if block.settings.item_text != blank %}
+                    {{ block.settings.item_text }}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+
+          <div class="section-ohc__features-mainimg">
+            <!-- {% render 'img-lazyload', image_url: section.settings.main_img %} -->
+            <img src="{{  section.settings.main_img | image_url }}">
+          </div>
+        </div>
+      </div>
+
+      <div class="page-layout-content section-ohc__features-body-m">
+        <div class="ohc__main-img-m">
+          <img src="{{  section.settings.main_img_m | image_url }}">
+        </div>
+        
+        <div class="ohc__body-m">
+          {% for block in section.blocks %}
+            <div class="ohc__body-m-items ohc__body-m-items-{{ forloop.index }}">
+              <div class="ohc__body-m-wrapper">
+                <div class="ohc__body-m-icon">
+                  {% render 'img-lazyload', image_url: block.settings.item_icon %}
+                  {{ block.settings.item_title }}
+                </div>
+
+                <div class="ohc__body-m-content">
+                  {% if block.settings.item_text != blank %}
+                    {{ block.settings.item_text }}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+
+            {% if  forloop.index == 5%}
+              {% if  block.settings.item_video != blank %}
+                <video-media autoplay>
+                {{- block.settings.item_video | video_tag: playsinline: true, muted: true, loop: true, preload: 'metadata' -}}
+              </video-media>
+              {% endif %}
+            {% endif %}
+            
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+</one-handed-control>
+
+{% schema %}
+{
+  "name": "One handed control",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "标题"
+    },
+    {
+      "type": "richtext",
+      "id": "desc",
+      "label": "标题下描述文本"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_img",
+      "label": "中间主图"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_img_m",
+      "label": "移动端配图"
+    },
+  ],
+  "blocks": [
+    {
+      "type": "items",
+      "name": "items",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "item_text",
+          "label": "特性文本"
+        },
+        {
+          "type": "richtext",
+          "id": "item_title",
+          "label": "小标题"
+        },
+        {
+          "type": "image_picker",
+          "id": "item_icon",
+          "label": "小图标"
+        },
+        {
+          "type": "video",
+          "id": "item_video",
+          "label": "Video"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "one-handed-control"
+    }
+  ]
+}
+{% endschema %}

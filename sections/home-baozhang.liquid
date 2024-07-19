@@ -1,0 +1,96 @@
+{{ 'home-baozhang.css' | asset_url | stylesheet_tag }}
+<style>
+     .section-{{section.id}} .page-layout-content{
+       max-width: 1520px !important;
+     padding-bottom: 107px;
+     padding-top: 110px;
+  }
+    section-mblog {
+      display: none;
+    }
+    @media screen and (max-width: 768px) {
+      section-mblog {
+      display: block;
+    }
+       .section-{{section.id}} .page-layout-content{
+       max-width: 100% !important;
+     padding-bottom: 0;
+     padding-top: 0;
+  }
+    }
+</style>
+<section-baozhang>
+  <div class="page-layout section-{{section.id}}">
+    <div class="page-layout-content">
+      <h2 class="section-baozhang-h2">{{ section.settings.title }}</h2>
+      <div class="baozhang">
+        {% for block in section.blocks %}
+          <div class="baozhangitem">
+            {% render 'img-lazyload', image_url: block.settings.img %}
+            <div class="baozhang-text">
+              {{ block.settings.text }}
+             {{ block.settings.text1 }}
+            </div>
+
+            <a href="{{ block.settings.url }}" class="baozhang-url">
+              {{ block.settings.text2 }}
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section-baozhang>
+{% schema %}
+    {
+  "name": "section-baozhang",
+  "settings": [
+
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "标题"
+    }
+  ],
+    "blocks": [
+    {
+      "name": "item",
+      "type": "item",
+      "settings": [
+      {
+      "type": "image_picker",
+      "id": "img",
+      "label": "配图"
+       },
+      {
+       "type": "richtext",
+       "id": "text",
+       "label": "标题"
+       },
+      {
+        "type": "richtext",
+        "id": "text1",
+        "label": "描述"
+      },
+         {
+      "type": "url",
+      "id": "url",
+      "label": "链接"
+    },
+        {
+        "type": "text",
+        "id": "text2",
+        "label": "链接文案"
+      }
+
+
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "section-baozhang"
+    }
+  ]
+}
+{% endschema %}

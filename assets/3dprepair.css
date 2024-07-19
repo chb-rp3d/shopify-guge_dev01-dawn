@@ -1,0 +1,26 @@
+section-3dprepair .page-layout {
+  background: #F3F3F3;
+}
+.repairtitle {
+  font-size: 48px;
+  text-align: center;
+}
+.repair p {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 34px;
+}
+.morelink {
+  font-size: 18px;
+  color: #2680EA;
+  display: block;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 34px;
+}
+.lw {
+  font-size: 16px;
+  color: #666666;
+  float: right;
+  margin-top: 26px;
+}

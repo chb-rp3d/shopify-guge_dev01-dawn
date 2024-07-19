@@ -1,0 +1,60 @@
+{{ 'swc.css' | asset_url | stylesheet_tag }}
+<style>
+   .section-{{section.id}} .page-layout-content{
+}
+</style>
+<section-swc>
+  <div class="page-layout section-{{section.id}}">
+    <div class="page-layout-content">
+      <h2 class="section-hpc-swiper-h2">{{ section.settings.title }}</h2>
+      <div class="swc">
+        {% for block in section.blocks %}
+        <div class="swc-item">
+          {% render 'img-lazyload', image_url: block.settings.img %}
+          <span>{{ block.settings.text }}</span>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section-swc>
+{% schema %}
+
+    {
+  "name": "section-swc",
+  "settings": [
+    
+    {
+          "type": "text",
+          "id": "title",
+          "label": "文案"
+        }
+  ],
+     "blocks": [
+    {
+      "name": "items",
+      "type": "items",
+      "settings": [
+        
+        
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "产品图片"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "文案"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "section-swc"
+    }
+  ]
+}
+
+{% endschema %}

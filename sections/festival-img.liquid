@@ -1,0 +1,71 @@
+{{ 'festival-img.css' | asset_url | stylesheet_tag }}
+<style>
+     .section-{{section.id}} .page-layout-content{
+        max-width: 1290px;
+        padding-bottom: 78px;
+        
+  }
+  #shopify-section-{{section.id}} {
+    background: #A6C8F2;
+  }
+   
+</style>
+<festival-img>
+  <div class="page-layout section-{{section.id}}" style="position: relative;">
+    <div class="page-layout-content">
+      <div class="fsimg-pc">{% render 'img-lazyload', image_url: section.settings.img%}</div>
+      <div class="fsimg-mb">{% render 'img-lazyload', image_url: section.settings.img1%}</div>
+     <div class="fsimg-text1"> 
+       {{ section.settings.title }}
+       {{ section.settings.text }}
+      <div class="fsimg-button">
+            <a href="{{ section.settings.url }}">{{ section.settings.text1 }}</a>
+       </div>
+     </div>
+    </div>
+  </div>
+</festival-img>
+{% schema %}
+    {
+  "name": "festival-img",
+  "settings": [
+
+   
+     {
+          "type": "image_picker",
+          "id": "img",
+          "label": "pc"
+        },
+    {
+          "type": "image_picker",
+          "id": "img1",
+          "label": "mobile"
+        },
+    {
+          "type": "richtext",
+          "id": "title",
+          "label": "标题"
+        },
+    {
+          "type": "richtext",
+          "id": "text",
+          "label": "描述"
+        },
+    {
+          "type": "url",
+          "id": "url",
+          "label": "link"
+        },
+    {
+          "type": "richtext",
+          "id": "text1",
+          "label": "link text"
+        }
+  ],
+  "presets": [
+    {
+      "name": "festival-img"
+    }
+  ]
+}
+{% endschema %}

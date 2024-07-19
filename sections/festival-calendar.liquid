@@ -1,0 +1,137 @@
+{{ 'festival-calendar.css' | asset_url | stylesheet_tag }}
+<style>
+     .section-{{section.id}} .page-layout-content{
+        padding-top: 60px;
+       padding-bottom: 78px;
+       max-width: 1200px;
+  }
+  #shopify-section-{{section.id}} {
+    background: #A6C8F2;
+  }
+</style>
+<festival-calendar>
+  <div class="page-layout section-{{section.id}}">
+    <div class="page-layout-content">
+      <div class="cla-title">{{ section.settings.title }}</div>
+      <div class="cla-sl">
+        <div class="cla-line-mode">
+          {% render 'img-lazyload', image_url: section.settings.img %}
+        </div>
+        <div class="cla">
+          {% for block in section.blocks %}
+            <div
+              class="cla-item flipped"
+              onclick="flipCard(this)"
+              onmouseleave="resetCard(this)"
+            >
+              <div class="card-inner">
+                <div class="card-front">
+                  <div class="front-text">
+                    {{ block.settings.text1 }}
+                    {{ block.settings.text2 }}
+                  </div>
+                  {% render 'img-lazyload', image_url: block.settings.img1 %}
+                </div>
+                <div class="card-back">
+                  <div class="front-text">
+                    {{ block.settings.text3 }}
+                    {{ block.settings.text4 }}
+                    {{ block.settings.text5 }}
+                    {% render 'img-lazyload', image_url: block.settings.img3 %}
+                  </div>
+                  {% render 'img-lazyload', image_url: block.settings.img2 %}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</festival-calendar>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const items = document.querySelectorAll('.cla-item');
+        if (items.length >= 3) {
+            items[1].classList.add('flipped');
+        }
+    });
+
+    function flipCard(element) {
+        element.classList.toggle('flipped');
+    }
+
+    function resetCard(element) {
+    }
+</script>
+{% schema %}
+    {
+  "name": "festival-calendar",
+  "settings": [
+
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "标题"
+    },
+    {
+      "type": "image_picker",
+      "id": "img",
+      "label": "日历图"
+    }
+  ],
+     "blocks": [
+    {
+      "name": "items",
+      "type": "items",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text1",
+          "label": "标题"
+        },
+        {
+          "type": "richtext",
+          "id": "text2",
+          "label": "文本内容"
+        },
+        {
+          "type": "richtext",
+          "id": "text3",
+          "label": "文本内容"
+        },
+        {
+          "type": "richtext",
+          "id": "text4",
+          "label": "文本内容"
+        },
+        {
+          "type": "richtext",
+          "id": "text5",
+          "label": "文本内容"
+        },
+        {
+          "type": "image_picker",
+          "id": "img1",
+          "label": "正面图片"
+        },
+        {
+          "type": "image_picker",
+          "id": "img2",
+          "label": "反面图片"
+        },
+         {
+          "type": "image_picker",
+          "id": "img3",
+          "label": "反面小图"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "festival-calendar"
+    }
+  ]
+}
+{% endschema %}

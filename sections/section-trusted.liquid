@@ -1,0 +1,73 @@
+{{ 'section-trusted.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .section-{{section.id}}{
+      padding:{{section.settings.padding}};
+  }
+
+  @media screen and (max-width: 768px) {
+      .section-{{section.id}}{
+      padding:{{section.settings.md_padding}};
+  }
+  }
+</style>
+<div class="page-layout section-{{section.id}}">
+  <div class="page-layout-content">
+    <h2 class="section-trusted-h2">{{ section.settings.title }}</h2>
+    <div class="section-trusted-container">
+      {% for block in section.blocks %}
+        <div class="section-trusted-item">
+          {% render 'img-lazyload', image_url: block.settings.icon %}
+          <div class="section-trusted-item-text">{{ block.settings.text }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "section-trusted",
+  "settings": [
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "模块内边距",
+      "default": "80px 20px 0"
+    },
+    {
+      "type": "text",
+      "id": "md_padding",
+      "label": "移动端模块内边距",
+      "default": "40px 20px 0"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "标题"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "item",
+      "type": "item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "图标"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "文本"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "section-trusted"
+    }
+  ]
+}
+{% endschema %}

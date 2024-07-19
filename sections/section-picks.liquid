@@ -1,0 +1,117 @@
+{{ 'section-picks.css' | asset_url | stylesheet_tag }}
+<style>
+  .section-{{section.id}}{
+      padding:{{section.settings.padding}};
+      background-color: #101010;
+  }
+
+  @media screen and (max-width: 768px) {
+      .section-{{section.id}}{
+      padding:{{section.settings.md_padding}};
+  }
+  }
+</style>
+
+<div class="page-layout section-{{section.id}}">
+  <div class="page-layout-content">
+    <h2 class="section-picks-h2">{{ section.settings.title }}</h2>
+    <div class="section-picks-container">
+      {% for block in section.blocks %}
+        <div class="section-picks-item">
+          <div class="section-picks-tip">{{ block.settings.tip }}</div>
+          <div class="section-picks-content">
+            <h3 class="section-picks-h3">{{ block.settings.title }}</h3>
+            <div class="section-picks-text mobile-media">{{ block.settings.text }}</div>
+            <div class="section-picks-ward">
+              <div class="section-picks-img">
+                {% render 'img-lazyload', image_url: block.settings.img %}
+              </div>
+              <div class="section-picks-box">
+                <div class="section-picks-price">{{ block.settings.price }}</div>
+                <div class="section-picks-text pc-media">{{ block.settings.text }}</div>
+                <a class="section-picks-link" aria-label="to product" href="{{block.settings.url}}">
+                  {{- block.settings.btn_text -}}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "section-picks",
+  "settings": [
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "模块内边距",
+      "default": "120px 20px"
+    },
+    {
+      "type": "text",
+      "id": "md_padding",
+      "label": "移动端模块内边距",
+      "default": "50px 20px"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "标题"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "item",
+      "type": "item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tip",
+          "label": "tip"
+        },
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "标题"
+        },
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "产品图"
+        },
+
+        {
+          "type": "inline_richtext",
+          "id": "price",
+          "label": "产品价格"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "产品简介"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "跳转链接"
+        },
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "按钮文案",
+          "default": "BUY NOW >"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "section-picks"
+    }
+  ]
+}
+{% endschema %}

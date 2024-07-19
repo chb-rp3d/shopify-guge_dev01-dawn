@@ -1,0 +1,89 @@
+{{ 'section-streamlined.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .section-{{section.id}}{
+      padding:{{section.settings.padding}};
+  }
+
+  @media screen and (max-width: 768px) {
+      .section-{{section.id}}{
+      padding:{{section.settings.md_padding}};
+  }
+  }
+</style>
+
+<div class="page-layout section-{{section.id}}">
+  <div class="page-layout-content">
+    <h2 class="section-streamlined-h2">{{ section.settings.title }}</h2>
+    <div class="section-streamlined-text">{{ section.settings.text }}</div>
+    <div class="section-streamlined-container">
+      <div class="section-streamlined-left">
+        <div class="section-streamlined-icon-text mobile-media">{{ section.settings.icon_text }}</div>
+        {% render 'img-lazyload', image_url: section.settings.icon %}
+        <div class="section-streamlined-icon-text pc-media">{{ section.settings.icon_text }}</div>
+        <div class="section-streamlined-line pc-media"></div>
+        <div class="section-streamlined-li">
+          {{ section.settings.text_li }}
+        </div>
+      </div>
+      <div class="section-streamlined-right">
+        {% render 'img-lazyload', image_url: section.settings.img %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "section-streamlined",
+  "settings": [
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "模块内边距",
+      "default": "120px 20px"
+    },
+    {
+      "type": "text",
+      "id": "md_padding",
+      "label": "移动端模块内边距",
+      "default": "50px 20px"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "标题"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "段落"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon",
+      "label": "图标"
+    },
+    {
+      "type": "richtext",
+      "id": "icon_text",
+      "label": "icon 文本"
+    },
+    {
+      "type": "richtext",
+      "id": "text_li",
+      "label": "列表 文本"
+    },
+    {
+      "type": "image_picker",
+      "id": "img",
+      "label": "配图"
+    }
+  ],
+  "presets": [
+    {
+      "name": "section-streamlined"
+    }
+  ]
+}
+{% endschema %}

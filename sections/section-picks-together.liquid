@@ -1,0 +1,173 @@
+{{ 'section-picks-together.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .section-{{section.id}}{
+      padding:{{section.settings.padding}};
+  }
+
+  @media screen and (max-width: 768px) {
+      .section-{{section.id}}{
+          padding:{{section.settings.md_padding}};
+      }
+  }
+</style>
+
+<div class="page-layout section-{{section.id}}">
+  <div class="page-layout-content">
+    <h2 class="section-picks-together-h2">{{ section.settings.title }}</h2>
+    <div class="section-picks-together-container">
+      {% for block in section.blocks %}
+
+        {% liquid
+          assign product = all_products[block.settings.product_origin]
+          assign current_variant = product
+          assign variant_id = block.settings.variant_id
+          if variant_id != blank and product.variants.size > 1
+            for variant in product.variants
+              if variant.id == variant_id
+                assign current_variant = variant
+              endif
+            endfor
+          else
+            assign variant_id = product.variants[0].id
+          endif
+
+          assign price = current_variant.price | money | strip_html
+          if block.settings.price != blank
+            assign price = block.settings.price
+          endif
+          assign url = current_variant.url | within: collection
+          if block.settings.url != blank
+            assign url = block.settings.url
+          endif
+        %}
+        
+        <div class="section-picks-together-item">
+          <div class="section-picks-together-tip">{{ block.settings.tip }}</div>
+          <div class="section-picks-together-content">
+            
+            <div class="section-picks-together-ward">
+              <div class="section-picks-together-img">
+                {% render 'img-lazyload', image_url: block.settings.m_img, class_name: 'mobile-media' %}
+                {% render 'img-lazyload', image_url: block.settings.pc_img, class_name: 'pc-media' %}
+              </div>
+              <div class="section-picks-together-box">
+                <div>
+                  <h3 class="section-picks-together-h3">{{ block.settings.title }}</h3>
+                  <div class="section-picks-together-text pc-media">{{ block.settings.text }}</div>
+                  
+                  <hr style="margin-top: 10px" />
+  
+                  <div class="section-picks-together-price-wrap" style="display: flex; align-items: center; gap: 16px; padding: 20px 0;">
+                    {% if section.settings.from != blank %}
+                      <span style="color: #868686">{{ section.settings.from }}</span>
+                    {% endif %}
+                    <div class="section-picks-together-price">{{ price }}</div>
+                  </div>
+                </div>
+                <a class="section-picks-together-link" aria-label="to product" href="{{url}}">
+                  {{- block.settings.btn_text -}}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "section-picks-together",
+  "settings": [
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "模块内边距",
+      "default": "120px 20px"
+    },
+    {
+      "type": "text",
+      "id": "md_padding",
+      "label": "移动端模块内边距",
+      "default": "50px 20px"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "标题"
+    },
+    {
+      "type": "richtext",
+      "id": "from",
+      "label": "From"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "item",
+      "type": "item",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product_origin",
+          "label": "关联产品"
+        },
+        {
+          "type": "number",
+          "id": "variant_id",
+          "label": "产品变体id 不填默认第一个"
+        },
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "标题"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "文本"
+        },
+        {
+          "type": "image_picker",
+          "id": "m_img",
+          "label": "移动端配图"
+        },
+        {
+          "type": "image_picker",
+          "id": "pc_img",
+          "label": "pc 配图"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "价格",
+          "info": "优先使用自定义价格"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "跳转链接"
+        },
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "按钮文案",
+          "default": "BUY NOW >"
+        },
+        {
+          "type": "text",
+          "id": "tip",
+          "label": "tip"
+        },
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "section-picks-together"
+    }
+  ]
+}
+{% endschema %}

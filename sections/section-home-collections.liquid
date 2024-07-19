@@ -1,0 +1,230 @@
+{{ 'section-home-collections.css' | asset_url | stylesheet_tag }}
+<style>
+  .section-{{section.id}}{
+      padding:{{section.settings.padding}};
+  }
+
+  @media screen and (max-width: 768px) {
+      .section-{{section.id}}{
+      padding:{{section.settings.md_padding}};
+      background-color:#F0F1F2;
+
+  }
+  }
+</style>
+
+<div class="page-layout section-{{section.id}}">
+  <div class="page-layout-content">
+    <div class="section-home-collections">
+      {% liquid
+        assign items = section.blocks | where: 'type', 'item'
+        assign lists = section.blocks | where: 'type', 'price'
+      %}
+      {% for item in items %}
+        {% assign number = forloop.index %}
+        <div class="home-collection-item">
+          <h2 id="{{ item.settings.pointId}}" class="collection-item-h2">{{ item.settings.title }}</h2>
+          <div class="collection-item-text">{{ item.settings.text }}</div>
+          <div class="collection-content">
+            <div class="collection-item-img">
+              <h3 class="collection-item-title mobile-media">{{ item.settings.product_title }}</h3>
+              <div class="collection-item-sub-title mobile-media">{{ item.settings.product_sub_title }}</div>
+              {% render 'img-lazyload', image_url: item.settings.img %}
+              {% if item.settings.path_url != blank %}
+                <a class="collection-item-link" href="{{item.settings.path_url}}">もっと見る ></a>
+              {% endif %}
+            </div>
+            <div class="collection-item-ward">
+              <h3 class="collection-item-title pc-media">{{ item.settings.product_title }}</h3>
+              <div class="collection-item-sub-title pc-media">{{ item.settings.product_sub_title }}</div>
+              <div class="collection-item-dec">{{ item.settings.dec }}</div>
+              <div class="collection-item-lists {%if item.settings.isType == true%}collection-item-lists2{%endif%}">
+                {% for t in lists %}
+                  {% if t.settings.number == number %}
+                    <div
+                      class="
+                        collection-item-list-block
+                        {%if t.settings.block_typx =='type2' %}
+                        collection-item-list-block-type2
+                          {%endif%}
+                      "
+                    >
+                      <div class="collection-item-list-block-text">{{ t.settings.type }}</div>
+                      <div class="collection-item-list-block-price">{{ t.settings.price }}</div>
+                      {% if t.settings.url_et != blank %}
+                        <a
+                          class="collection-item-list-block-link collection-item-list-block-link-t"
+                          href="{{t.settings.url_et}}"
+                        >
+                          {{- t.settings.btn_text -}}
+                        </a>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+              <div class="collection-item-links">
+                {% for l in lists %}
+                  {% if l.settings.number == number and l.settings.url != blank %}
+                    <a
+                      class="collection-item-list-block-link"
+                      href="{{l.settings.url}}"
+                    >
+                      {{- l.settings.btn_text -}}
+                    </a>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "section-home-collections",
+  "settings": [
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "模块内边距",
+      "default": "80px 20px 0"
+    },
+    {
+      "type": "text",
+      "id": "md_padding",
+      "label": "移动端模块内边距",
+      "default": "40px 20px 0"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "标题"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "文案"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "item",
+      "type": "item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "pointId",
+          "label": "锚点"
+        },
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "产品配图"
+        },
+        {
+          "type": "url",
+          "id": "path_url",
+          "label": "图片下面的跳转链接"
+        },
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "标题"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "文案"
+        },
+        {
+          "type": "richtext",
+          "id": "product_title",
+          "label": "产品标题"
+        },
+        {
+          "type": "richtext",
+          "id": "product_sub_title",
+          "label": "产品小标题"
+        },
+        {
+          "type": "richtext",
+          "id": "dec",
+          "label": "产品描述"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "sell",
+          "label": "热销文案"
+        },
+        {
+          "type": "checkbox",
+          "id": "isType",
+          "label": "板块类型",
+          "default": false
+        }
+      ]
+    },
+    {
+      "name": "price",
+      "type": "price",
+      "settings": [
+        {
+          "type": "select",
+          "id": "block_typx",
+          "label": "板块类型",
+          "default": "type1",
+          "options": [
+            {
+              "label": "type1",
+              "value": "type1"
+            },
+            {
+              "label": "type2",
+              "value": "type2"
+            }
+          ]
+        },
+        {
+          "type": "number",
+          "id": "number",
+          "label": "属于哪一项的价格"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "type",
+          "label": "类型"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "price",
+          "label": "价格"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "跳转链接"
+        },
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "跳转链接文案"
+        },
+        {
+          "type": "url",
+          "id": "url_et",
+          "label": "额外链接"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "section-home-collections"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,123 @@
+.section-cables-tabs{
+    display: flex;
+    column-gap: 40px;
+    margin-bottom: 48px;
+    overflow-x: auto;
+}
+.cables-tab-item{
+    font: normal normal 500 28px/42px Poppins;
+    letter-spacing: 0px;
+    color: #BABABA;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.cables-tab-item.active{
+    color: #E74A4A;
+}
+.cables-container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 15px;
+}
+.cables-item{
+    display: block;
+    position: relative;
+    background-color: #F8F8F8;
+    padding: 0 10px 36px;
+}
+.cables-item-hot{
+    position: absolute;
+    right: 30px;
+    top: 20px;
+    width:46px;
+    height: auto;
+    z-index: 1;
+}
+.cables-item-img{
+   /* height: 220px; */
+}
+.cables-item-img img{
+    display: block;
+    margin: 0 auto;
+    width: auto;
+}
+.cables-item-text{
+    margin-top: 32px;
+    font: normal normal 600 24px/35px Poppins;
+    letter-spacing: 0px;
+    color: #050505;
+    text-align: center;
+}
+.cables-item-price{
+    margin-top: 38px;
+    font: normal normal 600 20px/30px Poppins;
+    letter-spacing: 0px;
+    color: #000000;
+    text-align: center;
+}
+.cables-item-link{
+    margin-top: 20px;
+    text-align: center;
+    font: normal normal 500 24px/35px Poppins;
+    letter-spacing: 0px;
+    color: #E74A4A;
+}
+
+.cables-item-text-tip{
+    font: normal normal normal 14px/normal Poppins;
+    letter-spacing: 0px;
+    color: #666666;
+    margin-top: 5px;
+    text-align: center;
+}
+@media screen and (max-width: 768px) {
+    .cables-item-hot{
+        right: 10px;
+        top: 10px;
+        width: 30px;
+    }
+    .cables-item-text-tip{
+        font-size: 12px;
+        line-height: normal;
+    }
+    .section-cables-tabs{
+        margin-bottom: 40px;
+        column-gap: 16px;
+        flex-wrap: nowrap;
+        width: auto;
+        overflow-x: auto;
+    }
+    .cables-tab-item{
+        font: normal normal 500 18px/27px Poppins;
+        color: #666666;
+    }
+    .cables-container{
+        grid-template-columns: repeat(2,1fr);
+        gap: 8px;
+    }
+    .cables-item{
+        background-color: #fff;
+        box-shadow: 0px 3px 6px #AFA7A729;
+        border-radius: 6px;
+        padding: 0 17px 17px;
+    }
+    .cables-item-img{
+        height: auto;
+    }
+    .cables-item-text{
+        margin-top: 13px;
+        font: normal normal 500 16px/25px Poppins;
+        min-height: 48px;
+        text-align: left;
+        padding: 0;
+    }
+    .cables-item-price{
+        text-align: left;
+        margin-top: 24px;
+        padding: 0;
+        font: normal normal normal 14px/22px Poppins;
+    }
+    .cables-item-link{
+        display: none;
+    }
+}

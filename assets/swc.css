@@ -1,0 +1,30 @@
+.swc {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.swc-item {
+  text-align: center;
+}
+.swc-item img {
+  margin: auto;
+}
+.swc-item p {
+  font-size: 14px;
+  margin-top: 20px;
+}
+.swc-item p:last-of-type {
+  margin-top: 0;
+}
+@media screen and (max-width: 768px) {
+ .swc {
+   grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+ } 
+  section-swc .page-layout-content {
+    background: #F9F9F9;
+    padding: 36px;
+  }
+  .section-hpc-swiper-h2 {
+    margin-bottom: 46px;
+  }
+}

@@ -1,0 +1,114 @@
+{{ 'section-pop-bx.css' | asset_url | stylesheet_tag }}
+<style>
+  .section-{{section.id}}{
+      padding:{{section.settings.padding}};
+  }
+
+  @media screen and (max-width: 768px) {
+      .section-{{section.id}}{
+      padding:{{section.settings.md_padding}};
+  }
+  }
+</style>
+
+<div class="page-layout section-{{section.id}}">
+  <div class="page-layout-content">
+    <h2 class="section-pop-bx-h2">{{ section.settings.title }}</h2>
+    <h3 class="section-pop-bx-h3">{{ section.settings.tab }}</h3>
+    {% liquid
+      assign items = section.blocks | where: 'type', 'items'
+      assign tabs = section.blocks | where: 'type', 'tabs'
+    %}
+    {% if tabs.size > 0 %}
+      <div class="section-pop-bx-tabs">
+        <div class="section-pop-bx-tab"></div>
+        {% for tab in tabs %}
+          <div class="section-pop-bx-tab">{{ tab.settings.text }}</div>
+        {% endfor %}
+        <div class="section-pop-bx-tab"></div>
+      </div>
+    {% endif %}
+
+    <div class="section-pop-bx-container">
+      {% for item in items %}
+        <div class="section-pop-bx-item">
+          {% if item.settings.is_show_tip %}
+            <div class="section-pop-bx-tip"><span>+</span></div>
+          {% endif %}
+          {% render 'img-lazyload', image_url: item.settings.img %}
+          <div class="section-pop-bx-item-text">{{ item.settings.text }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "section-pop-bx",
+  "settings": [
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "模块内边距",
+      "default": "120px 20px"
+    },
+    {
+      "type": "text",
+      "id": "md_padding",
+      "label": "移动端模块内边距",
+      "default": "30px 20px"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "标题"
+    },
+    {
+      "type": "richtext",
+      "id": "tab",
+      "label": "tab 文案"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "items",
+      "type": "items",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "配图"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "文本"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_show_tip",
+          "label": "显示+",
+          "default": false
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "tabs",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "文本"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "section-pop-bx"
+    }
+  ]
+}
+{% endschema %}

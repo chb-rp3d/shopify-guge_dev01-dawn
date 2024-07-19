@@ -1,0 +1,107 @@
+{{ 'section-standard.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .section-{{section.id}}{
+      padding:{{section.settings.padding}};
+  }
+
+  @media screen and (max-width: 768px) {
+      .section-{{section.id}}{
+      padding:{{section.settings.md_padding}};
+  }
+  }
+</style>
+
+<div class="page-layout section-{{section.id}}" id="stand">
+  <div class="page-layout-content">
+    <h2 class="section-standard-h2">{{ section.settings.title }}</h2>
+    {% comment %} <h2 class="section-standard-h2 mobile-media">{{ section.settings.title2 }}</h2> {% endcomment %}
+    <div class="section-standard-container">
+      {% assign item = section.blocks[0] %}
+      <div class="section-standard-left">
+        {% render 'section-standard-item', image_url: item.settings.img, text: item.settings.text %}
+        {% comment %} <h2 class="section-standard-h2 pc-media">{{ section.settings.title2 }}</h2> {% endcomment %}
+        <div class="section-standard-text">{{ section.settings.text }}</div>
+        <a class="section-standard-link" href="{{section.settings.url}}">今すぐ購入</a>
+      </div>
+      <div class="section-standard-right">
+        {% for block in section.blocks %}
+          {% render 'section-standard-item',
+            index: forloop.index,
+            image_url: block.settings.img,
+            text: block.settings.text,
+            md_img: block.settings.md_img
+          %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "section-standard",
+  "settings": [
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "模块内边距",
+      "default": "120px 20px 0"
+    },
+    {
+      "type": "text",
+      "id": "md_padding",
+      "label": "移动端模块内边距",
+      "default": "60px 20px 0"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "标题"
+    },
+    {
+      "type": "richtext",
+      "id": "title2",
+      "label": "标题2"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "文本"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "跳转链接"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "item",
+      "type": "item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "配图"
+        },
+        {
+          "type": "image_picker",
+          "id": "md_img",
+          "label": "移动端配图"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "文本"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "section-standard"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,52 @@
+{% raw %}
+  <script type="text/javascript">
+    window.addEventListener('load', function() {
+      setTimeout(function(){
+        const myPopupButton = document.getElementById('globo-formbuilder-open-popup');
+            myPopupButton.click();
+      },1000);
+    });
+  </script>
+{% endraw %}
+
+{% style %}
+  .globo-form-publish-modal {
+    padding-top: 0 !important;
+  }
+
+  .globo-form-app .panel {
+    gap: unset !important;
+    height: unset !important;
+  }
+
+  .globo-form-publish-modal::-webkit-scrollbar {
+    display: none;
+  }
+
+    .globo-form-publish-modal .globo-form-modal-content {
+      width: 100%;
+    }
+  }
+    .globo-form-id-26676 .panel + .panel {
+     opacity: inherit !important;
+  }
+  .globo-form-id-26676 .line_rounded-input {
+    padding: 0 10px !important;
+     margin-top: 0 !important;
+    border: solid 1px #707070 !important;
+    font-size: 18px !important;
+    color: #BCBCBC !important;
+    -webkit-text-fill-color: inherit !important;
+    box-shadow: inherit !important;
+  }
+  .globo-form-id-26676 .text-danger.text-smaller {
+    display: none !important;
+  }
+  .globo-form-id-26676 .radio-wrapper {
+    background-color: #fff !important;
+    border-radius: inherit !important;
+  }
+  .globo-form-control {
+    padding: 0px 10px !important;
+  }
+{% endstyle %}

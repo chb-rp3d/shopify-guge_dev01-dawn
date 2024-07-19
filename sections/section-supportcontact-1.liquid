@@ -1,0 +1,73 @@
+{{ 'supportcontact-1.css' | asset_url | stylesheet_tag }}
+<style>
+  .section-{{section.id}}{
+      padding-bottom: 80px;
+}
+</style>
+<section-supportcontact-1>
+  <div class="page-layout section-{{section.id}}">
+    <div class="page-layout-content">
+      <div class="contact1" style="margin-top: 21px;">
+        {% for block in section.blocks %}
+            <div class="contact1item">
+               {% render 'img-lazyload', image_url: block.settings.img %}
+              <div class="twotitile">
+                <h3>{{ block.settings.title }}</h3>
+                <p>{{ block.settings.text }}</p>
+              </div>
+              <div class="dl">
+                <a href="{{ block.settings.url }}">{{ block.settings.text1 }}</a>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+    </div>
+  </div>
+</section-supportcontact-1>
+{% schema %}
+
+    {
+  "name": "section-supportcontact-1",
+  
+  "blocks": [
+     {
+       "name": "item",
+      "type": "item",
+      "settings": [
+      {
+       "type": "image_picker",
+      "id": "img",
+      "label": "配图"
+       },
+        {
+       "type": "text",
+      "id": "title",
+      "label": "标题"
+       },
+        {
+       "type": "text",
+      "id": "text",
+      "label": "描述"
+       },
+       {
+        "type": "url",
+        "id": "url",
+        "label": "链接"
+       },
+        {
+       "type": "text",
+      "id": "text1",
+      "label": "描述"
+       }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "section-supportcontact-1"
+    }
+  ]
+}
+
+{% endschema %}
+

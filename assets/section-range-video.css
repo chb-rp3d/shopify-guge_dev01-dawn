@@ -1,0 +1,33 @@
+
+.section-range-video-container{
+    background-color: #000;
+}
+.section-range-video{
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 675px;
+    object-fit: cover;
+}
+.section-range-video-text{
+    max-width: 1067px;
+    font-size: 24px;
+    font-family: Poppins, Poppins;
+    font-weight: 500;
+    color: #FFFFFF;
+    margin: 80px auto 0;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .section-range-video-content{
+        display: flex;
+        flex-direction: column-reverse;
+
+    }
+  
+    .section-range-video-text{
+        margin: 0 auto 20px;
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,28 @@
+.prtintproject {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+.prtintprojecttitle {
+    text-align: center;
+    padding: 50px 50px 0 50px;
+}
+.prtintprojectitem {
+  background: #F3F3F3;  
+}
+.prtintprojecttitle h3 {
+  font-size: 32px;
+}
+.prtintprojecttitle p {
+  font-size: 16px;
+  height: 76px;
+}
+.projecttitle {
+  font-size: 60px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 80px;
+}
+.section-video-img-h2 p {
+  font-size: 48px;
+}

@@ -1,0 +1,103 @@
+{{ 'section-overview-icons.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .section-{{section.id}}{
+      padding:{{section.settings.padding}};
+  }
+
+  {% case section.settings.modal_type %}
+    {% when 'type2' %}
+      .section-{{section.id}}{
+        background-color: #232327;
+      }
+      .section-{{section.id}} .section-overview-icons-h2,.section-{{section.id}} .overview-icon-text p{
+        color: #FFFFFF;
+      }
+
+    {% else %}
+
+  {% endcase %}
+  @media screen and (max-width: 768px) {
+      .section-{{section.id}}{
+      padding:{{section.settings.md_padding}};
+  }
+  }
+</style>
+<div class="page-layout section-{{section.id}}">
+  <div class="page-layout-content">
+    <h2 class="section-overview-icons-h2">{{ section.settings.title }}</h2>
+    <div class="section-overview-icons">
+      {% for block in section.blocks %}
+        <div class="overview-icons-item">
+          <div class="overview-icon">
+            {% render 'img-lazyload', image_url: block.settings.icon %}
+          </div>
+          <div class="overview-icon-text">{{ block.settings.text }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "section-overview-icons",
+  "settings": [
+    {
+      "type": "select",
+      "id": "modal_type",
+      "label": "模块类型",
+      "default": "type1",
+      "options": [
+        {
+          "label": "type1",
+          "value": "type1"
+        },
+        {
+          "label": "type2",
+          "value": "type2"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "模块内边距",
+      "default": "120px 20px 0"
+    },
+    {
+      "type": "text",
+      "id": "md_padding",
+      "label": "移动端模块内边距",
+      "default": "62px 20px 0"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "标题"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "item",
+      "type": "item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "icon"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "文案"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "section-overview-icons"
+    }
+  ]
+}
+{% endschema %}

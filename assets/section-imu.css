@@ -1,0 +1,96 @@
+.section-imu-h2{
+    font-size: 32px;
+    font-family: Poppins;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+}
+.section-imu-text{
+    font-size: 24px;
+    font-family: Poppins, Poppins;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    margin: 20px auto 0;
+    max-width: 1146px;
+}
+.section-imu-text strong{
+    color: #DE6A10;
+    font-weight: 600;
+}
+.section-imu-img{
+    flex: 2 0 0;
+}
+.section-imu-img img{
+    display: block;
+    width: 100%;
+}
+.section-imu-ward{
+    flex: 1 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 50px;
+}
+.section-imu-item{
+    display: flex;
+    column-gap: 30px;
+    align-items: center;
+}
+.section-imu-item img{
+    display: block;
+    width: 100%;
+    max-width: 107px;
+}
+.section-imu-item-text{
+    font-size: 17px;
+    font-family: Poppins, Poppins;
+    font-weight: 400;
+    color: #FFFFFF;
+}
+.section-imu-item-text strong{
+    font-size: 45px;
+    color: #DE6A10;
+}
+
+.section-imu-container{
+    margin-top: 65px;
+    column-gap: 50px;
+    display: flex;
+}
+
+@media screen and (max-width: 768px) {
+    .section-imu-h2{
+        font-size: 20px;
+    }
+    .section-imu-text{
+        font-size: 14px;
+        margin-top: 7px;
+    }
+    .section-imu-container{
+        flex-direction: column !important;
+        margin-top: 20px;
+        row-gap: 20px;
+    }
+    .section-imu-item-text{
+        font-size: 12px;
+    }
+    .section-imu-item-text strong{
+        font-size: 18px;
+    }
+   .section-imu-ward{
+    justify-content: space-between;
+    flex-direction: row;
+    column-gap: 0;
+   }
+   .section-imu-item{
+    column-gap: 16px;
+   }
+   .section-imu-item:last-child{
+    border-left: 1px dashed #fff;
+    padding-left: 20px;
+   }
+   .section-imu-item img{
+    max-width: 50px;
+   }
+}

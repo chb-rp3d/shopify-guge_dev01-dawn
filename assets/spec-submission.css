@@ -1,0 +1,81 @@
+.sw-slider {
+  display: flex;
+  
+}
+.sw-left .swiper-slide {
+  width: 100% !important;
+}
+.sw-left {
+  flex: 1;
+}
+.sw-right {
+  flex: 1;
+  background: #F5F5F5;
+  padding: 50px;
+}
+.sw-right h2 {
+  font-size: 52px;
+    font-weight: 600;
+    color: #4D4D4D;
+}
+.sw-right p {
+  font-size: 20px;
+  margin-top: 24px;
+}
+.sw-right a {
+  font-size: 20px;
+  color: #0580FB;
+}
+.globo-form-id-43255 .globo-form-app {
+    max-width: 100% !important;
+    box-shadow: none;
+}
+.section-sub-swiper-h2 p {
+  font-size: 48px;
+  font-weight: 600;
+  text-align: center;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.thumb-swiper {
+  display: grid;
+  margin-top: 16px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.thumb-item p {
+    background: #F5F5F5;
+    text-align: center;
+    padding: 10px 15px;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+
+@media screen and (max-width: 768px) {
+  .sw-slider {
+    flex-wrap: wrap;
+}
+  .subheading {
+    display: none;
+  }
+  .sw-right {
+    flex: inherit;
+    padding: 20px;
+  }
+  .sw-right h2 {
+    font-size: 25px;
+  }
+  .sw-right p {
+    font-size: 14px;
+}
+  .thumb-swiper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .thumb-item p {
+    font-size: 16px;
+}
+  .section-sub-swiper-h2 p {
+    font-size: 30px;
+  }
+}

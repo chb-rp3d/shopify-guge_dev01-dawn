@@ -1,0 +1,30 @@
+<div class="drawer-menu-sub-item">
+  {% for sub_menu in sub_menus %}
+    {% assign sub_index = forloop.index %}
+    {% if sub_menu.settings.number == index %}
+      <div class="drawer-menu-sub-item-content">
+        <div class="drawer-menu-sub-item-text">
+          {% if sub_menu.settings.comparison_text == blank %}
+            <a
+              {% if sub_menu.settings.sub_link != blank %}
+                href="{{sub_menu.settings.sub_link}}"
+              {% else %}
+                onclick="return false"
+              {% endif %}
+            >
+              {{- sub_menu.settings.sub_text -}}
+            </a>
+            {% render 'arrow-icon', class: 'menu-down-sub-arrow' %}
+          {% else %}
+            <span class="comparison-btn_">{{ sub_menu.settings.sub_text }}</span>
+          {% endif %}
+        </div>
+        {% if sub_menu.settings.three_card_type == 'card_type2' %}
+          {% render 'drawer-menu-sub-item-ward2', three_menus: three_menus, sub_index: sub_index,sub_menu:sub_menu %}
+        {% else %}
+          {% render 'drawer-menu-sub-item-ward', three_menus: three_menus, sub_index: sub_index %}
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>

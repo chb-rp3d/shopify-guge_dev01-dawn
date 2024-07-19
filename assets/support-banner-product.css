@@ -1,0 +1,34 @@
+.prodducts {
+    display: flex;
+    gap: 8px;
+    overflow-x: scroll;
+}
+.productitem {
+    text-align: center;
+    flex: 1;
+}
+.zoomimg {
+    width: 288px;
+    height: 270px;
+    overflow: hidden;
+}
+.producttitle p {
+    color: #000;
+    margin-top: 20px;
+    font-size: 24px;
+}
+.onetitle h2 {
+    color: #494949;
+    font-size: 32px;
+    font-size: 24px;
+}
+.onetitle p {
+    color: #666;
+    font-size: 16px;
+}
+.producttitle p:hover {
+    color: #448EF9;
+}
+.zoomimg img:hover {
+    transform: scale(1.2);
+}

@@ -1,0 +1,21 @@
+<div class="menu-down-container-type3">
+  {% for sub_menu in sub_menus %}
+    {% if sub_menu.settings.menu_type == 'type3' %}
+      <div class="menu-down-type3-item">
+        <div class="type3-item-content">
+          <div class="type3-item-title">
+            <span>{{ sub_menu.settings.sub_text }}</span>
+            {% if sub_menu.settings.call_text != blank %}
+              <a href="{{sub_menu.settings.call_url}}">{{ sub_menu.settings.call_text }}</a>
+            {% endif %}
+          </div>
+          <a class="type3-item-learn_url" href="{{sub_menu.settings.learn_url}}">{{ sub_menu.settings.learn_text }}</a>
+        </div>
+        {% comment %} {% capture class_name %}type3-item-img  type3-item-img-{{ forloop.index}}{% endcapture %} {% endcomment %}
+        <div class="type3-item-img">
+          {% render 'img-lazyload', image_url: sub_menu.settings.img %}
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>

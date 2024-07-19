@@ -1,0 +1,54 @@
+.contact {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.live-left {
+    flex: 1;
+    text-align: center;
+    background: #FAFAFA;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    flex-direction: column;
+    height: 345px;
+}
+.live-right {
+  flex: 2;
+  background: #FAFAFA url(https://cdn.shopify.com/s/files/1/0538/9533/2027/files/hy.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 345px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.live-left img {
+  display:block;
+  margin-bottom: 15px;
+}
+.contacttitle h2 {
+  font-size: 32px;
+}
+.live-right .contacttitle{
+    width: 300px;
+    position: absolute;
+    left: 50px;
+}
+.section-faq-h2 {
+  margin-bottom: 60px;
+    margin-top: 60px;
+}
+.lc p {
+  color: #448ef9;
+}
+
+@media screen and (max-width: 768px) {
+  .live-right {
+    display: none;
+  }
+  .live-left {
+    width: 100%;
+  }
+}

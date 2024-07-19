@@ -1,0 +1,81 @@
+{{ 'section-vibrant.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .section-{{section.id}}{
+      padding:{{section.settings.padding}};
+  }
+
+  @media screen and (max-width: 768px) {
+      .section-{{section.id}}{
+      padding:{{section.settings.md_padding}};
+  }
+  }
+</style>
+
+<div class="page-layout section-{{section.id}}">
+  <div class="page-layout-content">
+    <h2 class="section-vibrant-h2">{{ section.settings.title }}</h2>
+    <div class="section-vibrant-container">
+      <div class="section-vibrant-video">
+        {{
+          section.settings.video_file
+          | video_tag: autoplay: true, loop: true, muted: true, controls: false, image_size: '1200x'
+        }}
+      </div>
+      <div class="section-vibrant-content">
+        <div class="section-vibrant-sub-title">{{ section.settings.sub_title }}</div>
+        <div class="section-vibrant-text">{{ section.settings.text1 }}</div>
+        <div class="section-vibrant-text">{{ section.settings.text2 }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "section-vibrant",
+  "settings": [
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "模块内边距",
+      "default": "120px 20px 0"
+    },
+    {
+      "type": "text",
+      "id": "md_padding",
+      "label": "移动端模块内边距",
+      "default": "30px 20px 0"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "标题"
+    },
+    {
+      "type": "richtext",
+      "id": "sub_title",
+      "label": "二级标题"
+    },
+    {
+      "type": "video",
+      "id": "video_file",
+      "label": "视频文件"
+    },
+    {
+      "type": "richtext",
+      "id": "text1",
+      "label": "段落1"
+    },
+    {
+      "type": "richtext",
+      "id": "text2",
+      "label": "段落2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "section-vibrant"
+    }
+  ]
+}
+{% endschema %}

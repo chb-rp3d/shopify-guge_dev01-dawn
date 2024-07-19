@@ -1,0 +1,90 @@
+.section-specifications-h2 p {
+    height: 133px;
+    background-color: #F4F2F2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: normal normal bold 52px/normal Poppins;
+    letter-spacing: 0px;
+    color: #494949;
+}
+
+.section-specifications-container{
+    margin-top: 60px;
+    background-color: #F7F7FA;
+}
+.section-specifications-content{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.specifications-item{
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 23px;
+    align-items: center;
+    font: normal normal 500 20px/normal Poppins;
+    letter-spacing: 0px;
+    color: #494949;
+    text-align: left;
+    border-bottom: 1px solid #EDEBEB;
+}
+.specifications-item:not(:nth-child(even)){
+    border-right: 1px solid #EDEBEB;
+}
+
+.specifications-item > div:last-child{
+    font: normal normal 400 16px/normal Poppins;
+    color: #666;
+    text-align: right;
+}
+
+.section-specifications-footer{
+    font: normal normal normal 16px/28px Poppins;
+    letter-spacing: 0px;
+    color: #494949;
+    padding: 40px 23px 60px;
+}
+
+.section-specifications-img{
+    margin-top: 90px;
+    border-radius: 10px;
+    background-color: rgb(248, 248, 248);
+    overflow: hidden;
+}
+.section-specifications-img img{
+    display: block;
+    margin: 0 auto;
+    max-height: 450px;
+    width: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .section-specifications-h2{
+        font-size: 24px;
+        height: 60px;
+    }
+    .section-specifications-img{
+        margin-top: 18px;
+    }
+    .section-specifications-img img{
+        max-height: 128px;
+    }
+    .specifications-item, .specifications-item > div:last-child{
+        font-size: 12px;
+    }
+    .specifications-item{
+        border-right: none !important;
+        padding: 10px 0;
+    }
+    .section-specifications-footer{
+        font-size: 12px;
+        padding: 30px 0 0;
+    }
+    .section-specifications-container{
+        background-color: #fff;
+        margin-top: 25px;
+    }
+    .section-specifications-content{
+        grid-template-columns: repeat(1,1fr);
+    }
+}

@@ -1,0 +1,85 @@
+{{ 'recoby.css' | asset_url | stylesheet_tag }}
+<style>
+   .section-{{section.id}} .page-layout-content{
+     max-width: 1340px !important;
+     padding-bottom: 107px;
+     padding-top: 110px;
+}
+  @media screen and (max-width: 768px) {
+    section-recoby {
+      display: none;
+    }
+  }
+</style>
+<section-recoby>
+  <div class="page-layout section-{{section.id}}">
+    <div class="page-layout-content">
+      <h2 class="section-hpc-swiper-h2">{{ section.settings.title }}</h2>
+      <div class="recoby">
+        {% for block in section.blocks %}
+        <div class="recoby-item">
+        <div class="redefault">
+          {% render 'img-lazyload', image_url: block.settings.img %}
+        </div>
+          <div class="recoby-overlay">
+            {% render 'img-lazyload', image_url: block.settings.img1 %}
+            <h2>{{ block.settings.title }}</h2>
+            <p>{{ block.settings.text }}</p>
+          </div>
+        </div>
+        {% endfor %}
+     
+      </div>
+    </div>
+  </div>
+</section-recoby>
+{% schema %}
+
+    {
+  "name": "section-recoby",
+  "settings": [
+    
+     {
+      "type": "richtext",
+      "id": "title",
+      "label": "标题"
+    }
+  ],
+     "blocks": [
+    {
+      "name": "items",
+      "type": "items",
+      "settings": [
+        
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "图片"
+        },
+        
+        {
+          "type": "image_picker",
+          "id": "img1",
+          "label": "交互后图片"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "文本内容"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "文本内容"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "section-recoby"
+    }
+  ]
+}
+
+{% endschema %}

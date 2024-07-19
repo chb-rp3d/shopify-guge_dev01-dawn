@@ -1,0 +1,73 @@
+.section-sharp-h2{
+    font-size: 32px;
+    font-family: Poppins;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+}
+.section-sharp-text{
+    font-size: 24px;
+    font-family: Poppins, Poppins;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    margin: 20px auto 0;
+    max-width: 1146px;
+}
+.section-sharp-video{
+    flex: 2 0 0;
+}
+.section-sharp-item{
+    flex: 1 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.section-sharp-tip{
+    font-size: 26px;
+    font-family: Poppins, Poppins;
+    font-weight: 400;
+    color: #FFFFFF;
+}
+.section-sharp-tip strong{
+    font-size: 57px;
+    background: linear-gradient(269deg, #F4A45F 0%, #DA6002 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.section-sharp-tip em{
+    font-style: normal;
+}
+.section-sharp-container{
+    margin-top: 65px;
+    column-gap: 50px;
+    display: flex;
+}
+
+@media screen and (max-width: 768px) {
+    .section-sharp-h2{
+        font-size: 20px;
+    }
+    .section-sharp-text{
+        font-size: 14px;
+        margin-top: 7px;
+    }
+    .section-sharp-container{
+        margin-top: 20px;
+        row-gap: 20px;
+        flex-direction: column;
+    }
+    .section-sharp-tip{
+        font-size: 12px;
+    }
+    .section-sharp-tip strong{
+        font-size: 20px;
+    }
+    .section-sharp-tip em{
+        display: flex;
+        column-gap: 4px;
+    }
+    .section-sharp-tip p{
+    }
+}

@@ -1,0 +1,107 @@
+{{ 'section-pop-features.css' | asset_url | stylesheet_tag }}
+<style>
+  .section-{{section.id}}{
+      padding:{{section.settings.padding}};
+  }
+
+  @media screen and (max-width: 768px) {
+      .section-{{section.id}}{
+      padding:{{section.settings.md_padding}};
+  }
+  }
+</style>
+
+<div class="page-layout section-{{section.id}}">
+  <div class="page-layout-content">
+    {% if section.settings.title != blank %}
+      <h2 class="section-pop-features-h2">{{ section.settings.title }}</h2>
+    {% endif %}
+    <div class="section-pop-features-sub-title">{{ section.settings.sub_title }}</div>
+    <div class="section-pop-features-text">{{ section.settings.text }}</div>
+    <div class="section-pop-features-container">
+      {% for item in section.blocks %}
+        <div class="section-pop-features-item">
+          {% if item.settings.text != blank %}
+            <div class="section-pop-features-tip">{{ item.settings.text }}</div>
+          {% endif %}
+          {% if item.settings.video_file != blank %}
+            {{
+              item.settings.video_file
+              | video_tag:
+                autoplay: true,
+                class: 'section-pop-features-video',
+                loop: true,
+                muted: true,
+                controls: false,
+                image_size: '1200x'
+            }}
+          {% else %}
+            {% render 'img-lazyload', image_url: item.settings.img %}
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "section-pop-features",
+  "settings": [
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "模块内边距",
+      "default": "120px 20px"
+    },
+    {
+      "type": "text",
+      "id": "md_padding",
+      "label": "移动端模块内边距",
+      "default": "50px 20px"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "标题"
+    },
+    {
+      "type": "richtext",
+      "id": "sub_title",
+      "label": "小标题"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "段落"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "item",
+      "type": "item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "配图"
+        },
+        {
+          "type": "video",
+          "id": "video_file",
+          "label": "视频文件"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "文本内容"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "section-pop-features"
+    }
+  ]
+}
+{% endschema %}

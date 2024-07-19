@@ -1,0 +1,28 @@
+<div class="product-comparison-row product-comparison-row-n">
+  <div class="product-comparison-col">
+    <div class="product-comparison-item product-comparison-type">
+      {{ type }}
+    </div>
+  </div>
+  {% for i in (0..2) %}
+    {% comment %}
+       {% liquid
+        assign currentProduct = all_products[details[i].settings.product_origin]
+        assign currentVariant = currentProduct
+        assign variantId = details[i].settings.variant_id
+        if variantId != blank and currentProduct.variants.size > 1
+          for variant in currentProduct.variants
+            if variant.id == variantId
+              assign currentVariant = variant
+            endif
+          endfor
+        endif
+      %}
+    {% endcomment %}
+    <div class="product-comparison-col" data-field="{{field}}">
+      <div class="product-comparison-item product-comparison-text ">
+        {{ details[i].settings[field] }}
+      </div>
+    </div>
+  {% endfor %}
+</div>

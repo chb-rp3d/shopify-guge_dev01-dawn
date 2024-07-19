@@ -1,0 +1,183 @@
+{{ 'section-advanced.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .section-{{section.id}}{
+      padding:{{section.settings.padding}};
+  }
+
+  @media screen and (max-width: 768px) {
+      .section-{{section.id}}{
+      padding:{{section.settings.md_padding}};
+  }
+  }
+</style>
+<swiper-component
+  data-open="true"
+  data-allow-touch-move="false"
+  id="section-{{section.id}}"
+>
+  <div class="page-layout section-{{section.id}}" id="advance">
+    <div class="page-layout-content">
+      <h2 class="section-advanced-h2">{{ section.settings.title }}</h2>
+      {% comment %} <h2 class="section-advanced-h2 mobile-media">{{ section.settings.title2 }}</h2> {% endcomment %}
+      <div class="section-advanced-tabs">
+        {% liquid
+          assign tabs = section.blocks | where: 'type', 'tabs'
+          assign items = section.blocks | where: 'type', 'items'
+        %}
+        {% for t in tabs %}
+          <div class="section-advanced-tab">{{ t.settings.tab }}</div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="section-advanced-container">
+      <div class="page-layout-content">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            {% for t in tabs %}
+              {% assign index = forloop.index %}
+              <div class="swiper-slide section-advanced-slide">
+                <div class="section-advanced-left">
+                  <div class="section-advanced-left-item">
+                    {% render 'img-lazyload', image_url: t.settings.img %}
+                    <div class="section-advanced-text">
+                      {{ t.settings.text }}
+                    </div>
+                  </div>
+                  <h2 class="section-advanced-h2">{{ t.settings.tab }}</h2>
+                  <div class="section-advanced-text2">{{ t.settings.text2 }}</div>
+                  <a class="section-advanced-link" href="{{t.settings.url}}">今すぐ購入</a>
+                </div>
+                <div class="section-advanced-right">
+                  {% for item in items %}
+                    {% if item.settings.number != 2 and index == 1 %}
+                      {% render 'section-advanced-item',
+                        index: forloop.index,
+                        image_url: item.settings.img,
+                        text: item.settings.text,
+                        md_img: item.settings.md_img
+                      %}
+                    {% elsif index == 2 %}
+                      {% render 'section-advanced-item',
+                        index: forloop.index,
+                        image_url: item.settings.img,
+                        text: item.settings.text,
+                        md_img: item.settings.md_img
+                      %}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</swiper-component>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('section-{{section.id}}');
+    const tabs = Array.from(container.querySelectorAll('.section-advanced-tab'));
+    tabs.forEach((item, index) => {
+      if (index == 0) {
+        item.classList.add('active');
+      }
+      item.onclick = () => {
+        $(tabs).not(item).removeClass('active');
+        item.classList.add('active');
+        container.slideTo(index);
+      };
+    });
+  });
+</script>
+{% schema %}
+{
+  "name": "section-advanced",
+  "settings": [
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "模块内边距",
+      "default": "120px 20px 0"
+    },
+    {
+      "type": "text",
+      "id": "md_padding",
+      "label": "移动端模块内边距",
+      "default": "60px 20px 0"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "标题"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "tabs",
+      "type": "tabs",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab",
+          "label": "tab 文案"
+        },
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "配图"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "文本"
+        },
+        {
+          "type": "richtext",
+          "id": "text2",
+          "label": "文本2"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "跳转链接"
+        }
+      ]
+    },
+    {
+      "name": "items",
+      "type": "items",
+      "settings": [
+        {
+          "type": "number",
+          "id": "number",
+          "label": "属于第几项",
+          "default": 1
+        },
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "配图"
+        },
+        {
+          "type": "image_picker",
+          "id": "md_img",
+          "label": "移动端配图"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "文本"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "section-advanced"
+    }
+  ]
+}
+{% endschema %}

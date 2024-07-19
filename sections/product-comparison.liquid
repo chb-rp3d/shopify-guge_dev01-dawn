@@ -1,0 +1,521 @@
+{{ 'product-comparison.css' | asset_url | stylesheet_tag }}
+<script src="{{'product-comparison.js' | asset_url}}" defer></script>
+<style>
+  .section-{{ section.id}}{
+    padding: {{ section.settings.padding}};
+  }
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id}}{
+      padding: {{ section.settings.md_padding}};
+    }
+  }
+</style>
+<product-comparison>
+  <header class="product-comparison-header">
+    <h1 class="h1">{{ section.settings.title }}</h1>
+  </header>
+  <div class="page-layout section-{{section.id}}">
+    <div class="page-layout-content">
+      <div class="product-comparison-container">
+        {% assign details = section.blocks | where: 'type', 'product_item' %}
+        <div class="product-comparison-row product-comparison-row-1 product-comparison-sticky">
+          <div class="product-comparison-col">
+            <div class="comparison_checkbox-wrad">
+              <input
+                type="checkbox"
+                name=""
+                id="product-comparison_checkbox"
+              >
+              <label class="comparison_checkbox-label" for="product-comparison_checkbox">同じ項目を隠す</label>
+            </div>
+          </div>
+          {% for i in (0..2) %}
+            <div class="product-comparison-col">
+              <div class="product-comparison-info">
+                <div class="product-comparison-tab">
+                  <div data-index="{{forloop.index0}}" class="product-comparison-tab-text">
+                    <span class="product-comparison-tab-title">{{ details[i].settings.title }}</span>
+                    {% render 'arrow-icon' %}
+                  </div>
+
+                  <div class="product-comparison-tab-down">
+                    {% for tab in details %}
+                      <button
+                        data-id="{{tab.id}}"
+                        class="
+                          product-comparison-tab-item
+                          {% comment %} {% if forloop.index0 == i %}active {% endif %} {% endcomment %}
+                        "
+                      >
+                        {% render 'select-icon' %}
+                        <span>{{ tab.settings.title }}</span>
+                      </button>
+                    {% endfor %}
+                  </div>
+                </div>
+                {% liquid
+                  assign currentProduct = all_products[details[i].settings.product_origin]
+                  assign currentVariant = currentProduct
+                  assign variantId = details[i].settings.variant_id
+                  if variantId != blank and currentProduct.variants.size > 1
+                    for variant in currentProduct.variants
+                      if variant.id == variantId
+                        assign currentVariant = variant
+                      endif
+                    endfor
+                  endif
+                %}
+                <div class="product-comparison-img">
+                  {% render 'img-lazyload', image_url: details[i].settings.img %}
+                </div>
+                <div
+                  class="
+                    product-comparison-price {% if details[i].settings.isHidePrice == true %}
+                      visibility-hidden
+                    {% endif %}
+                  "
+                >
+                  {{ currentVariant.price | money | strip_html }}
+                </div>
+
+                <a
+                  class="
+                    product-comparison-link {% if details[i].settings.isHideBtn == true %}
+                      visibility-hidden
+                    {% endif %}
+                  "
+                  href="{{  currentVariant.url | within: collection}}"
+                  aria-label="to product"
+                  >今すぐ購入 ></a
+                >
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        {% comment %} render 'product-comparison-row', type: 'Price', details: details, field: 'price' {% endcomment %}
+
+        {% liquid
+          render 'product-comparison-row', type: 'スキャン方式', details: details, field: 'scanningType'
+          render 'product-comparison-row', type: 'テクノロジー', details: details, field: 'technology'
+          render 'product-comparison-row', type: 'オブジェクトサイズ', details: details, field: 'application'
+          render 'product-comparison-row', type: 'シングルフレーム精度（最大）', details: details, field: 'singleFramePrecision'
+          render 'product-comparison-row', type: 'シングルフレーム正確度（最大）', details: details, field: 'singleFrameAccuracy'
+          render 'product-comparison-row', type: '点間距離', details: details, field: 'fusedPointDistance'
+          render 'product-comparison-row', type: '動作距離', details: details, field: 'workingDistance'
+          render 'product-comparison-row', type: 'シングルスキャン範囲 （最小距離)', details: details, field: 'singleCaptureRangeNearest'
+          render 'product-comparison-row', type: 'シングルスキャン範囲 (最大距離)', details: details, field: 'singleCaptureRangeFurthest'
+          render 'product-comparison-row', type: '画角（高さ×幅）', details: details, field: 'angularField'
+          render 'product-comparison-row', type: '最小スキャンサイズ', details: details, field: 'minimumScanVolume'
+          render 'product-comparison-row', type: 'スキャンスピード（最大）', details: details, field: 'scanningSpeed'
+          render 'product-comparison-row', type: '深度解像度（最大）', details: details, field: 'depthResolution'
+          render 'product-comparison-row', type: 'RGBカメラ解像度', details: details, field: 'textureResolution'
+          render 'product-comparison-row', type: 'カラースキャン', details: details, field: 'colorScanning'
+          render 'product-comparison-row', type: 'スキャンモード', details: details, field: 'scanningMode'
+          render 'product-comparison-row', type: 'トラッキング方式', details: details, field: 'trackingMethods'
+          render 'product-comparison-row', type: '屋外スキャン', details: details, field: 'outdoorScanning'
+          render 'product-comparison-row', type: '3D光源', details: details, field: 'dLightSource'
+          render 'product-comparison-row', type: '赤外線補助照明', details: details, field: 'irFillLights'
+          render 'product-comparison-row', type: '白色LED照明', details: details, field: 'whiteLEDFlash'
+          render 'product-comparison-row', type: '位置センサー', details: details, field: 'positionSensors'
+          render 'product-comparison-row', type: 'CPU', details: details, field: 'cpu'
+          render 'product-comparison-row', type: 'スキャン', details: details, field: 'builtInChipComputing'
+          render 'product-comparison-row', type: 'ストレージ', details: details, field: 'storage'
+          render 'product-comparison-row', type: 'メモリ', details: details, field: 'memory'
+          render 'product-comparison-row', type: 'タッチスクリーン', details: details, field: 'touchScreen'
+          render 'product-comparison-row', type: 'ボタン', details: details, field: 'buttons'
+          render 'product-comparison-row', type: '対応OS', details: details, field: 'compatibleSystems'
+          render 'product-comparison-row', type: '出力フォーマット', details: details, field: 'outputFileFormats'
+          render 'product-comparison-row', type: '3Dプリント用データ出力', details: details, field: 'readyToPrint3DModels'
+          render 'product-comparison-row', type: 'Wi-Fi規格', details: details, field: 'wifi'
+          render 'product-comparison-row', type: 'Bluetooth規格', details: details, field: 'bluetooth'
+          render 'product-comparison-row', type: '接続ポート', details: details, field: 'connectorType'
+          render 'product-comparison-row', type: '出力電圧', details: details, field: 'powerSource'
+          render 'product-comparison-row', type: '電源供給', details: details, field: 'battery'
+          render 'product-comparison-row', type: '本体重量', details: details, field: 'scannerWeight'
+          render 'product-comparison-row', type: '本体寸法（長さ×幅×高さ）', details: details, field: 'dimensions'
+          render 'product-comparison-row', type: '特殊オブジェクトのスキャン', details: details, field: 'specialObjectScanning'
+          render 'product-comparison-row', type: 'スキャナーの校正', details: details, field: 'userRecalibration'
+          render 'product-comparison-row', type: '対応アクセサリー', details: details, field: 'supportedAccessories'
+          render 'product-comparison-row', type: 'PC要件(windows)', details: details, field: 'pcrequirementswindows'
+          render 'product-comparison-row', type: 'PC要件(mac)', details: details, field: 'pcrequirementsmac'
+        %}
+      </div>
+      <div class="product-comparison-footer">
+        {{ section.settings.text }}
+      </div>
+    </div>
+  </div>
+
+  {% for item in section.blocks %}
+    {% liquid
+      assign product = all_products[item.settings.product_origin]
+      assign current_variant = product
+      assign variant_id = block.settings.variant_id
+      if variant_id != blank and product.variants.size > 1
+        for variant in product.variants
+          if variant.id == variant_id
+            assign current_variant = variant
+          endif
+        endfor
+      else
+        assign variant_id = product.variants[0].id
+      endif
+    %}
+    <div
+      data-is-hide-price="{{item.settings.isHidePrice}}"
+      data-is-hide-btn="{{item.settings.isHideBtn}}"
+      data-product-id="{{current_variant.id}}"
+      data-variant-id="{{variant_id}}"
+      data-id="{{item.id}}"
+      class="hide product-comparison_json"
+      data-title="{{item.settings.title}}"
+      data-url="{{current_variant.url | within: collection}}"
+      data-img-url="{{item.settings.img | image_url: width: item.settings.img.width }}"
+      data-price="{{current_variant.price | money | strip_html }}"
+      data-scanning-type="{{item.settings.scanningType}}"
+      data-technology="{{item.settings.technology}}"
+      data-application="{{item.settings.application}}"
+      data-single-frame-precision="{{item.settings.singleFramePrecision}}"
+      data-single-frame-accuracy="{{item.settings.singleFrameAccuracy}}"
+      data-fused-point-distance="{{item.settings.fusedPointDistance}}"
+      data-working-distance="{{item.settings.workingDistance}}"
+      data-single-capture-range-nearest="{{item.settings.singleCaptureRangeNearest}}"
+      data-single-capture-range-furthest="{{item.settings.singleCaptureRangeFurthest}}"
+      data-angular-field="{{item.settings.angularField}}"
+      data-minimum-scan-volume="{{item.settings.minimumScanVolume}}"
+      data-scanning-speed="{{item.settings.scanningSpeed}}"
+      data-depth-resolution="{{item.settings.depthResolution}}"
+      data-texture-resolution="{{item.settings.textureResolution}}"
+      data-color-scanning="{{item.settings.colorScanning}}"
+      data-tracking-methods="{{item.settings.trackingMethods}}"
+      data-outdoor-scanning="{{item.settings.outdoorScanning}}"
+      data-d-light-source="{{item.settings.dLightSource}}"
+      data-white-l-e-d-flash="{{item.settings.whiteLEDFlash}}"
+      data-position-sensors="{{item.settings.positionSensors}}"
+      data-cpu="{{item.settings.cpu}}"
+      data-built-in-chip-computing="{{item.settings.builtInChipComputing}}"
+      data-storage="{{item.settings.storage}}"
+      data-touch-screen="{{item.settings.touchScreen}}"
+      data-buttons="{{item.settings.buttons}}"
+      data-minimum-computer-requirements="{{item.settings.minimumComputerRequirements}}"
+      data-recommended-computer-requirements="{{item.settings.recommendedComputerRequirements}}"
+      data-compatible-systems="{{item.settings.compatibleSystems}}"
+      data-output-file-formats="{{item.settings.outputFileFormats}}"
+      data-ready-to-print3-d-models="{{item.settings.readyToPrint3DModels}}"
+      data-wifi="{{item.settings.wifi}}"
+      data-bluetooth="{{item.settings.bluetooth}}"
+      data-connector-type="{{item.settings.connectorType}}"
+      data-power-source="{{item.settings.powerSource}}"
+      data-battery="{{item.settings.battery}}"
+      data-scanner-weight="{{item.settings.scannerWeight}}"
+      data-dimensions="{{item.settings.dimensions}}"
+      data-special-object-scanning="{{item.settings.specialObjectScanning}}"
+      data-user-recalibration="{{item.settings.userRecalibration}}"
+      data-supported-accessories="{{item.settings.supportedAccessories}}"
+      data-scanning-mode="{{item.settings.scanningMode}}"
+      data-ir-fill-lights="{{item.settings.irFillLights}}"
+      data-memory="{{item.settings.memory}}"
+    ></div>
+  {% endfor %}
+</product-comparison>
+
+{% schema %}
+{
+  "name": "product-comparison",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "模块内边距"
+    },
+    {
+      "type": "text",
+      "label": "移动端模块内边距",
+      "id": "md_padding"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "模块标题"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "模块底部文案"
+    }
+  ],
+
+  "blocks": [
+    {
+      "name": "单个产品数据",
+      "type": "product_item",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "isHidePrice",
+          "label": "是否隐藏价格",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "isHideBtn",
+          "label": "是否隐藏购买按钮",
+          "default": false
+        },
+        {
+          "type": "product",
+          "id": "product_origin",
+          "label": "关联产品"
+        },
+        {
+          "type": "number",
+          "id": "variant_id",
+          "label": "产品变体id 不填默认第一个"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "产品标题"
+        },
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "产品图"
+        },
+        {
+          "type": "text",
+          "id": "scanningType",
+          "label": "Scanning Type"
+        },
+        {
+          "type": "text",
+          "id": "technology",
+          "label": "Technology"
+        },
+        {
+          "type": "text",
+          "id": "application",
+          "label": "Application"
+        },
+        {
+          "type": "text",
+          "id": "singleFramePrecision",
+          "label": "Single-frame Precision, up to"
+        },
+        {
+          "type": "text",
+          "id": "singleFrameAccuracy",
+          "label": "Single-frame Accuracy, up to"
+        },
+        {
+          "type": "text",
+          "id": "fusedPointDistance",
+          "label": "Fused Point Distance, up to"
+        },
+        {
+          "type": "text",
+          "id": "workingDistance",
+          "label": "Working Distance"
+        },
+        {
+          "type": "text",
+          "id": "singleCaptureRangeNearest",
+          "label": "Single Capture Range @nearest Distance"
+        },
+        {
+          "type": "text",
+          "id": "singleCaptureRangeFurthest",
+          "label": "Single Capture Range @furthest Distance"
+        },
+        {
+          "type": "text",
+          "id": "angularField",
+          "label": "Angular Field of View, HxW"
+        },
+        {
+          "type": "text",
+          "id": "minimumScanVolume",
+          "label": "Minimum Scan Volume"
+        },
+        {
+          "type": "text",
+          "id": "scanningSpeed",
+          "label": "Scanning Speed, up to"
+        },
+        {
+          "type": "text",
+          "id": "depthResolution",
+          "label": "Depth Resolution,up to"
+        },
+        {
+          "type": "text",
+          "id": "textureResolution",
+          "label": "Texture Resolution"
+        },
+        {
+          "type": "text",
+          "id": "colorScanning",
+          "label": "Color Scanning"
+        },
+        {
+          "type": "text",
+          "id": "trackingMethods",
+          "label": "Tracking Methods"
+        },
+        {
+          "type": "text",
+          "id": "outdoorScanning",
+          "label": "Outdoor Scanning"
+        },
+        {
+          "type": "text",
+          "id": "dLightSource",
+          "label": "3D Light Source"
+        },
+        {
+          "type": "text",
+          "id": "whiteLEDFlash",
+          "label": "White LED Flash"
+        },
+        {
+          "type": "text",
+          "id": "positionSensors",
+          "label": "Position Sensors"
+        },
+        {
+          "type": "text",
+          "id": "cpu",
+          "label": "CPU"
+        },
+        {
+          "type": "text",
+          "id": "builtInChipComputing",
+          "label": "Built in Chip Computing"
+        },
+        {
+          "type": "text",
+          "id": "storage",
+          "label": "Storage"
+        },
+        {
+          "type": "text",
+          "id": "touchScreen",
+          "label": "Touch Screen"
+        },
+        {
+          "type": "text",
+          "id": "buttons",
+          "label": "Buttons"
+        },
+        {
+          "type": "text",
+          "id": "minimumComputerRequirements",
+          "label": "Minimum Computer Requirements"
+        },
+        {
+          "type": "text",
+          "id": "recommendedComputerRequirements",
+          "label": "Recommended Computer Requirements"
+        },
+        {
+          "type": "text",
+          "id": "compatibleSystems",
+          "label": "Compatible Systems"
+        },
+        {
+          "type": "text",
+          "id": "outputFileFormats",
+          "label": "Output File Formats"
+        },
+        {
+          "type": "text",
+          "id": "readyToPrint3DModels",
+          "label": "Ready to Print 3D Models"
+        },
+        {
+          "type": "text",
+          "id": "wifi",
+          "label": "WiFi"
+        },
+        {
+          "type": "text",
+          "id": "bluetooth",
+          "label": "Bluetooth"
+        },
+        {
+          "type": "text",
+          "id": "connectorType",
+          "label": "Connector Type"
+        },
+        {
+          "type": "text",
+          "id": "powerSource",
+          "label": "Power Source"
+        },
+        {
+          "type": "text",
+          "id": "battery",
+          "label": "Battery"
+        },
+        {
+          "type": "text",
+          "id": "scannerWeight",
+          "label": "Scanner Weight"
+        },
+        {
+          "type": "text",
+          "id": "dimensions",
+          "label": "Dimensions(L x W x H)"
+        },
+        {
+          "type": "text",
+          "id": "specialObjectScanning",
+          "label": "Special Object Scanning"
+        },
+        {
+          "type": "text",
+          "id": "userRecalibration",
+          "label": "User Recalibration "
+        },
+        {
+          "type": "text",
+          "id": "supportedAccessories",
+          "label": "Supported Accessories"
+        },
+        {
+          "type": "text",
+          "id": "scanningMode",
+          "label": "Scanning Mode"
+        },
+        {
+          "type": "text",
+          "id": "irFillLights",
+          "label": "IR Fill Lights"
+        },
+        {
+          "type": "text",
+          "id": "memory",
+          "label": "Memory (RAM)"
+        },
+        {
+          "type": "text",
+          "id": "pcrequirementswindows",
+          "label": "pcrequirementswindows"
+        },
+        {
+          "type": "text",
+          "id": "pcrequirementsmac",
+          "label": "pcrequirementsmac"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "product-comparison"
+    }
+  ]
+}
+{% endschema %}

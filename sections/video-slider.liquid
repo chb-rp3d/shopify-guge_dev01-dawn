@@ -1,0 +1,105 @@
+{% style %}
+  .video-slider-title{
+    display:block;
+    font-size:{{ section.settings.title-font-size }}rem;
+    color:{{ section.settings.title-font-color }};
+    margin:0 !important;
+    margin-bottom:2rem;
+  }
+{% endstyle %}
+<div {% if template contains 'product' %}class="Product product-section-width"{%- endif -%}> 
+{% if section.settings.title !=blank %}
+  <h1 class="video-slider-title">
+      {{ section.settings.title }}
+  </h1>
+{% endif %}
+  <!-- Slideshow container -->
+<div class="slideshow-container">
+
+  <!-- Full-width images with number and caption text -->
+  {% for block in section.blocks %}
+  <div class="mySlides">
+    <div class="description-video">
+        <iframe src="{{block.settings.link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+     </div>
+  </div>
+  {% endfor %}
+  
+  <!-- Next and previous buttons -->
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>  
+</div>
+
+<script>
+
+  var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  
+  slides[slideIndex-1].style.display = "block";
+}
+</script>
+
+{% schema %}
+{
+  "name": "Video Slider",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "title-font-size",
+      "label": "Title Font size (rem)"
+    },
+    {
+      "type": "color",
+      "id": "title-font-color",
+      "label": "Title Font color"
+    }
+    
+  ],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Slide",
+      "settings": [
+      {
+      "type": "url",
+      "id": "link",
+      "label": "Youtube Embed Link"
+      }
+        
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Video",
+      "name": "Video Slider"
+    }
+  ]
+}
+{% endschema %}

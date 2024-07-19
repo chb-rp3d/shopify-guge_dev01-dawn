@@ -1,0 +1,79 @@
+{{ 'section-sticky.css' | asset_url | stylesheet_tag }}
+<style>
+     .section-{{section.id}} .page-layout-content{
+       padding-top: 160px;
+        padding-bottom: 160px;
+  }
+  }
+</style>
+<section-sticky>
+  <div class="page-layout section-{{section.id}}">
+    <div class="xmmune" style="box-shadow: 0px 11px 7px -7px rgb(0 0 0 / 8%);position: fixed;top: 57px;left: 0;width: 100%;height: 65px;z-index: 9;background: #fff;">
+  <div class="as-standardnav-content">
+    <div class="as-standardnav-title">
+      {{ section.settings.text }}
+    </div>
+    <div class="as-standardnav-menu">
+      <div class="as-standardnav-menu-tray">
+        <ul class="as-standardnav-menu-items">
+          {% for block in section.blocks %}
+          <li class="as-standardnav-menu-item">
+            <a href="{{block.settings.url}}">{{ block.settings.text }}</a>
+          </li>
+            {% endfor %}
+          <li class="as-standardnav-menu-item navbuybutton">
+            <a href="{{section.settings.url}}">{{ section.settings.text1 }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+  </div>
+</section-sticky>
+{% schema %}
+    {
+  "name": "section-sticky",
+  "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "产品标题"
+        },
+        {
+          "type": "richtext",
+          "id": "text1",
+          "label": "购买按钮标题"
+        },
+       {
+          "type": "url",
+          "id": "url",
+          "label": "购买链接"
+        }
+  ],
+         "blocks": [
+      {
+      "name": "items",
+      "type": "items",
+      "settings": [
+        {
+          "type": "url",
+          "id": "url",
+          "label": "产品链接"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "文案"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "section-sticky"
+    }
+  ]
+}
+{% endschema %}

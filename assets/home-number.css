@@ -1,0 +1,44 @@
+.numtop {
+  display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  margin-top: 66px;
+    margin-bottom: 65px;
+}
+.fistp {
+      font-size: 45px;
+    color: #E64A4B;
+  margin-top: 17px;
+}
+.lstp {
+      font-size: 14px;
+}
+.numitem {
+  text-align: center;
+}
+.numitem img {
+  margin: auto;
+}
+.num .swiper-pagination-bullet-active {
+  background: #333333;
+}
+.num .swiper-pagination-bullet {
+    width: 32px;
+    height: 5px;
+    border-radius: 0;
+}
+.num .swiper-pagination {
+  position: relative;
+  margin-top: 50px;
+}
+@media screen and (max-width: 768px) {
+  .numitem img {
+    width: 30px;
+    height: 34px;
+}
+  .fistp {
+    font-size: 18px;
+}
+  .lstp {
+    font-size: 12px;
+}
+}

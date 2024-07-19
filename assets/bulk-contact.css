@@ -1,0 +1,48 @@
+.bulkmimg img {
+      width: 98px;
+    margin: auto;
+}
+.bulkcontact a img {
+     width: 760px;
+    margin: auto;
+}
+.bulkctext {
+  text-align: center;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+.bulkctext p:first-child {
+  font-size: 24px;
+}
+.bulkctext p:last-child {
+  font-size: 24px;
+  color: #0093FF;
+}
+.mdea {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .bulkctext p:first-child {
+  font-size: 14px;
+}
+.bulkctext p:last-child {
+  font-size: 14px;
+}
+  .bulkcontact {
+    background: #F9F9F9;
+    padding: 40px;
+  }
+  .pcdea {
+    display: none;
+  }
+  .mdea {
+  display: block;
+}
+  .bulkctext {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+  .bulkmimg img {
+      width: 60px;
+}
+}

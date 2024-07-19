@@ -1,0 +1,39 @@
+<div class="menu-down-sub-container">
+  <div class="menu-down-sub-content">
+    {% for sub_menu in sub_menus %}
+      {% if sub_menu.settings.number == index %}
+        <div class="menu-down-sub-item">
+          <a
+            {% if sub_menu.settings.sub_link != blank %}
+              href="{{sub_menu.settings.sub_link}}"
+            {% else %}
+              onclick="return false"
+            {% endif %}
+          >
+            {{- sub_menu.settings.sub_text -}}
+          </a>
+          {% render 'arrow-icon', class: 'menu-down-sub-arrow' %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div class="menu-down-sub-right">
+        {% for sub_menu in sub_menus %}
+  {% assign sub_index = forloop.index %}
+  {% if sub_menu.settings.menu_type == 'type2' %}
+    <div class="menu-down-sub-ward " data-index="{{sub_index}}">
+      {% if sub_menu.settings.sub_url %}
+        <div class="menu-down-sub-img">
+          <a href="{{sub_menu.settings.sub_url}}">{% render 'img-lazyload', image_url: sub_menu.settings.img %}</a>
+        </div>
+      {% else %}
+        <div class="menu-down-sub-img">
+          {% render 'img-lazyload', image_url: sub_menu.settings.img %}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+{% endfor %}
+
+  </div>
+</div>

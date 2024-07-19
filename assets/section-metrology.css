@@ -1,0 +1,96 @@
+.section-metrology-h2 {
+    font-size: 32px;
+    font-family: Poppins;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+}
+.section-metrology-text {
+    font-size: 24px;
+    font-family: Poppins, Poppins;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    margin: 20px auto 0;
+    max-width: 1146px;
+}
+.section-metrology-text strong {
+    font-weight: 600;
+    color: #F56A01;
+}
+.section-metrology-container {
+    margin-top: 60px;
+    display: flex;
+    column-gap: 100px;
+}
+.section-metrology-img{
+    flex: 2 0 0;
+}
+
+.section-metrology-img img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.section-metrology-footer{
+    flex: 1 0 0;
+    display: flex;
+    row-gap: 17px;
+    flex-direction: column;
+}
+.section-metrology-footer-img{
+    max-width: 296px;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+.section-metrology-footer-text{
+    font-size: 26px;
+    font-family: Poppins, Poppins;
+    font-weight: 400;
+    color: #FFFFFF;
+    line-height: 1.2;
+    text-align: center;
+}
+.section-metrology-footer-text strong{
+    font-size: 80px;
+    /* color: transparent; */
+    background: linear-gradient(269deg, #F4A45F 0%, #DA6002 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+@media screen and (max-width: 768px) {
+    .section-metrology-h2 {
+        font-size: 20px;
+    }
+    .section-metrology-text {
+        font-size: 14px;
+        margin-top: 12px;
+        max-width: 342px;
+        font-weight: 300;
+    }
+    .section-metrology-container {
+        margin-top: 20px;
+        row-gap: 18px;
+        flex-direction: column;
+    }
+   
+    .section-metrology-footer{
+        column-gap: 22px;
+        flex-direction: row;
+        align-items: center;
+    }
+    .section-metrology-footer-img{
+        max-width: 150px;
+        margin: 0;
+    }
+    .section-metrology-footer-text{
+        font-size: 12px;
+        text-align: left;
+    }
+    .section-metrology-footer-text strong{
+        font-size: 20px;
+    }
+}

@@ -1,0 +1,54 @@
+{{ 'tradein-banner.css' | asset_url | stylesheet_tag }}
+
+<style>
+    .tradein-banner{
+      background-image: url("{{section.settings.img | image_url: width: section.settings.img.width }}");
+    }
+
+  @media screen and (max-width: 768px) {
+    .tradein-banner{
+      background-image: url("{{section.settings.md_img | image_url: width: section.settings.md_img.width }}");
+    }
+  }
+</style>
+<div class="page-layout tradein-banner">
+  <div class="page-layout-content">
+    <div class="tradein-banner-container">
+      <h1 class="tradein-banner-h1">{{ section.settings.title }}</h1>
+      <div class="tradein-banner-text">{{ section.settings.text }}</div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "tradein-banner",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "标题"
+    },
+    {
+      "type": "richtext",
+      "label": "二级标题",
+      "id": "text"
+    },
+    {
+      "type": "image_picker",
+      "id": "img",
+      "label": "配图"
+    },
+    {
+      "type": "image_picker",
+      "id": "md_img",
+      "label": "移动端配图"
+    }
+  ],
+  "presets": [
+    {
+      "name": "tradein-banner"
+    }
+  ]
+}
+{% endschema %}

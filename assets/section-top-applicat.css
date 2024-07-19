@@ -1,0 +1,98 @@
+
+.section-top-applicat-h2{
+    font-size: 52px;
+    font-family: Poppins;
+    font-weight: bold;
+    color: #494949;
+    text-align: center;
+}
+.section-top-applicat-container{
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 26px;
+}
+.top-applicat-item{
+    display: flex;
+    column-gap: 92px;
+}
+.top-applicat-item-img{
+    flex: 1 0 0;
+    background-color: #f7f7f7;
+}
+.top-applicat-item-img img{
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 288px;
+}
+.top-applicat-item-ward{
+    flex: 3 0 0;
+}
+.top-applicat-item-title{
+    font-size: 32px;
+    font-family: Poppins;
+    font-weight: 600;
+    color: #000000;
+}
+
+.top-applicat-item-text{
+    margin-top: 20px;
+    font-size: 18px;
+    font-family: Poppins;
+    font-weight: 400;
+    color: #000000;
+}
+.top-applicat-item-link{
+    display: flex;
+    padding: 0 50px;
+    height: 50px;
+    font-size: 14px;
+    font-family: Poppins;
+    font-weight: 500;
+    color: #FFFFFF;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin-top: 37px;
+    border-radius: 100px;
+    background-color: #D61518;
+}
+
+@media screen and (max-width: 768px) {
+    .section-top-applicat-container{
+        margin-top: 40px;
+        row-gap: 33px;
+    }
+    .section-top-applicat-h2{
+        font-size: 32px;
+    }
+    .top-applicat-item{
+        border: 1px solid #DBDADA;
+        border-radius: 6px;
+        flex-direction: column;
+    }
+    .top-applicat-item-ward{
+        padding: 20px 20px 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .top-applicat-item-title{
+        font-size: 20px;
+        text-align: center;
+    }
+    .top-applicat-item-text{
+        font-size: 14px;
+        margin-top: 10px;
+        text-align: center;
+    }
+    .top-applicat-item-link{
+        height: 40px;
+        margin-top: 23px;
+        font-size: 14px;
+    }
+    .top-applicat-item-img img{
+        margin: 0 auto;
+    }
+}

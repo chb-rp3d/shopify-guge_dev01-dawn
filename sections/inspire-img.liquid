@@ -1,0 +1,73 @@
+{{ 'inspire-img.css' | asset_url | stylesheet_tag }}
+<style>
+  .section-{{section.id}} .page-layout-content{
+    padding-top: 60px;
+    padding-bottom: 160px;
+  }
+  .section-{{section.id}} .page-layout-content{
+       padding-top: 50px;
+    padding-bottom: 50px;
+     }
+</style>
+<inspire-img>
+  <div class="page-layout section-{{section.id}}">
+    <div class="page-layout-content">
+      <div class="inspire-img">
+        <div class="imgitem">
+          {{ section.settings.title }}
+          {{ section.settings.text }}
+          {% render 'img-lazyload', image_url: section.settings.img %}
+        </div>
+        <div class="imgitem">
+          {{ section.settings.title1 }}
+          {{ section.settings.text1 }}
+          {% render 'img-lazyload', image_url: section.settings.img1 %}
+        </div>
+      </div>
+    </div>
+  </div>
+</inspire-img>
+
+{% schema %}
+{
+    "name": "inspire-img",
+    "settings": [
+       {
+          "type": "richtext",
+          "id": "title",
+          "label": "标题"
+        },
+       {
+          "type": "richtext",
+          "id": "text",
+          "label": "描述"
+        },
+        {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Image"
+         },
+        {
+          "type": "richtext",
+          "id": "title1",
+          "label": "标题"
+        },
+        {
+          "type": "richtext",
+          "id": "text1",
+          "label": "描述"
+        },
+      {
+         "type": "image_picker",
+        "id": "img1",
+        "label": "Image"
+                }
+    ],
+
+    "presets": [
+        {
+            "name": "inspire-img"
+        }
+    ]
+}
+{% endschema %}

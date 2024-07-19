@@ -1,0 +1,122 @@
+{% style %}
+#shopify-section-{{ section.id }} .text-banner-text-align{
+    text-align:{{ section.settings.text_alignment }};
+    width:{{ section.settings.rich-text-width }}%;
+    margin:0 auto;
+ }
+#shopify-section-{{ section.id }} .text-banner-title{
+  {% if section.settings.title-font-size != '' %}font-size:{{ section.settings.title-font-size }}rem;{% endif %}
+  {% if section.settings.title-font-weight != '' %}font-weight:{{ section.settings.title-font-weight }};{% endif %}
+  {% if section.settings.title-font-color != '' %}color:{{ section.settings.title-font-color }};{% endif %}
+  {% if section.settings.banner_bg_image %}background-image:url({{ section.settings.banner_bg_image | img_url: 'master' }});{% endif %}
+  {% if section.settings.title-background-color != '' %}background-color:{{ section.settings.title-background-color }};{% endif %}
+  background-size: cover;
+  margin:0 !important;
+  {% if section.settings.title-padding-vertical != '' %}padding:{{ section.settings.title-padding-vertical }}rem 0;{% else %}padding: 1rem 0;{% endif %}
+}
+{% endstyle %}
+<div class="section   section-blends section-full">
+<div {% if template contains 'product' %}class="Product product-section-width"{%- endif -%} style="margin-top:0;margin-bottom:0;">
+<div class="text-banner-text-align">
+    {% if section.settings.title !=blank %}
+      <h2 class="text-banner-title">
+        {{ section.settings.title }}
+      </h2>
+    {% endif %}
+</div>
+</div>
+</div>
+{% schema %}
+  {
+    "name": "Text Banner",
+    "settings": [
+        {
+         "type": "select",
+         "id": "text_alignment",
+         "label": "Text Alignment",
+         "options": [
+          {
+           "value": "left",
+           "label": "Left"
+          },
+          {
+           "value": "center",
+           "label": "Center"
+          },
+          {
+           "value": "right",
+           "label": "Right"
+          }
+         ],
+         "default": "center"
+        },
+        {
+         "type": "range",
+         "id": "rich-text-width",
+         "min": 50,
+         "max": 100,
+         "step": 10,
+         "label": "Rich Text Width",
+         "default": 80
+        },
+        {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Title"
+        },
+        {
+        "type": "color",
+        "id": "title-background-color",
+        "label": "Title Background color"
+        },
+        {
+          "type": "image_picker",
+          "id": "banner_bg_image",
+          "label": "Banner Background image",
+          "info": "Remove image to use plain color background"
+        },
+        {
+        "type": "text",
+        "id": "title-padding-vertical",
+        "label": "Title Padding Top & Bottom (rem)"
+        },
+        {
+        "type": "text",
+        "id": "title-font-size",
+        "label": "Title Font size (rem)"
+        },
+        {
+         "type": "select",
+         "id": "title-font-weight",
+         "label": "Title Font Weight",
+         "options": [
+          {
+           "value": "regular",
+           "label": "Regular"
+          },
+          {
+           "value": "medium",
+           "label": "Medium"
+          },
+          {
+           "value": "bold",
+           "label": "Bold"
+          }
+         ],
+         "default": "bold"
+        },
+        {
+        "type": "color",
+        "id": "title-font-color",
+        "label": "Title Font color"
+        }
+     ],
+    "presets": [
+      {
+        "category": "Text",
+        "name": "Text Banner"
+      }
+    ]
+  }
+{% endschema %}

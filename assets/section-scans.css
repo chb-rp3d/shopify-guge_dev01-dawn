@@ -1,0 +1,91 @@
+.section-scans-h2 {
+    text-align: center;
+    font: normal normal bold 48px/48px Poppins;
+    letter-spacing: 0px;
+    color: #ffffff;
+}
+
+.section-scans-text {
+    text-align: center;
+    font: normal normal 300 24px / normal Poppins;
+    letter-spacing: 0px;
+    margin-top: 20px;
+    color: #ffffff;
+}
+.section-scans-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.section-scans-container {
+    margin-top: 60px;
+}
+.section-scans-container .swiper-slide {
+    position: relative;
+}
+.section-scans-container .swiper-slide iframe {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (min-width: 769px) {
+    .section-scans-container .swiper-wrapper {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .section-scans-container .swiper-slide {
+        margin-right: 0 !important;
+        width: 100% !important;
+        height: 30.8333vw;
+    }
+    .section-scans-container .swiper-pagination,.section-swiper-button{
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .section-scans-container .swiper-slide {
+        height: 342px;
+    }
+    .section-scans-h2 {
+        font: normal normal bold 28px/42px Poppins;
+    }
+    .section-scans-text {
+        font-size: 15px;
+    }
+    .section-scans-container {
+        margin-top: 30px;
+    }
+    .section-swiper-button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 23px;
+    }
+    .swiper-button-prev-cu img {
+        transform: rotate(180deg);
+    }
+    .section-scans-container .swiper-pagination{
+        width: fit-content !important;
+        margin: 0 auto;
+        right: 0;
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 4px 14px;
+        border-radius: 100px;
+    }
+    .section-scans-container .swiper-pagination-bullet{
+        background-color:rgb(186, 186, 186);
+        opacity: 1;
+    }
+    .section-scans-container .swiper-pagination-bullet-active{
+        background-color: rgb(83, 83, 83);
+        width: 20px;
+        border-radius: 100px;
+    }
+}

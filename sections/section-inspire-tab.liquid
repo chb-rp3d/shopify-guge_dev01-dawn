@@ -1,0 +1,113 @@
+{{ 'section-inspiretab.css' | asset_url | stylesheet_tag }}
+<style>
+     .section-{{section.id}} .page-layout-content{
+       padding-top: 160px;
+       padding-bottom: 160px;
+     }
+  @media screen and (max-width: 768px) {
+  section-inspiretab {
+    display: none;
+}
+}
+</style>
+
+<section-inspiretab>
+  <div class="page-layout section-{{section.id}}">
+    <div class="page-layout-content">
+      <div class="mediaitem">
+        <div class="medialeft">
+          <div class="tab-menu">
+            {% for block in section.blocks %}
+              <div class="tab-item{% if forloop.first %} active{% endif %}" id="tab{{ forloop.index }}" onclick="showTab({{ forloop.index }})">
+                {{ block.settings.text }}
+              </div>
+            {% endfor %}
+            <div class="tab-line active" id="tabLine" style="left: 0%;"></div>
+          </div>
+          <div class="tab-content">
+            {% for block in section.blocks %}
+              <div class="tab-panel{% if forloop.first %} active{% endif %}" id="panel{{ forloop.index }}">
+                {% render 'img-lazyload', image_url: block.settings.img %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="mediaright">
+          {% render 'img-lazyload', image_url: section.settings.img %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section-inspiretab>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        window.showTab = function(tabNumber) {
+            const tabPanels = document.querySelectorAll('.tab-panel');
+            const tabItems = document.querySelectorAll('.tab-item');
+            const tabLine = document.getElementById('tabLine');
+
+            tabPanels.forEach(panel => {
+                panel.classList.remove('active');
+            });
+
+            tabItems.forEach(item => {
+                item.classList.remove('active');
+            });
+
+            const selectedPanel = document.getElementById(`panel${tabNumber}`);
+            const selectedTabItem = document.getElementById(`tab${tabNumber}`);
+
+            selectedPanel.classList.add('active');
+            selectedTabItem.classList.add('active');
+
+            const tabWidth = selectedTabItem.offsetWidth;
+            const tabLeft = selectedTabItem.offsetLeft;
+            tabLine.style.width = tabWidth + 'px';
+            tabLine.style.left = tabLeft + 'px';
+
+            tabLine.classList.remove('active');
+            setTimeout(function() {
+                tabLine.classList.add('active');
+            }, 10);
+        }
+
+        showTab(1);
+    });
+</script>
+
+{% schema %}
+{
+    "name": "section-inspiretab",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Right Side Image"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "tab",
+            "name": "Tab",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "text",
+                    "label": "Tab Title"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "img",
+                    "label": "Tab Image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "section-inspiretab"
+        }
+    ]
+}
+{% endschema %}

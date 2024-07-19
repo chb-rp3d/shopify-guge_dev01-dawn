@@ -1,0 +1,178 @@
+{{ 'bulk-producttab.css' | asset_url | stylesheet_tag }}
+<style>
+     .section-{{section.id}} .page-layout-content{
+       padding-top: 160px;
+  }
+  @media screen and (max-width: 768px) {
+    #ass {
+      display: none;
+    }
+  }
+</style>
+<section-bulkpt id="ass">
+  <div class="page-layout section-{{section.id}}">
+    <div class="page-layout-content">
+     <div class="bulktitletab">
+      {{ section.settings.text3 }}
+      {{ section.settings.text4 }}
+     </div>
+      <div class="hpc">
+        {% for block in section.blocks %}
+        <div class="hpc-item">
+          <h2>{{ block.settings.title }}</h2>
+          <div class="ptimg">
+          {% render 'img-lazyload', image_url: block.settings.img%}
+          </div>
+          <div class="bulkoff">
+           <div class="offmode">
+              <div class="offitem">
+                {{ block.settings.text1 }}
+                 {{ block.settings.text2 }}
+              </div>
+             <div class="offitem">
+                {{ block.settings.text3 }}
+                 {{ block.settings.text4 }}
+              </div>
+             <div class="offitem">
+                {{ block.settings.text5 }}
+                 {{ block.settings.text6 }}
+              </div>
+             <div class="offitem">
+                {{ block.settings.text7 }}
+                 {{ block.settings.text8 }}
+              </div>
+           </div>
+          </div>
+          <div class="pprice">
+            {{ block.settings.text9 }}
+          </div>
+          <div class="hpcbn">
+            <a href="{{ block.settings.url3 }}">
+              <p>今すぐ購入</p>
+              <div class="cart-icon">
+              {% render 'img-lazyload', image_url: block.settings.img1 %}
+              </div>
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section-bulkpt>
+{% schema %}
+    {
+  "name": "section-bulkpt",
+  "settings": [
+
+    {
+          "type": "url",
+          "id": "url1",
+          "label": "链接"
+        },
+    {
+          "type": "url",
+          "id": "url2",
+          "label": "链接"
+        },
+    {
+          "type": "richtext",
+          "id": "text1",
+          "label": "文案"
+        },
+    {
+          "type": "richtext",
+          "id": "text2",
+          "label": "文案"
+        },
+    {
+          "type": "richtext",
+          "id": "text3",
+          "label": "文案"
+        },
+    {
+          "type": "richtext",
+          "id": "text4",
+          "label": "文案"
+        }
+  ],
+         "blocks": [
+    {
+      "name": "items",
+      "type": "items",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "产品标题"
+        },
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "产品图片"
+        },
+        {
+          "type": "richtext",
+          "id": "text1",
+          "label": "文案"
+        },
+        {
+          "type": "richtext",
+          "id": "text2",
+          "label": "文案"
+        },
+        {
+          "type": "richtext",
+          "id": "text3",
+          "label": "文案"
+        },
+        {
+          "type": "richtext",
+          "id": "text4",
+          "label": "文案"
+        },
+        {
+          "type": "richtext",
+          "id": "text5",
+          "label": "文案"
+        },
+        {
+          "type": "richtext",
+          "id": "text6",
+          "label": "文案"
+        },
+        {
+          "type": "richtext",
+          "id": "text7",
+          "label": "文案"
+        },
+        {
+          "type": "richtext",
+          "id": "text8",
+          "label": "文案"
+        },
+        {
+          "type": "richtext",
+          "id": "text9",
+          "label": "价格"
+        },
+        {
+          "type": "image_picker",
+          "id": "img1",
+          "label": "产品图片"
+        },
+        {
+          "type": "url",
+          "id": "url3",
+          "label": "产品链接"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "section-bulkpt"
+    }
+  ]
+}
+{% endschema %}

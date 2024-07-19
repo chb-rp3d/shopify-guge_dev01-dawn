@@ -1,0 +1,99 @@
+{{ 'section-home-pd.css' | asset_url | stylesheet_tag }}
+<style>
+  .section-{{section.id}}{
+      padding:{{section.settings.padding}};
+
+  }
+
+  @media screen and (max-width: 768px) {
+      .section-{{section.id}}{
+      padding:{{section.settings.md_padding}};
+      background-color:#F0F1F2;
+  }
+  }
+</style>
+<swiper-component
+  data-open="true"
+  data-space-between="10"
+  data-slides-per-view="3.2"
+  data-breakpoints='{"769":{"slidesPerView":6,"spaceBetween":10}}'
+>
+  <div class="page-layout section-{{section.id}}">
+    <div class="page-layout-content">
+      <div class="swiper-container section-home-pd-container">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide">
+              <div class="section-home-pd-item" data-point-id="{{block.settings.pointId}}">
+                {% render 'img-lazyload', image_url: block.settings.img %}
+                <div class="section-home-pd-text">{{ block.settings.text }}</div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </div>
+</swiper-component>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const items = document.querySelectorAll('.section-home-pd-container .section-home-pd-item');
+    items.forEach((item, index) => {
+      item.onclick = () => {
+        if (item.dataset.pointId) {
+          const box = document.getElementById(item.dataset.pointId);
+          box.scrollIntoView({ behavior: 'smooth' });
+        }
+      };
+    });
+  });
+</script>
+{% schema %}
+{
+  "name": "section-home-pd",
+  "settings": [
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "模块内边距",
+      "default": "80px 20px 0"
+    },
+    {
+      "type": "text",
+      "id": "md_padding",
+      "label": "移动端模块内边距",
+      "default": "40px 20px 0"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "item",
+      "type": "item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "pointId",
+          "label": "锚点"
+        },
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "图片"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "文案"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "section-home-pd"
+    }
+  ]
+}
+{% endschema %}

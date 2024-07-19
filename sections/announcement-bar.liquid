@@ -1,0 +1,306 @@
+{%- if section.blocks.size > 0 -%}
+  {%- comment -%}
+  ------------------------------------------------------------------------------------------------------------------------
+  CSS
+  ------------------------------------------------------------------------------------------------------------------------
+  {%- endcomment -%}
+  <style>
+    :root {
+      --sticky-announcement-bar-enabled: {%- if section.settings.enable_sticky -%}1{% else %}0{% endif %};
+    }
+
+    {%- if section.settings.enable_sticky -%}
+      .shopify-section--{{ section.id }} {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+      }
+    {%- endif -%}
+  </style>
+
+  {%- comment -%}
+  ------------------------------------------------------------------------------------------------------------------------
+  LIQUID
+  ------------------------------------------------------------------------------------------------------------------------
+  {%- endcomment -%}
+
+  <height-observer variable="announcement-bar">
+    <div {% render 'surface', class: 'announcement-bar', background_gradient: section.settings.background_gradient, background: section.settings.background, text_color: section.settings.text_color %}>
+      {%- if section.settings.navigation_mode == 'scrolling' -%}
+        <marquee-text scrolling-speed="{{ section.settings.scrolling_speed }}" class="announcement-bar__scrolling-list">
+          {%- capture content -%}
+            {%- for block in section.blocks -%}
+              <p class="bold {{ section.settings.text_size }}" {{ block.shopify_attributes }}>
+                {%- if block.settings.url != blank -%}
+                  <a href="{{ block.settings.url }}">{{ block.settings.text | escape }}</a>
+                {%- else -%}
+                  {{ block.settings.text | escape }}
+                {%- endif -%}
+              </p>
+
+              <span class="shape-circle shape--sm"></span>
+            {%- endfor -%}
+          {%- endcapture -%}
+
+          {%- for i in (1..10) -%}
+            <span class="announcement-bar__item" {% unless forloop.first %}aria-hidden="true"{% endunless %}>
+              {{- content -}}
+            </span>
+          {%- endfor -%}
+        </marquee-text>
+      {%- else -%}
+        <div class="container">
+          <div class="announcement-bar__wrapper {% if section.blocks.size == 1 %}justify-center{% else %}justify-between{% endif %}">
+            {%- if section.blocks.size > 1 -%}
+              <button class="tap-area" is="prev-button" aria-controls="announcement-bar" aria-label="{{ 'general.accessibility.previous' | t }}">
+                {%- render 'icon' with 'chevron-left', direction_aware: true -%}
+              </button>
+            {%- endif -%}
+
+            <announcement-bar swipeable id="announcement-bar" class="announcement-bar__static-list">
+              {%- for block in section.blocks -%}
+                <p class="bold {{ section.settings.text_size }} {% unless forloop.first %}reveal-invisible{% endunless %}" {{ block.shopify_attributes }}>
+                  {%- if block.settings.url != blank -%}
+                    <a href="{{ block.settings.url }}">{{ block.settings.text | escape }}</a>
+                  {%- else -%}
+                    {{ block.settings.text | escape }}
+                  {%- endif -%}
+                </p>
+              {%- endfor -%}
+            </announcement-bar>
+
+            {%- if section.blocks.size > 1 -%}
+              <button class="tap-area" is="next-button" aria-controls="announcement-bar" aria-label="{{ 'general.accessibility.next' | t }}">
+                {%- render 'icon' with 'chevron-right', direction_aware: true -%}
+              </button>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </height-observer>
+{%- endif -%}
+<style>
+.globalheader-dark #ac-localeswitcher .ac-ls-content {
+    color: rgba(255,255,255,0.92);
+}
+#ac-localeswitcher .ac-ls-content {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto;
+    padding-inline-start: max(22px,env(safe-area-inset-left));
+    padding-inline-end: max(22px,env(safe-area-inset-right));
+    flex-wrap: wrap;
+    align-items: center;
+    list-style: none;
+    color: rgba(0,0,0,0.8);
+}
+#ac-localeswitcher .ac-ls-content {
+    z-index: 2;
+}
+#ac-localeswitcher .ac-ls-copy {
+    font-size: 12px;
+    line-height: 1.33337;
+    font-weight: 400;
+    letter-spacing: -.01em;
+    padding-inline-end: 2%;
+    display: inline-block;
+    flex: 1;
+    word-break: initial;
+    max-width: 430px;
+}
+#ac-localeswitcher .ac-ls-copy:lang(zh) {
+    letter-spacing: 0em;
+}
+#ac-localeswitcher .ac-ls-actions {
+    padding-inline-start: 32px;
+    box-sizing: border-box;
+    display: flex;
+    
+    justify-content: flex-end;
+}
+#ac-localeswitcher .ac-ls-dropdown {
+    position: relative;
+    flex: 1;
+    max-width: 343px;
+   
+}
+#ac-localeswitcher .ac-ls-actions-item:first-child {
+    margin-inline-start: 0;
+}
+.globalheader-dark #ac-localeswitcher .select-collapsed .ac-ls-dropdown-select {
+    border-color: #161617
+	.globalheader-dark #ac-localeswitcher .ac-ls-continue {
+    background-color: #f5f5f7;
+    color: #000;
+}
+
+    
+
+
+
+
+</style>
+
+<aside id="ac-localeswitcher" style="
+    background: #000;
+    padding: 15px;display: none;
+">
+<div class="ac-ls-content">
+<div class="ac-ls-copy" style="font-size: 16px;color: #fff;">For shipping to USA，please visit our USA shop</div>
+<div class="ac-ls-actions">
+<div id="ac-ls-dropdown" class="ac-ls-dropdown ac-ls-actions-item select-collapsed">
+	
+	
+	
+</div> 
+<a href="https://us.revopoint3d.com/" class="ac-ls-continue" style="
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 17px;
+    line-height: 23px;
+    font-weight: 400;
+    letter-spacing: -.022em;
+    min-width: 28px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 10px;
+    padding-bottom: 8px;
+    border-radius: 980px;
+    background: #0071e3;
+    color: #fff;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+    background: #575757;
+    color: #fff;
+    width: auto;
+    text-decoration: none;
+    ">Agree</a>
+ <a style="margin-left: 20px;color: #fff;margin-top: 4px;cursor: pointer;" id="btn">X</a>
+ </div>
+ </div>
+ </aside>
+ <script>
+function my(id){
+return document.getElementById(id);
+}
+my("btn").onclick=function(){
+my("ac-localeswitcher").style.display="none";
+}
+</script>
+
+
+
+
+
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "class": "shopify-section--announcement-bar",
+  "tag": "aside",
+  "max_blocks": 5,
+  "blocks": [
+    {
+      "type": "message",
+      "name": "Message",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Announce something here"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_sticky",
+      "label": "Enable sticky bar",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "text_size",
+      "label": "Text size",
+      "options": [
+        {
+          "value": "text-xxs",
+          "label": "X-Small"
+        },
+        {
+          "value": "text-xs",
+          "label": "Small"
+        },
+        {
+          "value": "text-base",
+          "label": "Medium"
+        },
+        {
+          "value": "text-lg",
+          "label": "Large"
+        }
+      ],
+      "default": "text-xs"
+    },
+    {
+      "type": "select",
+      "id": "navigation_mode",
+      "label": "Multiple message navigation",
+      "options": [
+        {
+          "value": "arrows",
+          "label": "Arrows"
+        },
+        {
+          "value": "scrolling",
+          "label": "Auto-scrolling"
+        }
+      ],
+      "default": "arrows"
+    },
+    {
+      "type": "range",
+      "id": "scrolling_speed",
+      "label": "Scrolling speed",
+      "min": 10,
+      "max": 30,
+      "unit": "s",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Colors",
+      "info": "Gradient replaces solid colors when set."
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Background gradient"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,9 @@
+<div class="drawer-menu-sub-item">
+  {% for t in link_items %}
+    <div class="drawer-menu-sub-item-content">
+      <div class="drawer-menu-sub-item-text">
+        <a href="{{t.settings.link}}">{{ t.settings.link_text }}</a>
+      </div>
+    </div>
+  {% endfor %}
+</div>

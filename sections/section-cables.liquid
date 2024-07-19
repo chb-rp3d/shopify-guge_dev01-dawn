@@ -1,0 +1,184 @@
+{{ 'section-cables.css' | asset_url | stylesheet_tag }}
+<script src="{{'section-cables.js' | asset_url}}" defer></script>
+<style>
+  .section-{{section.id}}{
+      padding:{{section.settings.padding}};
+  }
+
+  @media screen and (max-width: 768px) {
+      .section-{{section.id}}{
+      padding:{{section.settings.md_padding}};
+      background-color:#F0F1F2;
+  }
+  }
+</style>
+
+<section-cables>
+  <swiper-component
+    data-open="true"
+    data-auto-height="true"
+    data-allow-touch-move="false"
+  >
+    <div class="page-layout section-{{section.id}}">
+      <div class="page-layout-content">
+        {% liquid
+          assign tabs = section.blocks | where: 'type', 'tabs'
+          assign items = section.blocks | where: 'type', 'item'
+        %}
+        <div class="section-cables-tabs">
+          {% for tab in tabs %}
+            <div class="cables-tab-item {%if forloop.index == 1%} active {%endif%}">{{ tab.settings.tab }}</div>
+          {% endfor %}
+        </div>
+
+        <div class="swiper-container ">
+          <div class="swiper-wrapper">
+            {% for t in tabs %}
+              {% assign number = forloop.index %}
+              <div class="swiper-slide">
+                <div class="cables-container">
+                  {% for item in items %}
+                    {% if item.settings.number == number %}
+                      {% liquid
+                        assign product = all_products[item.settings.product_origin]
+                        assign current_variant = product
+                        assign variant_id = item.settings.variant_id
+                        if variant_id != blank and product.variants.size > 1
+                          for variant in product.variants
+                            if variant.id == variant_id
+                              assign current_variant = variant
+                            endif
+                          endfor
+                        else
+                          assign variant_id = product.variants[0].id
+                        endif
+
+                        assign price = current_variant.price | money | strip_html
+                        if item.settings.price != blank
+                          assign price = item.settings.price
+                        endif
+                        assign url = current_variant.url | within: collection
+                        if item.settings.url != blank
+                          assign url = item.settings.url
+                        endif
+                      %}
+                      <a href="{{url}}" class="cables-item">
+                        {% render 'img-lazyload', class_name: 'cables-item-hot', image_url: item.settings.hot %}
+                        <div class="cables-item-img">
+                          {% render 'img-lazyload', image_url: item.settings.img %}
+                        </div>
+                        <div class="cables-item-text">{{ item.settings.text }}</div>
+                        {% if item.settings.tip_text != blank %}
+                          <div class="cables-item-text-tip">{{ item.settings.tip_text }}</div>
+                        {% endif %}
+                        <div class="cables-item-price">{{ price }}</div>
+                        <div class="cables-item-link">{{ item.settings.btn_text }}</div>
+                      </a>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </swiper-component>
+</section-cables>
+
+{% schema %}
+{
+  "name": "section-cables",
+  "settings": [
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "模块内边距",
+      "default": "60px 20px 0"
+    },
+    {
+      "type": "text",
+      "id": "md_padding",
+      "label": "移动端模块内边距",
+      "default": "60px 20px 40px"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "tabs",
+      "type": "tabs",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab",
+          "label": "tab 选项卡"
+        }
+      ]
+    },
+    {
+      "name": "item",
+      "type": "item",
+      "settings": [
+        {
+          "type": "number",
+          "id": "number",
+          "label": "属于哪个选项卡",
+          "default": 1
+        },
+        {
+          "type": "product",
+          "id": "product_origin",
+          "label": "关联产品"
+        },
+        {
+          "type": "number",
+          "id": "variant_id",
+          "label": "产品变体id 不填默认第一个"
+        },
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "配图"
+        },
+        {
+          "type": "image_picker",
+          "id": "hot",
+          "label": "热卖小标"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "文本"
+        },
+        {
+          "type": "richtext",
+          "id": "tip_text",
+          "label": "文本2"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "价格",
+          "info": "优先使用自定义价格"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "跳转链接"
+        },
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "按钮文案",
+          "default": "BUY NOW >"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "section-cables"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,113 @@
+{{ 'section-powerful.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .section-{{section.id}}{
+      padding:{{section.settings.padding}};
+  }
+
+  @media screen and (max-width: 768px) {
+      .section-{{section.id}}{
+      padding:{{section.settings.md_padding}};
+  }
+  }
+</style>
+<div class="page-layout section-{{section.id}}">
+  <div class="page-layout-content">
+    <h2 class="section-powerful-h2">{{ section.settings.title }}</h2>
+    <div class="section-powerful-text">{{ section.settings.text }}</div>
+    {% if section.settings.title_t != blank %}
+      <div class="mobile-media">
+        <div class="section-connects-h2">{{ section.settings.title_t }}</div>
+        <div class="section-connects-text1">{{ section.settings.text_t1 }}</div>
+      </div>
+    {% endif %}
+    <div class="section-powerful-content">
+      {% render 'img-lazyload', image_url: section.settings.img %}
+      <div class="section-powerful-ward">
+        <div class="section-powerful-tip">{{ section.settings.tip }}</div>
+      </div>
+    </div>
+    {% if section.settings.title_t != blank %}
+      <div class="pc-media">
+        <div class="section-connects-container">
+          <div class="section-connects-h2">{{ section.settings.title_t }}</div>
+          <div class="section-connects-content">
+            <div class="section-connects-text1">{{ section.settings.text_t1 }}</div>
+            <div class="section-connects-text2">{{ section.settings.text_t2 }}</div>
+          </div>
+          <a class="section-connects-link" href="{{section.settings.path_url}}">もっと見る ></a>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "section-powerful",
+  "settings": [
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "模块内边距",
+      "default": "120px 20px"
+    },
+    {
+      "type": "text",
+      "id": "md_padding",
+      "label": "移动端模块内边距",
+      "default": "50px 20px"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "标题"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "段落"
+    },
+    {
+      "type": "image_picker",
+      "id": "img",
+      "label": "配图"
+    },
+    {
+      "type": "richtext",
+      "id": "tip",
+      "label": "配文"
+    },
+    {
+      "type": "header",
+      "info": "************",
+      "content": "******"
+    },
+    {
+      "type": "richtext",
+      "id": "title_t",
+      "label": "标题"
+    },
+    {
+      "type": "richtext",
+      "id": "text_t1",
+      "label": "段落1"
+    },
+    {
+      "type": "richtext",
+      "id": "text_t2",
+      "label": "段落2"
+    },
+    {
+      "type": "url",
+      "id": "path_url",
+      "label": "跳转链接"
+    }
+  ],
+  "presets": [
+    {
+      "name": "section-powerful"
+    }
+  ]
+}
+{% endschema %}

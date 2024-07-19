@@ -1,0 +1,53 @@
+{{ 'accessicon-imgblock.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .section-{{section.id}}{
+      padding:{{section.settings.padding}};
+  }
+  .section-{{section.id}} .page-layout-content {
+  }
+
+  @media screen and (max-width: 768px) {
+      .section-{{section.id}}{
+      padding:{{section.settings.md_padding}};
+  }
+  }
+</style>
+
+<div class="page-layout section-{{section.id}}">
+  <div class="page-layout-content">
+    <div class="imgblock-model">
+      <div class="imgblock-item">
+        <div class="imgblock-img">
+         {% render 'img-lazyload', image_url: section.settings.img %}
+        </div>
+        <span class="imgblocktitle">{{ section.settings.text }}</span>
+      </div>
+    </div>
+    
+  </div>
+</div>
+  
+{% schema %}
+{
+  "name": "section-imgblock",
+  
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "配图"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "文本内容"
+        }
+      ],
+  "presets": [
+    {
+      "name": "section-imgblock"
+    }
+  ]
+}
+{% endschema %}

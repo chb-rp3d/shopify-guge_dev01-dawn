@@ -1,0 +1,25 @@
+<div class="drawer-menu-sub-item-ward">
+  <div class="drawer-menu-sub-item-ward-typ2">
+    {% for three_menu in three_menus %}
+      {% if three_menu.settings.number == sub_index %}
+        <a href="{{three_menu.settings.buy_now_url}}" class="drawer-menu-down-three-item">
+          {% render 'img-lazyload',
+            image_url: three_menu.settings.extras_img,
+            class_name: 'menu-down-three-extras-img'
+          %}
+          {% render 'img-lazyload',
+            image_url: three_menu.settings.discount_img,
+            class_name: 'menu-down-three-discount-img'
+          %}
+          {% render 'img-lazyload', class_name: 'menu-down-three-img', image_url: three_menu.settings.img %}
+          <div class="menu-down-three-title">
+            {{ three_menu.settings.product_title }}
+          </div>
+        </a>
+      {% endif %}
+    {% endfor %}
+    <a href="{{sub_menu.settings.view_link}}" class="drawer-menu-down-three-item drawer-menu-down-three-item-link">
+      <div class="menu-down-three-title">詳細はこちら ></div>
+    </a>
+  </div>
+</div>

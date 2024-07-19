@@ -1,0 +1,110 @@
+{{ 'section-pop-appli.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .section-{{section.id}}{
+      padding:{{section.settings.padding}};
+  }
+
+  @media screen and (max-width: 768px) {
+      .section-{{section.id}}{
+      padding:{{section.settings.md_padding}};
+  }
+  }
+</style>
+<swiper-component
+  id="section-{{section.id}}"
+  data-open="true"
+  data-space-between="16"
+  data-slides-per-view="1.2"
+  data-breakpoints='{"769":{"slidesPerView":3,"spaceBetween":15}}'
+>
+  <div class="page-layout section-{{section.id}}">
+    <div class="page-layout-content">
+      <h2 class="section-pop-appli-h2">{{ section.settings.title }}</h2>
+      <div class="swiper-container section-pop-appli-container">
+        <div class="swiper-wrapper">
+          {% for item in section.blocks %}
+            <div class="swiper-slide section-pop-appli-item">
+              <div class="section-pop-appli-img">
+                {% render 'img-lazyload', image_url: item.settings.img %}
+              </div>
+              <div class="section-pop-appli-ward">
+                <div class="section-pop-appli-title">{{ item.settings.title }}</div>
+                <div class="section-pop-appli-text">{{ item.settings.text }}</div>
+                <a href="{{ item.settings.url }}" class="appli-url">
+              {{ item.settings.text1 }}
+            </a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+         <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </div>
+</swiper-component>
+
+{% schema %}
+{
+  "name": "section-pop-appli",
+  "settings": [
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "模块内边距",
+      "default": "80px 20px"
+    },
+    {
+      "type": "text",
+      "id": "md_padding",
+      "label": "移动端模块内边距",
+      "default": "50px 20px"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "标题"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "item",
+      "type": "item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "配图"
+        },
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "标题"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "文本"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "链接"
+        },
+        {
+          "type": "text",
+          "id": "text1",
+          "label": "链接文案"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "section-pop-appli"
+    }
+  ]
+}
+{% endschema %}

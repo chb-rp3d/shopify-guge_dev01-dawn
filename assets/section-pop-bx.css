@@ -1,0 +1,106 @@
+.section-pop-bx-h2 p{
+  font: normal normal bold 48px/72px Poppins;
+  letter-spacing: 0px;
+  color: #000000;
+  text-align: center;
+}
+
+.section-pop-bx-h3 p{
+  margin-top: 80px;
+  background: linear-gradient(45deg, #7086d6, #48c5ef);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90px;
+  font: normal normal 600 32px/48px Poppins;
+  letter-spacing: 0px;
+  color: #ffffff;
+}
+.section-pop-bx-container {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 16px;
+}
+.section-pop-bx-item img {
+  display: block;
+  width: 100%;
+}
+.section-pop-bx-item-text {
+  margin-top: 20px;
+  text-align: center;
+  font: normal normal normal 20px/30px Poppins;
+  letter-spacing: 0px;
+  color: #000000;
+}
+.section-pop-bx-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+  margin-top: 75px;
+}
+.section-pop-bx-tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: normal normal 600 32px/48px Poppins;
+  letter-spacing: 0px;
+  color: #24b4fa;
+  flex-direction: column;
+}
+.section-pop-bx-item {
+  position: relative;
+}
+.section-pop-bx-tip {
+  height: 70px;
+  width: 70px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 0 0 0 100%;
+  background-color: #48c5ef;
+  font-size: 40px;
+  font-family: Poppins;
+  color: #fff;
+}
+.section-pop-bx-tip span {
+  position: absolute;
+  right: 15px;
+  z-index: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .section-pop-bx-tip span {
+    right: 10px;
+  }
+  .section-pop-bx-h2 p{
+    font: normal normal bold 24px/35px Poppins;
+  }
+  .section-pop-bx-h3 p{
+    margin-top: 30px;
+    font: normal normal 600 20px/30px Poppins;
+    height: 48px;
+  }
+  .section-pop-bx-container {
+    margin-top: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 6px;
+  }
+  .section-pop-bx-item-text {
+    font: normal normal normal 11px/17px Poppins;
+    margin-top: 10px;
+  }
+  .section-pop-bx-tabs {
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: 10px;
+    margin-top: 40px;
+  }
+  .section-pop-bx-tab {
+    font: normal normal 600 18px/27px Poppins;
+  }
+  .section-pop-bx-tip {
+    width: 41px;
+    height: 41px;
+    font-size: 22px;
+  }
+}

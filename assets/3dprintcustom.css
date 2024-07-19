@@ -1,0 +1,29 @@
+.tdcustomtitle {
+    font-size: 48px;
+    text-align: center;
+}
+.section-tdcustom-content {
+    display: flex;
+    column-gap: 16px;
+    width: 100%;
+    max-width: 1200px;
+    background: #272727;
+    margin-top: 100px;
+}
+.section-tdcustom-right, .section-tdcustom-left {
+  flex: 1;
+}
+.section-tdcustom-right {
+    color: #fff;
+    margin: auto 60px;
+    text-align: left;
+}
+.section-tdcustom-right h2 {
+  font-size: 48px;
+}
+.section-tdcustom-right p {
+  font-size: 20px;
+}
+.section-tdcustom-right .morelink {
+  text-align: left;
+}

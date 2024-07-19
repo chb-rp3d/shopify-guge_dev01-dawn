@@ -1,0 +1,29 @@
+.inspire-img {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.imgitem p:first-of-type {
+  font-size: 32px;
+  color: #494949;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.imgitem p:last-of-type {
+  font-size: 24px;
+  color: #000000;
+  margin-bottom: 60px;
+}
+
+@media screen and (max-width: 768px) {
+  .inspire-img {
+    flex-wrap: wrap;
+  }
+  .imgitem p:first-of-type {
+    font-size: 20px;
+}
+  .imgitem p:last-of-type {
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+}

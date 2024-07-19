@@ -1,0 +1,17 @@
+.bread-item {
+  display: flex;
+}
+.section-bread {
+  display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.bread-item p,a {
+  font-size: 14px;
+}
+.bread-item a {
+  margin-right: 5px;
+}
+.bread-item p {
+  margin-left: 5px;
+}

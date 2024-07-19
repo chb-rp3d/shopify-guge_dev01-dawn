@@ -1,0 +1,81 @@
+{{ 'dis-product.css' | asset_url | stylesheet_tag }}
+<style>
+     .section-{{section.id}} .page-layout-content{
+       padding-top: 80px;
+        padding-bottom: 160px;
+  }
+  @media screen and (max-width: 768px) {
+    #ass {
+      display: none;
+    }
+  }
+</style>
+<dis-product>
+  <div class="page-layout section-{{section.id}}">
+    <div class="page-layout-content">
+      <h2 class="disproduct-h2">{{ section.settings.title }}</h2>
+      <div class="disproduct">
+        {% for block in section.blocks %}
+         <div class="disproductitem">
+           <div class="pi">{% render 'img-lazyload', image_url: block.settings.img %}</div>
+           {{ block.settings.text }}
+           {{ block.settings.text1 }}
+           <a href="{{ block.settings.url }}">
+             {% render 'img-lazyload', image_url: block.settings.img1 %}
+           </a>
+         </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</dis-product>
+{% schema %}
+    {
+  "name": "dis-product",
+  "settings": [
+       {
+          "type": "richtext",
+          "id": "title",
+          "label": "文案"
+        }
+  ],
+         "blocks": [
+      {
+      "name": "items",
+      "type": "items",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "产品图片"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "文案"
+        },
+        {
+          "type": "richtext",
+          "id": "text1",
+          "label": "文案"
+        },
+        {
+          "type": "image_picker",
+          "id": "img1",
+          "label": "按钮图片"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "产品链接"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "dis-product"
+    }
+  ]
+}
+{% endschema %}

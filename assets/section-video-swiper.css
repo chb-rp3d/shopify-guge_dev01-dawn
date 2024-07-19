@@ -1,0 +1,101 @@
+.section-video-swiper-container{
+    padding-top: 120px;
+    padding-bottom: 48px;
+    margin-top: 120px;
+    background-color: #000;
+}
+
+
+.section-video-swiper-container .swiper-slide{
+    position: relative;
+    height: 162px;
+}
+.section-video-swiper-container .swiper-slide iframe,.section-video-swiper-container .swiper-slide video{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border:none;
+}
+.section-video-swiper-h2{
+    font-size: 48px;
+    font-family: Poppins;
+    font-weight: bold;
+    color: #FFFFFF;
+    margin-bottom: 60px;
+    text-align: left;
+}
+.section-video-swiper .swiper-pagination{
+    position: unset;
+    margin-top: 60px;
+}
+.section-video-swiper .swiper-pagination-bullet{
+    height: 12px;
+    width: 12px;
+    background-color: #D6D6D6;
+    opacity: 0.34;
+}
+.section-video-swiper .swiper-pagination-bullet-active{
+    background-color: #727272;
+    opacity: 1;
+}
+
+.section-video-swiper{
+    position: relative;
+}
+.swiper-button-prev-icon,.swiper-button-next-icon{
+    position: absolute;
+    left: 10px;
+    top: 65px;
+    z-index: 2;
+    cursor: pointer;
+}
+.swiper-button-next-icon{
+    right: 10px;
+    left: unset;
+}
+.swiper-button-prev-icon img{
+    transform: rotate(180deg);
+}
+@media screen and (min-width: 1260px) {
+    .swiper-button-prev-icon{
+        left: -60px;
+    }
+    .swiper-button-next-icon{
+        right: -60px;
+        left: unset;
+    }
+}
+@media screen and (max-width: 768px) {
+    .swiper-button-prev-icon,.swiper-button-next-icon{
+        /* top: 72px; */
+        display: none;
+    }
+    .section-video-swiper-h2{
+        font-size: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .section-video-swiper-container{
+        margin-top: 46px;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    .section-video-swiper-container .swiper-slide{
+        height: 192px;
+    }
+    .section-video-swiper .swiper-pagination{
+        margin-top: 20px;
+    }
+    .section-video-swiper .swiper-pagination-bullet{
+        height: 6px;
+        width: 6px;
+        background-color: #BABABA;
+    }
+    .section-video-swiper .swiper-pagination-bullet-active{
+        width: 26px;
+        border-radius: 100px;
+        background-color: #fff;
+    }
+}

@@ -1,0 +1,92 @@
+{{ 'bulk-faq.css' | asset_url | stylesheet_tag }}
+<style>
+     .section-{{section.id}} .page-layout-content{
+       padding-top: 80px;
+       padding-bottom: 80px;
+  }
+  .section-{{section.id}} {
+    background: #F6F7F9;
+  }
+</style>
+<section-bulkfaq>
+  <div class="page-layout section-{{section.id}}">
+    <div class="page-layout-content">
+       <h2 class="section-bulkftitle-h2">{{ section.settings.title }}</h2>
+      <div class="bulkfaq">
+        {{ section.settings.text1 }}
+        {{ section.settings.text2 }}
+        {{ section.settings.text3 }}
+        {{ section.settings.text4 }}
+        {{ section.settings.text5 }}
+        {{ section.settings.text6 }}
+        {{ section.settings.text7 }}
+        {{ section.settings.text8 }}
+        {{ section.settings.text9 }}
+      </div>
+    </div>
+  </div>
+</section-bulkfaq>
+{% schema %}
+    {
+  "name": "section-bulkfaq",
+  "settings": [
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "文案"
+        },
+        {
+          "type": "richtext",
+          "id": "text1",
+          "label": "文案"
+        },
+        {
+          "type": "richtext",
+          "id": "text2",
+          "label": "文案"
+        },
+        {
+          "type": "richtext",
+          "id": "text3",
+          "label": "文案"
+        },
+        {
+          "type": "richtext",
+          "id": "text4",
+          "label": "文案"
+        },
+        {
+          "type": "richtext",
+          "id": "text5",
+          "label": "文案"
+        },
+        {
+          "type": "richtext",
+          "id": "text6",
+          "label": "文案"
+        },
+        {
+          "type": "richtext",
+          "id": "text7",
+          "label": "文案"
+        },
+         {
+          "type": "richtext",
+          "id": "text8",
+          "label": "文案"
+        },
+        {
+          "type": "richtext",
+          "id": "text9",
+          "label": "文案"
+        }
+        
+   ],
+
+  "presets": [
+    {
+      "name": "section-bulkfaq"
+    }
+  ]
+}
+{% endschema %}

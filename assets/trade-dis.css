@@ -1,0 +1,44 @@
+.dismode {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 75px;
+  margin-top: 50px;
+}
+.disimg img {
+  width: 100%;
+}
+.distitle {
+  background: #FFFFFF;
+  padding: 25px 30px 20px 40px;
+  height: 215px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.distitle p {
+  font-size: 14px;
+  color: #666666;
+}
+.distitle h2 {
+  font-size: 24px;
+  color: #000;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  text-align: left;
+}
+section-trade-dis h2 {
+  font-size: 72px;
+  text-align: center;
+  font-weight: 600;
+  color: #000;
+}
+.trade-disbutton {
+  text-align: center;
+  margin-top: 80px;
+}
+.trade-disbutton a {
+    border-radius: 30px;
+    background: #0171E2;
+    color: #fff;
+    padding: 10px 50px;
+    font-size: 28px;
+}

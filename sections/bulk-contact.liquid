@@ -1,0 +1,71 @@
+{{ 'bulk-contact.css' | asset_url | stylesheet_tag }}
+<style>
+     .section-{{section.id}} .page-layout-content{
+       padding-top: 160px;
+       padding-bottom: 160px;
+  }
+</style>
+<section-bulkcontact>
+  <div class="page-layout section-{{section.id}}">
+    <div class="page-layout-content">
+      <div class="bulkcontact">
+        <div class="bulkmimg">{% render 'img-lazyload', image_url: section.settings.img %}</div>
+        <div class="bulkctext">
+          {{ section.settings.text1 }}
+          <a href="{{ section.settings.url }}">{{ section.settings.text2 }}</a>
+        </div>
+         <a href="{{ section.settings.url1 }}" class="pcdea">{% render 'img-lazyload', image_url: section.settings.img1 %}</a>
+         <a href="{{ section.settings.url1 }}" class="mdea">{% render 'img-lazyload', image_url: section.settings.img2 %}</a>
+      </div>
+    </div>
+  </div>
+</section-bulkcontact>
+{% schema %}
+    {
+  "name": "section-bulkcontact",
+  "settings": [
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "图片"
+        },
+        {
+          "type": "richtext",
+          "id": "text1",
+          "label": "文案"
+        },
+        {
+          "type": "richtext",
+          "id": "text2",
+          "label": "文案"
+        },
+        {
+          "type": "image_picker",
+          "id": "img1",
+          "label": "图片"
+        },
+        {
+          "type": "image_picker",
+          "id": "img2",
+          "label": "图片"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "链接"
+        },
+        {
+          "type": "url",
+          "id": "url1",
+          "label": "链接"
+        }
+        
+   ],
+
+  "presets": [
+    {
+      "name": "section-bulkcontact"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,249 @@
+{{ 'model-list.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'model-list.js' | asset_url }}" defer></script>
+<style>
+     .section-{{section.id}} .page-layout-content{
+       padding-top: 80px;
+       padding-bottom: 78px;
+       max-width: 1600px;
+  }
+  #shopify-section-{{section.id}} {
+  }
+</style>
+<model-list>
+  <div class="page-layout section-{{section.id}}">
+    <div class="page-layout-content">
+      <div class="filter">
+        <button class="toggle-btn" arget="myBtnContainer"><p>フィルター表示</p><i class="navbar-arrow-right active"></i></button>
+        <div class="left-menu" id="lm">
+          <div id="myBtnContainer">
+            <div class="checkbox-label title">{{ section.settings.title }}</div>
+            <div class="checkbox-label">
+              <input type="checkbox" class="filter1" value="miraco">{{ section.settings.text1 }}
+            </div>
+            <div class="checkbox-label">
+              <input type="checkbox" class="filter1" value="range2">{{ section.settings.text2 }}
+            </div>
+            <div class="checkbox-label">
+              <input type="checkbox" class="filter1" value="mini2">{{ section.settings.text3 }}
+            </div>
+            <div class="checkbox-label">
+              <input type="checkbox" class="filter1" value="pop3">{{ section.settings.text4 }}
+            </div>
+            <div class="checkbox-label">
+              <input type="checkbox" class="filter1" value="inspire">{{ section.settings.text5 }}
+            </div>
+          </div>
+          <div id="myBtnContainer1">
+            <div class="checkbox-label title">{{ section.settings.title1 }}</div>
+            <div class="checkbox-label">
+              <input type="checkbox" class="filter2" value="he">{{ section.settings.text6 }}
+            </div>
+            <div class="checkbox-label">
+              <input type="checkbox" class="filter2" value="3d">{{ section.settings.text7 }}
+            </div>
+            <div class="checkbox-label">
+              <input type="checkbox" class="filter2" value="re">{{ section.settings.text8 }}
+            </div>
+            <div class="checkbox-label">
+              <input type="checkbox" class="filter2" value="vm">{{ section.settings.text9 }}
+            </div>
+            <div class="checkbox-label">
+              <input type="checkbox" class="filter2" value="aad">{{ section.settings.text10 }}
+            </div>
+            <div class="checkbox-label">
+              <input type="checkbox" class="filter2" value="hp">{{ section.settings.text11 }}
+            </div>
+            <div class="checkbox-label">
+              <input type="checkbox" class="filter2" value="de">{{ section.settings.text12 }}
+            </div>
+          </div>
+          <div class="abutton-text">{{ section.settings.text14 }}</div>
+          <button  class="applybutton comparison-btn_">{{ section.settings.text13 }}</button>
+        </div>
+        <div class="content-filter-container">
+         <div class="fbanner"> 
+          {% render 'img-lazyload', image_url: section.settings.img %}
+           <div class="fbanner-text">
+             {{ section.settings.text15 }}
+             {{ section.settings.text16 }}
+           </div>
+         </div>
+          {% for block in section.blocks %}
+            <div class="content-filter {{ block.settings.text }}">
+              <div class="content-filter-title">
+                {{ block.settings.title }}
+                {{ block.settings.title1 }}
+              </div>
+              <div class="filteritem">
+                {% assign sub_blocks = block.settings.sub_blocks | split: ';' %}
+                {% assign total_blocks = sub_blocks.size %}
+                {% for sub_block in sub_blocks %}
+                  {% assign sub_block_data = sub_block | split: '|' %}
+                  {% assign block_index = forloop.index %}
+                  {% assign remaining_blocks = total_blocks | minus: block_index %}
+                  <div class="filterDiv {{ sub_block_data[0] }} {{ sub_block_data[1] }}{% if remaining_blocks < 3 %} dehide{% endif %}">
+                    <div class="sketchfab-embed-wrapper">
+                      <iframe
+                        frameborder="0"
+                        mozallowfullscreen="true"
+                        webkitallowfullscreen="true"
+                        allow="autoplay; fullscreen; xr-spatial-tracking"
+                        xr-spatial-tracking=""
+                        execution-while-out-of-viewport=""
+                        execution-while-not-rendered=""
+                        web-share=""
+                        loading="lazy"
+                        src="{{ sub_block_data[2] }}/embed"
+                      ></iframe>
+                    </div>
+                    <div class="model-text">
+                      <p>{{ sub_block_data[3] }}</p>
+                      <p>{{ sub_block_data[4] }}</p>
+                    </div>
+                  </div>
+                {% endfor %}
+                <div class="view-more" onclick="toggleViewMore(this)">もっと見る</div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</model-list>
+
+{% schema %}
+    {
+  "name": "model-list",
+  "settings": [
+     {
+          "type": "image_picker",
+          "id": "img",
+          "label": "头图"
+        },
+    {
+      "type": "richtext",
+      "id": "title",
+       "label": "筛选1标题"
+     },
+    {
+      "type": "richtext",
+      "id": "title1",
+       "label": "筛选2标题"
+     },
+    {
+      "type": "richtext",
+      "id": "text1",
+       "label": "产品名"
+     },
+    {
+      "type": "richtext",
+      "id": "text2",
+       "label": "产品名"
+     },
+    {
+      "type": "richtext",
+      "id": "text3",
+       "label": "产品名"
+     },
+    {
+      "type": "richtext",
+      "id": "text4",
+       "label": "产品名"
+     },
+    {
+      "type": "richtext",
+      "id": "text5",
+       "label": "产品名"
+     },
+    {
+      "type": "richtext",
+      "id": "text6",
+       "label": "案例名"
+     },
+    {
+      "type": "richtext",
+      "id": "text7",
+       "label": "案例名"
+     },
+    {
+      "type": "richtext",
+      "id": "text8",
+       "label": "案例名"
+     },
+    {
+      "type": "richtext",
+      "id": "text9",
+       "label": "案例名"
+     },
+    {
+      "type": "richtext",
+      "id": "text10",
+       "label": "案例名"
+     },
+    {
+      "type": "richtext",
+      "id": "text11",
+       "label": "案例名"
+     },
+    {
+      "type": "richtext",
+      "id": "text12",
+       "label": "案例名"
+     },
+    {
+      "type": "text",
+      "id": "text13",
+       "label": "按钮名"
+     },
+    {
+      "type": "richtext",
+      "id": "text14",
+       "label": "按钮上方文案"
+     },
+    {
+      "type": "richtext",
+      "id": "text15",
+       "label": "图上标题"
+     },
+    {
+      "type": "richtext",
+      "id": "text16",
+       "label": "图上文案"
+     }
+  ],
+     "blocks": [
+    {
+      "name": "items",
+      "type": "items",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "产品名标签"
+        },
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "产品名"
+        },
+        {
+          "type": "richtext",
+          "id": "title1",
+          "label": "产品描述"
+        },
+         {
+          "type": "text",
+          "id": "sub_blocks",
+          "label": "子block数据 (格式: 数据之间用|, 多个子block用分号分隔)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "model-list"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,52 @@
+{{ 'home-card.css' | asset_url | stylesheet_tag }}
+<style>
+   .section-{{section.id}} .page-layout-content{
+       padding-bottom: 107px;
+}
+  @media screen and (max-width: 768px) {
+    section-recoby {
+      display: none;
+    }
+  }
+</style>
+<home-card>
+  <div class="page-layout section-{{section.id}}">
+    <div class="page-layout-content">
+      <div class="home-card">
+        {% for block in section.blocks %}
+        <div class="hc-item">
+          {% render 'img-lazyload', image_url: block.settings.img %}
+        </div>
+        {% endfor %}
+     
+      </div>
+    </div>
+  </div>
+</home-card>
+{% schema %}
+
+    {
+  "name": "home-card",
+ 
+     "blocks": [
+    {
+      "name": "items",
+      "type": "items",
+      "settings": [
+        
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "图片"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "home-card"
+    }
+  ]
+}
+
+{% endschema %}

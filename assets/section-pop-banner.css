@@ -1,0 +1,81 @@
+.section-pop-banner {
+  height: 800px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 800px;
+}
+.section-pop-banner-container {
+  height: 100%;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.section-pop-banner-content {
+  max-width: 540px;
+  width: 100%;
+}
+.section-pop-banner-h1 {
+  font: normal normal 600 50px/76px Poppins;
+  letter-spacing: 0px;
+  color: #ffffff;
+}
+.section-pop-banner-text {
+  font: normal normal normal 28px/42px Poppins;
+  letter-spacing: 0px;
+  color: #ffffff;
+  margin-top: 20px;
+}
+.section-pop-banner-btn {
+  background-color: transparent;
+  border: 1px solid #fff;
+  height: 52px;
+  max-width: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-size: 24px;
+  margin-top: 55px;
+  color: #fff;
+}
+@media screen and (min-width: 769px) {
+  .section-pop-banner {
+    height: 41.6667vw;
+    background-size: auto 41.6667vw;
+  }
+}
+@media screen and (max-width: 768px) {
+  .section-pop-banner {
+    height: 565px;
+    background-size: cover;
+  }
+  .section-pop-banner-h1 {
+    font-size: 30px;
+    line-height: normal;
+  }
+  .section-pop-banner-text {
+    font: normal normal normal 14px / normal Poppins;
+    margin-top: 20px;
+  }
+  .section-pop-banner-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 45px;
+  }
+  .section-pop-banner-btn {
+    background-color: #e62828;
+    border: 1px solid #e62828;
+    font-size: 14px;
+    height: 40px;
+    color: #fff;
+    max-width: 150px;
+    border-radius: 2px;
+  }
+}

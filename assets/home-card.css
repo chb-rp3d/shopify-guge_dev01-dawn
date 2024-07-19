@@ -1,0 +1,12 @@
+.home-card {
+   display: grid;
+    grid-template-columns: repeat(9, 1fr);
+   gap: 30px;
+}
+@media screen and (max-width: 768px) {
+  .home-card {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+}
+}

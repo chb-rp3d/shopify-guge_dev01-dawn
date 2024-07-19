@@ -1,0 +1,18 @@
+.fsnote-content p {
+  font-size: 20px;
+  color: #707070;
+  line-height: 36px;
+}
+.fsnote-content1 {
+  margin-top: 50px;
+  font-size: 20px;
+  color: #707070;
+}
+@media screen and (max-width: 768px) {
+  .fsnote-content p {
+    font-size: 16px;
+  }
+  .fsnote-content1 {
+    font-size: 16px;
+  }
+}

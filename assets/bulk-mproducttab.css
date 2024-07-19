@@ -1,0 +1,70 @@
+.mhpc {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+}
+.section-mhpc-swiper-h2 p{
+  font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+  
+}
+.mhpc-item {
+    width: 100%;
+    min-height: 430px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+.mhpc-text {
+    position: absolute;
+    left: 50%;
+    bottom: 70px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.mhpc-text span p {
+    font-size: 16px !important;
+    color: #E74A4A !important;
+    font-weight: 600;
+}
+.mhpc-text h2 {
+    font-size: 22px;
+    color: #fff;
+    font-weight: 600;
+}
+.mhpc-text p:last-child {
+    font-size: 12px;
+    color: #999999;
+    width: 226px;
+}
+.mhpclm a p {
+  font-size: 14px;
+    color: #0093FF;
+}
+.mhpcbn p {
+    height: auto;
+    font-weight: 600;
+    color: #000;
+    margin-top: 10px;
+    margin-left: 40px;
+}
+.mhpclm {
+    position: absolute;
+    left: 50%;
+    bottom: 65px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.mhpcbn {
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.mhpcbn a {
+      display: block;
+    width: 282px;
+}

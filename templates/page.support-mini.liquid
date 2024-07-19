@@ -1,0 +1,1066 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MINI - Support</title>
+    {{ 'support.css' | asset_url | stylesheet_tag }}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .nav_btn_border {border-left: inherit !important;}
+        .nav_btn {padding-left: 0 !important;}
+        .mdtitle {margin-top: 13px;}
+        .rsdownload {padding-top: 35px;gap: 31px;}
+        .videoitem {flex: inherit;}
+        @media (min-width: 200px) and (max-width: 768px) {
+            html {
+                overflow-x: hidden;
+            }
+            body {
+                margin: 0;
+            }
+
+            .revoscan {
+                display: block;
+
+            }
+
+            main {
+                width: 100%;
+            }
+
+            .rs-left {
+                width: 100%;
+            }
+
+            .rs-left img {
+                width: 100%;
+            }
+
+            .rs-right {
+                padding: 20px;
+            }
+
+            .rs-right .rstitle p:first-of-type {
+                width: 100%;
+            }
+            .md {
+                display: block;
+            }
+            .rsdownload {
+                display: block;
+            }
+            .rsdownload p {
+                font-size: 14px !important;
+            }
+            .dl a {
+                display: block;
+            }
+            .dl {
+                margin-left: 0px !important;
+                flex: 1;
+            }
+            .suptltle h2 {
+                font-size: 32px;
+                padding: 20px;
+            }
+            .suptltle {
+                background: inherit;
+            }
+            .software {
+                display: block;
+                padding: 16px;
+            }
+            .softwareitem {
+                width: 100%;
+                display: flex;
+                height: auto;
+                margin-bottom: 15px;
+                align-items: center;
+                gap: 20px;
+            }
+            .softwareitem img {
+                margin-top: 0;
+                margin-right: 15px;
+                padding-left: 15px;
+            }
+            .twotitle {
+                flex: 1;
+                text-align: left;
+            }
+
+            .twotitile h3 {
+                font-size: 14px;
+                margin-top: 10px;
+            }
+            .dlvm a {
+                font-size: 14px;
+            }
+            .video {
+                display: block;
+            }
+            .videodec {
+                width: 100%;
+                height: auto;
+            }
+            .videoitem img {
+                width: 100%;
+            }
+            .videoitem {
+                padding: 20px;
+            }
+            .supbgtitle {
+                margin-top: 40px;
+                margin-bottom: 40px;
+            }
+            .contact {
+                display: block;
+                padding: 20px;
+            }
+            .live-left {
+                padding: 30px;
+            }
+            .contact1 {
+                display: block;
+                padding: 20px;
+            }
+            .contact1item {
+                width: inherit;
+                height: auto;
+                margin-bottom: 20px;
+            }
+            .nav_box {
+                display: block;
+            }
+            .contacttitle {
+                position: inherit !important;
+                padding: 20px;
+                padding-top: 22px !important;
+            }
+            .contacttitle h2 {
+                font-size: 24px !important;
+            }
+            .contact1item .twotitile {
+                text-align: center;
+            }
+            .live-right img {
+                width: 100%;
+            }
+            .edp {
+                padding: 20px !important;
+                margin-top: -10px !important;
+            }
+            .contacttitle p {
+                width: 100% !important;
+            }
+            .videoitem iframe {
+                width: 100%;
+                height: 200px;
+            }
+
+
+            .w1400 {
+                width: 100%;
+            }
+
+            .title_big {
+                text-align: center;
+            }
+
+            .title_small {
+                text-align: center;
+            }
+
+            .link_box {
+                justify-content: center
+            }
+
+            .banner_bg {
+                width: 100%;
+                margin-top: 0px;
+            }
+
+            .video_box {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .banner_main {
+                display: flex;
+                justify-content: space-between;
+                flex-flow: column;
+            }
+
+            .block_one {
+                margin: 0;
+            }
+
+            .main_text {
+                width: 92%;
+                padding: 0 15px 0 !important;
+            }
+
+            .block_two {
+                width: 100%;
+            }
+
+            .nav_box {
+                width: 100%;
+                display: block;
+                justify-content: flex-start
+            }
+
+            .nav_left_box {
+                width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+
+            .nav_left {
+                display: flex;
+                justify-content: space-evenly;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            .nav_right_box {
+                width: 100%;
+            }
+
+            .nav_left li span {
+                font-size: 15px;
+                word-wrap: break-word;
+
+            }
+
+            .nav_title_big {
+                font-size: 15px !important;
+            }
+
+            .nav_title_small {
+                font-size: 14px !important;
+            }
+
+            .requirements_img {
+                width: 100%;
+                height: 100%;
+            }
+
+            .container {
+                display: none;
+            }
+
+            .li_item {
+
+                margin: 0;
+                padding: 0;
+                width: 100%;
+            }
+
+            .num-box {
+                width: 100%;
+                height: 300px;
+                background-color: #f8f8f8;
+            }
+
+            .num-box .num-ul {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                padding: 0;
+            }
+
+            .num-box .num-ul li {
+                flex: 1;
+                cursor: pointer;
+                margin-bottom: 10px;
+            }
+
+            .num-ul li img {
+                width: 100%;
+            }
+
+            .big_next {
+                word-wrap: normal;
+            }
+
+            .nav_icon {
+                /* float: right; */
+                width: 20px;
+            }
+
+            .nav_left {
+                padding: 0;
+            }
+
+            .w1400 .title_two {
+                margin: 0;
+                padding: 0;
+                height: 120px;
+            }
+
+            .w1400 {
+                height: auto !important;
+            ;
+            }
+
+            .block_two {
+                height: auto !important;
+            }
+
+            .nav_left_box,
+            .nav_right_box,
+            .main_text {
+                height: auto !important;
+
+            }
+
+            .title_three {
+                margin: 0;
+                padding: 0;
+                height: 200px;
+                line-height: 200px;
+            }
+
+            .title_big {
+                padding-top: 60px !important;
+                height: 100px !important;
+            }
+
+            .link_box {
+                height: 90px !important;
+            }
+
+            .mobile_last {
+                display: none !important;
+            }
+            .nav_btn {
+                padding-left: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+<main class="maincontent">
+    <div class="content">
+        <section>
+            <div class="revoscan">
+                <div class="rs-left">
+                    <img src="https://cdn.shopify.com/s/files/1/0538/9533/2027/files/mini.webp">
+                </div>
+
+                <div class="rs-right">
+                    <div class="rstitle" style="padding-bottom: 0;border-bottom: inherit;">
+                        <h2 style="font-size: 32px;">MINI 3Dスキャナー</h2>
+                        <p>細部までスキャン可能</p>
+                    </div>
+
+                    <div class="md">
+                        <div class="mditem">
+                            <img src="https://cdn.shopifycdn.net/s/files/1/0538/9533/2027/files/ega.svg">
+                            <div class="mdtitle">
+                                <p>工業用レベルの精度</p>
+                                <p>最大0.02 mm</p>
+                            </div>
+                        </div>
+                        <div class="mditem">
+                            <img src="https://cdn.shopify.com/s/files/1/0538/9533/2027/files/wd.svg">
+                            <div class="mdtitle">
+                                <p>動作距離</p>
+                                <p>100～200 mm</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md" style="border-bottom: solid 1px #D8D8D8;padding-bottom: 20px;">
+                        <div class="mditem">
+                            <img src="https://cdn.shopify.com/s/files/1/0538/9533/2027/files/fs.svg">
+                            <div class="mdtitle">
+                                <p>高速スキャン</p>
+                                <p>最大10 fps</p>
+                            </div>
+                        </div>
+                        <div class="mditem">
+                            <img src="https://cdn.shopify.com/s/files/1/0538/9533/2027/files/sw.svg">
+                            <div class="mdtitle">
+                                <p>本体重量</p>
+                                <p>160 g</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex">
+                        <div class="downloadmode">
+                            <div class="rsdownload">
+                                 <img src="https://cdn.shopify.com/s/files/1/0538/9533/2027/files/pdf.svg" style="">
+                                <p style="font-size: 20px;">クイックスタートガイド</p>
+                            </div>
+                            <div class="dl" style="margin-left: 74px;">
+                                <a href="https://download.revopoint3d.com/support/download/mini/mini-quickstartguide-jp-v3.0-2023.7.27.pdf">日本語 &gt;</a>
+                                <a href="https://download.revopoint3d.com/supportsucai/download/mini/Multilingual.pdf.zip">多言語対応</a>
+                            </div>
+                        </div>
+
+                        <div class="downloadmode">
+                            <div class="rsdownload" style="display: none;">
+                                <img src="https://cdn.shopify.com/s/files/1/0538/9533/2027/files/pdf.svg" style="">
+                                <p style="font-size: 20px;">Tutorial and Tips</p>
+                            </div>
+                            <div class="dl" style="margin-left: 74px;" style="display: none;">
+                            <!--  
+                                <a href="https://download.revopoint3d.com/supportsucai/download/mini/MINI-3D-Scanner-Tutorials-and-Tips.pdf.zip">日本語 &gt;</a>
+                                <a href="https://download.revopoint3d.com/supportsucai/download/mini/MINI扫描教程与技巧.pdf.zip">中国語 &gt;</a>
+                              -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="supbgtitle">
+                <div class="suptltle">
+                    <h2>ソフトウェア</h2>
+                </div>
+                <h2 style="font-size: 28px;margin-top: 35px;">Revo Scan 5</h2>
+                <p>
+                    3Dスキャン、後処理、複数モデルの合成を一体化した無料ソフトウェア。
+                </p>
+            </div>
+
+            <div class="software">
+               <div class="softwareitem">
+              <img src="https://cdn.shopify.com/s/files/1/0538/9533/2027/files/win.svg">
+              <div class="twotitile">
+                <h3>Windows V5.4.7</h3>
+                <p>更新日付 2024-04-26</p>
+              </div>
+              <div class="dl">
+                <a href="https://download.revopoint3d.com/soft/RevoScan5-5.4.7.822-windows-x86_64.exe" target="_blank">ダウンロード</a>
+                <a href="https://drive.google.com/file/d/1mi6dhBTl16ejSLTDbid_E7ndZxmNIeO-/view?usp=sharing">Google Drive</a>
+              </div>
+            </div>
+            <div class="softwareitem">
+              <img src="https://cdn.shopify.com/s/files/1/0538/9533/2027/files/mac.svg">
+              <div class="twotitile">
+                <h3>Mac V5.4.7</h3>
+                <p>更新日付 2024-04-26</p>
+              </div>
+              <div class="dl">
+                <a href="https://download.revopoint3d.com/soft/RevoScan5-5.4.7.1163-mac-x86_64.pkg" target="_blank">ダウンロード</a>
+                <a href="https://drive.google.com/file/d/1cKh9IdzVKjJhWB3lmde7i4sSjIQLSZoB/view?usp=sharing">Google Drive</a>
+              </div>
+            </div>
+            <div class="softwareitem">
+              <img src="https://cdn.shopify.com/s/files/1/0538/9533/2027/files/ios.svg">
+              <div class="twotitile">
+                <h3>iOS V5.3.5</h3>
+                <p>更新日付 2024-05-08</p>
+              </div>
+              <div class="dl">
+                <a href="https://apps.apple.com/us/app/3d-scanner-app/id1611278474">App Store</a>
+              </div>
+            </div>
+            <div class="softwareitem">
+              <img src="https://cdn.shopify.com/s/files/1/0538/9533/2027/files/anzhuo.svg">
+              <div class="twotitile">
+                <h3>Android V5.2.4
+              <div class="dl">
+                <a href="https://download.revopoint3d.com/soft/RevoScan_V5.3.4.apk">ダウンロード</a>
+                <a href="https://play.google.com/store/apps/details?id=com.revopoint3d.revoscan">Google Play</a>
+              </div>
+            </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="dlvm" style="display: none;">
+                <a href="">View More &gt;</a>
+            </div>
+        </section>
+
+        <div class="supbgtitle">
+            <div class="suptltle">
+                <h2>ビデオ</h2>
+            </div>
+        </div>
+
+        <section>
+            <div class="video">
+                <div class="videoitem">
+                    <iframe
+                            width="288px"
+                            height="162px"
+                            src="https://www.youtube.com/embed/zMh74YTLXDQ?si=WwRF-B3ZgN0uqE_A"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                    ></iframe>
+                    <div class="videodec" style="display: none;">
+                        <p>MINI 3D Scanner: Dual-axis Turntable Combo First Use Tutorial</p>
+                    </div>
+                </div>
+                <div class="videoitem">
+                    <iframe
+                            width="288px"
+                            height="162px"
+                            src="https://www.youtube.com/embed/NhuhlWkVddk?si=x5ZxcWin18CSxFXv"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                    ></iframe>
+                    <div class="videodec" style="display: none;">
+                        <p>MINI: Standard Package First Use Tutorial</p>
+                    </div>
+                </div>
+                <div class="videoitem">
+                    <iframe
+                            width="288px"
+                            height="162px"
+                            src="https://www.youtube.com/embed/RaDrzo0cF70?si=fcCPGA-739h-UaXH"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                    ></iframe>
+                    <div class="videodec" style="display: none;">
+                        <p>MINI: Standard Package First Use Tutorial</p>
+                    </div>
+                </div>
+                <div class="videoitem">
+                    <iframe
+                            width="288px"
+                            height="162px"
+                            src="https://www.youtube.com/embed/1aXgYcuMXHw?si=HgC8EqHfgF1nTDOK"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                    ></iframe>
+                    <div class="videodec" style="display: none;">
+                        <p>MINI: Standard Package First Use Tutorial</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="supbgtitle">
+            <div class="suptltle">
+                <h2>よくある質問</h2>
+            </div>
+        </div>
+
+        <section>
+            <div class="">
+                <div class="w1400">
+                    <div class="nav_box">
+                        <div class="nav_left_box">
+                            <ul class="nav_left" style="list-style:none ;">
+                                <li>
+                      <span
+                              data-index="0"
+                              class="nav_btn nav_btn_border"
+                              href="#"
+                              style="border-bottom: 2px solid rgb(0, 0, 0);"
+                      >ハードウェア</span
+                      >
+                                </li>
+                                <li><span data-index="1" class="nav_btn" href="#">ソフトウェア</span></li>
+                                <li><span data-index="2" class="nav_btn" href="#">アクセサリー</span></li>
+                                <li><span data-index="3" class="nav_btn" href="#">スキャンのコツ</span></li>
+                            </ul>
+                        </div>
+                        <div class="nav_right_box">
+                            <div class="main_text">
+                                <div class="nav_text_item">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">MINIの精度はどれくらいですか？</div>
+                                        <!-- 1 -->
+                                        <div data-index="0" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">MINIのシングルフレーム精度は、最大0.02 mmです。</div>
+                                </div>
+                                <div class="nav_text_item">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">MINIのスキャンスピードはどれくらいですか?</div>
+                                        <!-- 2 -->
+                                        <div data-index="1" class="nav_icon">+</div>
+                                    </div>
+
+                                    <div class="nav_title_small">1秒あたり10フレームのスキャンスピードが可能です。</div>
+                                </div>
+                                <div class="nav_text_item">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">MINIに使用されているテクノロジーは何ですか？</div>
+                                        <!-- 3 -->
+                                        <div data-index="2" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">
+                                        MINIには、クラス1ブルーライトと高度なアルゴリズムを搭載しており、小型オブジェクトの詳細な3Dモデルを出力することができます。
+                                    </div>
+                                </div>
+                                <div class="nav_text_item">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">MINIの推奨システム要件は何ですか？</div>
+                                        <!-- 4 -->
+                                        <div data-index="3" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">
+                                        MINIを使用するには、i5のプロセッサーと8 GBのメモリ容量を搭載したPCで十分ですが、処理時間を短縮するには、i7のプロセッサーと16 GB以上のメモリ容量を搭載したPCを推奨します。
+                                    </div>
+                                </div>
+                                <div class="nav_text_item" style="display: none;">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">Do you need a powerful computer to use the INSPIRE?</div>
+                                        <!-- 5 -->
+                                        <div data-index="4" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">
+                                        No, the INSPIRE’s algorithms and internal chip do most of the processing.<br>
+
+                                        Minimum specs: Intel i5, 8GB RAM.<br>
+
+                                        Recommended specs: Intel i7, 16GB RAM.<br>
+
+                                        No discrete GPU like an Nvidia or AMD graphics card is needed to use INSPIRE.
+                                    </div>
+                                </div>
+                                <div class="nav_text_item" style="display: none;">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">What technology does the INSPIRE use?</div>
+                                        <!-- 6 -->
+                                        <div data-index="5" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">
+                                        INSPIRE uses class 1 infrared structured light, dual depth cameras, and advanced algorithms to
+                                        output detailed 3D models.
+                                    </div>
+                                </div>
+                                <div class="nav_text_item" style="display: none;">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">Can INSPIRE safely scan humans and animals?</div>
+                                        <!-- 7 -->
+                                        <div data-index="6" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">
+                                        Yes, the INSPIRE is entirely eye and skin-safe as it uses class 1 infrared light.
+                                    </div>
+                                </div>
+                                <div class="nav_text_item" style="display: none;">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">
+                                            What kind of computer is recommended for POP 2 to work smoothly?
+                                        </div>
+                                        <!-- 8 -->
+                                        <div data-index="7" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">Recommended computer: Windows10, 64bit,16G and above, I7.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="nav_right_box block_hide">
+                            <div class="main_text">
+                                <!-- 1 -->
+                                <div class="nav_text_item">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">MINIには専用ソフトウェアがありますか？</div>
+                                        <div data-index="0" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">
+                                        はい、MINIにはRevo Scanという無料ソフトウェアが付属しています。Revo Scanでは、Windows、macOS、iOS、Androidデバイスに対応しており、3Dスキャンとモデルの後処理を行うことができます。
+                                    </div>
+                                </div>
+                                <!-- 2 -->
+                                <div class="nav_text_item">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">ソフトウェアは無料ですか?</div>
+                                        <div data-index="1" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">
+                                        ソフトウェアは無料で、公式サイトからダウンロードすることができます。
+                                    </div>
+                                </div>
+                                <!-- 3 -->
+                                <div class="nav_text_item">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">スキャンしたモデルを直接3Dプリントできますか?</div>
+                                        <div data-index="2" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">
+                                        はい、3Dプリンター用のスライサーソフトウェアは、STL形式の3Dモデルを直接読み込むことができます。
+                                    </div>
+                                </div>
+                                <!-- 4 -->
+                                <div class="nav_text_item">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">スキャンしたモデルを他のデザインソフトウェアにて編集することはできますか？</div>
+                                        <div data-index="3" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">
+                                        はい、MINIで作成した3Dモデルは、OBJ形式でエクスポートでき、Blender、Maya、Rhino、ZBrush、Fusion 360など、ほとんどのデザインソフトウェアと互換性があります。
+                                    </div>
+                                </div>
+                                <!-- 5 -->
+                                <div class="nav_text_item">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">MINIに利用できるほかのスキャンソフトウェアはありますか？</div>
+                                        <div data-index="4" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">
+                                        いいえ、MINIはRevo Scanとのみ互換性があり、弊社の公式サイトやアプリストアからダウンロードすることができます。MINIで作成した3Dモデルは、ほとんどの3Dモデリングソフトウェアと互換性があります。
+                                    </div>
+                                </div>
+                                <!-- 6 -->
+                                <div class="nav_text_item">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">Revo Scanで出力できるファイル形式は何ですか？</div>
+                                        <div data-index="5" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">Revo Scanは、PLY、OBJ、STL形式の3Dモデルをエクスポートすることができます。</div>
+                                </div>
+                                <!-- 7 -->
+                                <div class="nav_text_item">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">スマホでスキャンしたモデルをエクスポートする方法を教えてください。</div>
+                                        <div data-index="6" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">スマホのプロジェクトをPCに送信できます。スマホとPCが同じWi-Fiネットワークに接続されていることを確認してください。ファイル転送中にアプリを最小化したり、スマホの画面を消したりしないでください。<br>
+1) Revo Scan (PC)を開き、ホームページの新規プロジェクトボタンをクリックします。<br>
+2) Revo Scan (PC)のファイルメニューの電話からインポートオプションをクリックします。<br>
+3) PINコードかQRコードのどちらかの転送方法を選びます。<br>
+4) Revo Scan (Mobile)を開き、転送するプロジェクトを見つけます。<br>
+5) Revo Scan (Mobile)の「その他」ボタン＞「共有」アイコンをタップします。<br>
+6) PIN コードを入力するか、QR コードをスキャンします。<br>
+7) ファイル転送を開始します。</div>
+                                </div>
+                                <!-- 8 -->
+                                <div class="nav_text_item">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">インターネットに接続しなくても、MINIをRevo Scanと一緒に使用できますか？</div>
+                                        <div data-index="7" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">
+                                        はい、インターネットに接続しなくても、MINIはRevo Scanと一緒に使用することができます。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="nav_right_box block_hide">
+                            <div class="main_text">
+                                <!-- 1 -->
+                                <div class="nav_text_item">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">スキャンに役立つアクセサリーはありますか？</div>
+                                        <div data-index="0" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">
+                                        はい、2軸ターンテーブル、ハンドヘルドスタビライザー、2-in-1 USBケーブル、スマホホルダー、マーカーポイントなど、すべてのアクセサリーがスキャンに役立ちます。
+                                    </div>
+                                </div>
+                                <!-- 2 -->
+                                <div class="nav_text_item">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">2軸ターンテーブルは何をするものですか？</div>
+                                        <div data-index="1" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">
+                                        2軸ターンテーブルは、360度の回転と±30度の傾斜角度をサポートしています。スキャン時にオブジェクトの位置を調整する手間を省き、正確なスキャンをもっと容易に取得することができます。
+                                    </div>
+                                </div>
+                                <!-- 3 -->
+                                <div class="nav_text_item">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">ハンドヘルドスタビライザーは何をするものですか？</div>
+                                        <div data-index="2" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">
+                                        ハンドヘルドスタビライザーには、高精度ジャイロスコープと手ブレ補正装置が内蔵されており、点群精度の低下やトラッキングミスを大幅に減少し、滞ることなくスムーズなスキャンを実現することができます。
+                                    </div>
+                                </div>
+                                <!-- 4 -->
+                                <div class="nav_text_item">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">マーカーポイントは何に使用されますか？</div>
+                                        <div data-index="3" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">
+                                        マーカーポイントは、MINIが正しくトラッキングできるように、特徴のないオブジェクトの表面またはその周りに貼り付くものです。マーカーを約3～5 cmの間隔でランダムに配置し、スキャン画面に常に5つのマーカーが映られることを確認してください。
+                                    </div>
+                                </div>
+                                <!-- 5 -->
+                                <div class="nav_text_item" style="display:none;">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">Charge the LED lamp or replace the battery?</div>
+                                        <div data-index="4" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">Rechargeable batteries.</div>
+                                </div>
+                                <!-- 6 -->
+                                <div class="nav_text_item" style="display:none;">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">What are marker points used for?</div>
+                                        <div data-index="5" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">
+                                        Marker points are stuck to objects without geometric features so the MINI can track what it is
+                                        scanning. When using Marker points, place them in irregular patterns with around 3-5cms between
+                                        the markers across the object you’re scanning, and make sure that there are at least 5 marker
+                                        points always in frame when scanning.
+                                    </div>
+                                </div>
+                                <!-- 7 -->
+                                <div class="nav_text_item" style="display:none ;">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">POP的精度是多少?</div>
+                                        <div data-index="6" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">输出模型精度能达0.3mm。</div>
+                                </div>
+                                <div class="nav_text_item" style="display: none;">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">
+                                            What kind of computer is recommended for POP 2 to work smoothly?
+                                        </div>
+                                        <!-- 8 -->
+                                        <div data-index="7" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">Recommended computer: Windows10, 64bit,16G and above, I7.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="nav_right_box block_hide">
+                            <div class="main_text">
+                                <!-- 1 -->
+                                <div class="nav_text_item">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">フレーム数が多いほど、スキャン精度は高くなりますか？</div>
+                                        <div data-index="0" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">
+                                        いいえ、複数回スキャンすると、誤差が積み重ねていくので、1つの角度につき一周のみスキャンするようにしてください。
+                                    </div>
+                                </div>
+                                <!-- 2 -->
+                                <div class="nav_text_item">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">MINIがスキャンできないオブジェクトはありますか？</div>
+                                        <div data-index="1" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">
+                                        透明や反射するオブジェクトの場合は、スキャンスプレーを使用する必要があります。500×500×500 mmより大きいオブジェクトの場合は、複数のスキャンと後処理が必要です。
+                                    </div>
+                                </div>
+                                <!-- 3 -->
+                                <div class="nav_text_item">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">MINIは屋外でスキャンできますか？</div>
+                                        <div data-index="2" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">
+                                        いいえ、MINIは屋内スキャンにのみ対応しています。
+                                    </div>
+                                </div>
+                                <!-- 4 -->
+                                <div class="nav_text_item">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">MINIの最小スキャンサイズはどれくらいですか？</div>
+                                        <div data-index="3" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">
+                                        MINIが推奨する最小スキャンサイズは、10×10×10 mmです。
+                                    </div>
+                                </div>
+                                <!-- 5 -->
+                                <div class="nav_text_item">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">MINIは、10×10×10 mmより小さいオブジェクトをスキャンできますか？</div>
+                                        <div data-index="4" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">
+                                        はい、それ以下のオブジェクトをスキャンするには、多少のスキルと後処理が必要です。詳細については、公式フォーラム（https://forum.revopoint3d.com/t/revopoint-mini-paperclip-challenge/16195）で確認してください。
+                                    </div>
+                                </div>
+                                <!-- 6 -->
+                                <div class="nav_text_item" style="display:none ;">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">POP的精度是多少?</div>
+                                        <div data-index="5" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">输出模型精度能达0.3mm。</div>
+                                </div>
+                                <!-- 7 -->
+                                <div class="nav_text_item" style="display:none ;">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">POP的精度是多少?</div>
+                                        <div data-index="6" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">输出模型精度能达0.3mm。</div>
+                                </div>
+                                <div class="nav_text_item" style="display: none;">
+                                    <div class="nav_text_tBox">
+                                        <div class="nav_title_big">
+                                            What kind of computer is recommended for POP 2 to work smoothly?
+                                        </div>
+                                        <!-- 8 -->
+                                        <div data-index="7" class="nav_icon">+</div>
+                                    </div>
+                                    <div class="nav_title_small">Recommended computer: Windows10, 64bit,16G and above, I7.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="supbgtitle">
+            <div class="suptltle">
+                <h2>お問い合わせ</h2>
+            </div>
+        </div>
+
+        <section>
+            <div class="contact">
+                <div class="live-left">
+                    <img src="https://cdn.shopify.com/s/files/1/0538/9533/2027/files/lc.png">
+                    <div class="contacttitle">
+                        <a href="" class="lc" style="display: none;">Live Chat &gt;</a>
+                        <p>24時間対応</p>
+                        <p style="margin-top: 23px;">メールでのお問い合わせ</p>
+                        <a href="mailto:customer@revopoint3d.com" class="lc"><p>customer@revopoint3d.com</p></a>
+                    </div>
+                </div>
+
+                <div class="live-right">
+                    <div class="contacttitle" style="position: absolute;padding-left: 40px;padding-top: 90px;">
+                        <h2 style="font-size: 32px;">ご相談窓口</h2>
+                        <p style="width: 300px;">
+                            当社製品に関してご質問、ご不明な点等がございましたら、お電話、チャット、またはメールで、Revopoint のサポートチームにお気軽にご相談ください。
+                        </p>
+                    </div>
+                    <img src="https://cdn.shopify.com/s/files/1/0538/9533/2027/files/hy.png">
+                </div>
+            </div>
+            <div class="contact1" style="margin-top: 21px;">
+                <div class="contact1item">
+                    <img src="https://cdn.shopify.com/s/files/1/0538/9533/2027/files/om.png">
+                    <div class="twotitile">
+                        <h3>オンラインミーティング</h3>
+                        <p>画面共有でのリモートサポート</p>
+                    </div>
+                    <div class="dl">
+                        <a href="https://meetings.hubspot.com/revopoint-support">ミーティングを予約する &gt;</a>
+                    </div>
+                </div>
+                <div class="contact1item">
+                    <img src="https://cdn.shopify.com/s/files/1/0538/9533/2027/files/hs.png">
+                    <div class="twotitile">
+                        <h3>ホットラインサービス</h3>
+                        <p>電話でのお問い合わせ</p>
+                    </div>
+                    <div class="dl">
+                        <a href="tel:+1 (888) 807-3339">+1 (888) 807-3339</a><br>
+                        <a href="tel:+86 18124196779">+86 18124196779</a>
+                    </div>
+                </div>
+                <div class="contact1item" style="display: none;">
+                    <img src="https://cdn.shopify.com/s/files/1/0538/9533/2027/files/f.png">
+                    <div class="twotitile">
+                        <h3>Forum</h3>
+                        <p>Share Your Scanning Experiences</p>
+                    </div>
+                    <div class="dl">
+                        <a href="https://forum.revopoint3d.com">Join the Revopoint Community &gt;</a>
+                    </div>
+                </div>
+                <div class="contact1item" style="display: none;">
+                    <img src="https://cdn.shopify.com/s/files/1/0538/9533/2027/files/g.png">
+                    <div class="twotitile">
+                        <h3>Group</h3>
+                        <p>Updates, Giveaways, 3D Model Showcases</p>
+                    </div>
+                    <div class="dl">
+                        <a href="https://revo.ink/3PFwq2S">Join Our Group &gt;</a>
+                    </div>
+                </div>
+            </div>
+            <p class="edp" style="font-size: 16px;color: #666666;margin-top: 24px;display: none;">
+                You can contact us by <a href="" class="lk">Email</a>. For urgent situations, we recommend you contact
+                <a href="" class="lk">Online Customer Service</a> for immediate support.
+            </p>
+        </section>
+    </div>
+</main>
+</body>
+<script type="text/javascript">
+    // FAQ文案操作
+    let menuIndex = 0
+    let navHideDoms, arr, navIconDoms, navRightboxs
+    let navBtn = document.getElementsByClassName("nav_btn") // 左侧menu
+
+    // nav展开icon绑定事件
+    for (let index = 0; index < navBtn.length; index++) {
+        navBtn[index].addEventListener("click", navBtnClick)
+    }
+
+    function init() {
+        navHideDoms = document.getElementsByClassName("nav_title_small") // 右侧隐藏文案
+        arr = Array(navHideDoms.length).fill(false)
+        navIconDoms = document.getElementsByClassName("nav_icon") // 右侧“+”“-”
+        navRightboxs = document.getElementsByClassName("nav_right_box") // 右侧文案
+        // nav展开icon绑定事件
+        for (let index = 0; index < navIconDoms.length; index++) {
+            navIconDoms[index].addEventListener("click", navIconClick)
+        }
+    }
+    init()
+
+    function navBtnClick(e) {
+        init()
+        menuIndex = Number(e.target.dataset.index)
+        navRightboxs[menuIndex].style.display = 'block'
+        for (let index = 0; index < navBtn.length; index++) {
+            if (+index === +menuIndex) {
+                continue
+            }
+            navRightboxs[index].style.display = 'none'
+            navBtn[index].style.borderBottom = 'none'
+        }
+        navBtn[menuIndex].style.borderBottomWidth = '2px'
+        navBtn[menuIndex].style.borderBottomColor = '#000000'
+        navBtn[menuIndex].style.borderBottomStyle = 'solid'
+    }
+
+    // "+" "-" 点击事件
+    function navIconClick(e) {
+        let navNum = navBtn.length
+        let iconNum = navIconDoms.length
+        let currentNum = iconNum / navNum
+        let navIndex = Number(e.target.dataset.index)
+        let correctNum = currentNum * menuIndex + navIndex
+        if (!!arr[correctNum]) {
+            navHideDoms[correctNum].style.display = 'none'
+            navIconDoms[correctNum].innerHTML = '+'
+        } else {
+            navHideDoms[correctNum].style.display = 'block'
+            navIconDoms[correctNum].innerHTML = '-'
+            for (let index = 0; index < navIconDoms.length; index++) {
+                if (+index === +correctNum) {
+                    continue
+                }
+                navHideDoms[index].style.display = 'none'
+                navIconDoms[index].innerHTML = '+'
+            }
+        }
+        arr[correctNum] = !arr[correctNum]
+        for (let j = 0; j < navIconDoms.length; j++) {
+            if (+j === +correctNum) {
+                continue
+            }
+            arr[j] = false
+        }
+    }
+</script>
+</html>

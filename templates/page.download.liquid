@@ -1,0 +1,3442 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  {{ 'support.css' | asset_url | stylesheet_tag }}
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <style>
+    .rs-left img {
+      display: inline;
+      padding-bottom: 30px;
+    }
+
+    .ls-right-item img {
+      margin-top: 14px !important;
+      margin-right: 23px;
+      padding-left: 0 !important;
+    }
+
+    .nav_btn_border {border-left: inherit !important;}
+    .nav_btn {padding-left: 0 !important;}
+    .mdtitle {margin-top: 13px;}
+    .rsdownload {padding-top: 35px;}
+    .producttitle p {color: #000;margin-top: 20px;}
+    .producttitle p:hover {color: #448EF9;}
+    .zoomimg {width: 288px;height: 270px;overflow: hidden;}
+    .zoomimg img{object-fit: cover;transition: transform 0.3s ease-in-out;}
+    .zoomimg img:hover {
+      transform: scale(1.2);
+    }
+    .assmode {margin-top: 111px;}
+
+
+    @media (min-width: 200px) and (max-width: 768px) {
+      html {
+        overflow-x: hidden;
+      }
+      body {
+        margin: 0;
+      }
+      .gmoded {gap: 10px !important;}
+      .assmode {margin-top: 0;}
+      .revoscan {
+        display: block;
+        padding: 16px;
+      }
+
+      main {
+        width: 100%;
+      }
+
+      .rs-left {
+        width: 100%;
+      }
+
+      .rs-left img {
+        width: auto;
+      }
+
+      .rs-right {
+        padding: 20px;
+        margin-top: 20px;
+      }
+
+      .rs-right .rstitle p:first-of-type {
+        width: 100%;
+      }
+      .md {
+        display: block;
+      }
+      .rsdownload {
+        display: block;
+      }
+      .rsdownload p {
+        font-size: 14px !important;
+      }
+      .dl a {
+        display: block;
+      }
+      .dl {
+        margin-left: 0px !important;
+        flex: 1;
+      }
+      .suptltle h2 {
+        font-size: 32px;
+        padding: 20px;
+      }
+      .suptltle {
+        background: inherit;
+      }
+      .software {
+        display: block;
+        padding: 16px;
+      }
+      .softwareitem {
+        width: 100%;
+        display: flex;
+        height: auto;
+        margin-bottom: 15px;
+        align-items: center;
+        gap: 20px;
+      }
+      .softwareitem img {
+        margin-top: 0;
+        margin-right: 15px;
+        padding-left: 15px;
+      }
+      .twotitle {
+        flex: 1;
+        text-align: left;
+      }
+      .twotitile {
+        width: 130px;
+        text-align: left;
+      }
+      .twotitile h3 {
+        font-size: 14px;
+        margin-top: 10px;
+      }
+      .dlvm a {
+        font-size: 14px;
+      }
+      .video {
+        display: block;
+      }
+      .videodec {
+        width: 100%;
+        height: auto;
+      }
+      .videoitem img {
+        width: 100%;
+      }
+      .videoitem {
+        padding: 20px;
+      }
+      .supbgtitle {
+        margin-top: 40px;
+        margin-bottom: 40px;
+      }
+      .contact {
+        display: block;
+        padding: 20px;
+      }
+      .live-left {
+        padding: 30px;
+      }
+      .contact1 {
+        display: block;
+        padding: 20px;
+      }
+      .contact1item {
+        width: inherit;
+        height: auto;
+        margin-bottom: 20px;
+      }
+      .nav_box {
+        display: block;
+      }
+      .contacttitle {
+        position: inherit !important;
+        padding: 20px;
+        padding-top: 22px !important;
+      }
+      .contacttitle h2 {
+        font-size: 24px !important;
+      }
+      .contact1item .twotitile {
+        text-align: center;
+      }
+      .live-right img {
+        width: 100%;
+      }
+      .edp {
+        padding: 20px !important;
+        margin-top: -10px !important;
+      }
+      .contacttitle p {
+        width: 100% !important;
+      }
+      .videoitem iframe {
+        width: 100%;
+        height: 200px;
+      }
+
+
+      .w1400 {
+        width: 100%;
+      }
+
+      .title_big {
+        text-align: center;
+      }
+
+      .title_small {
+        text-align: center;
+      }
+
+      .link_box {
+        justify-content: center
+      }
+
+      .banner_bg {
+        width: 100%;
+        margin-top: 0px;
+      }
+
+      .video_box {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+
+      .banner_main {
+        display: flex;
+        justify-content: space-between;
+        flex-flow: column;
+      }
+
+      .block_one {
+        margin: 0;
+      }
+
+      .main_text {
+        width: 92%;
+        padding: 0 15px 0 !important;
+      }
+
+      .block_two {
+        width: 100%;
+      }
+
+      .nav_box {
+        width: 100%;
+        display: block;
+        justify-content: flex-start
+      }
+
+      .nav_left_box {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      .nav_left {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .nav_right_box {
+        width: 100%;
+      }
+
+      .nav_left li span {
+        font-size: 15px;
+        word-wrap: break-word;
+
+      }
+
+      .nav_title_big {
+        font-size: 15px !important;
+      }
+
+      .nav_title_small {
+        font-size: 14px !important;
+      }
+
+      .requirements_img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .container {
+        display: none;
+      }
+
+      .li_item {
+
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
+
+      .num-box {
+        width: 100%;
+        height: 300px;
+        background-color: #f8f8f8;
+      }
+
+      .num-box .num-ul {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+      }
+
+      .num-box .num-ul li {
+        flex: 1;
+        cursor: pointer;
+        margin-bottom: 10px;
+      }
+
+      .num-ul li img {
+        width: 100%;
+      }
+
+      .big_next {
+        word-wrap: normal;
+      }
+
+      .nav_icon {
+        /* float: right; */
+        width: 20px;
+      }
+
+      .nav_left {
+        padding: 0;
+      }
+
+      .w1400 .title_two {
+        margin: 0;
+        padding: 0;
+        height: 120px;
+      }
+
+      .w1400 {
+        height: auto !important;
+      ;
+      }
+
+      .block_two {
+        height: auto !important;
+      }
+
+      .nav_left_box,
+      .nav_right_box,
+      .main_text {
+        height: auto !important;
+
+      }
+
+      .title_three {
+        margin: 0;
+        padding: 0;
+        height: 200px;
+        line-height: 200px;
+      }
+
+      .title_big {
+        padding-top: 60px !important;
+        height: 100px !important;
+      }
+
+      .link_box {
+        height: 90px !important;
+      }
+
+      .mobile_last {
+        display: none !important;
+      }
+      .nav_btn {
+        padding-left: 15px;
+      }
+      .prodducts {overflow-x: scroll;}
+      .ls {display: block;}
+      .ls-right {display: block;padding: 15px;}
+      .ls-right-item {margin-top: 20px;}
+      .lsmode h2 {font-size: 20px !important;text-align: center;}
+      .ls-left p {text-align: left;padding: 20px;}
+
+    }
+    .revoscan .rs-left {padding: 30px;box-sizing: border-box;}
+    .rs-right .rstitle {border-bottom: inherit;}
+    .ls {gap: 15px;padding-top: 30px;}
+  </style>
+
+  <style type="text/css">
+
+
+    .left-menu-sidebar {
+      margin-right: 20px;
+      width: 290px;
+    }
+
+    .search-content {
+      position: relative;
+      width: 100%;
+      border-bottom: 1px solid #cccccc;
+      display: none;
+    }
+
+    .left-menu-sidebar .menu-sidebar-content {
+      position: sticky;
+      top: 0;
+    }
+
+    .search-block {
+      border: none;
+      outline: none;
+      font-size: 16px;
+      background-image: url(/wp-content/uploads/custom/icon-search.png);
+      background-repeat: no-repeat;
+      background-size: 25px;
+      background-position:5px center;
+      padding: 16px 10px 16px 40px;
+      margin-left: 10px;
+    }
+
+    .m-item {
+      position: relative;
+      padding: 5px 0;
+    }
+
+    .m-item .title{
+      position: relative;
+      font-size: 18px;
+      font-weight: 500;
+      color: #1A1A1A;
+      line-height: 30px;
+      padding-left: 21px;
+      padding-top: 5px;
+      cursor: pointer;
+    }
+
+    .m-item .title:after {
+      content: "";
+      position: absolute;
+      top: 13px;
+      right: 16px;
+      width: 9px;
+      height: 9px;
+      border-top: 2px solid #626262;
+      border-right: 2px solid #626262;
+      transform-origin: 50% 50%;
+      transition-duration: .3s;
+      transform: rotate(45deg);
+    }
+
+    .m-item .title.active:after {
+      transform: rotate(135deg);
+    }
+
+    .m-item-sub-menu {
+      position: relative;
+      display: none;
+    }
+
+    .m-item-sub-menu.active {
+      display: block;
+    }
+
+    .m-item-sub-menu .sub-item {
+      position: relative;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .m-item-sub-menu .sub-item.active {
+      /*background: #F8F8F8;*/
+      border-right: 1px solid #4D4D4D;
+    }
+
+    .right-main-content {
+      flex: 1;
+    }
+
+    .right-main-content .section-block {
+      position: relative;
+      display: none;
+
+    }
+    .right-main-content .section-block.selected {
+      display: block;
+    }
+
+    .section-block.block-product .header {
+      position: relative;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      border-bottom: 1px solid #cccccc;
+    }
+
+    .section-block.block-product .header .name {
+      font-size: 42px;
+      font-weight: 500;
+      color: #141414;
+      margin-left: 50px;
+
+    }
+
+    .section-block.block-product .bp-section-two {
+      position: relative;
+      margin-top: 49px;
+    }
+
+    .section-block.block-product .bp-section-two .title {
+      position: relative;
+      font-size: 30px;
+      font-weight: 400;
+      color: #141414;
+      font-family: 'HarmonyOS Sans SC';
+    }
+
+    .section-block.block-product .bp-section-two .bp-st-sub-item {
+      position: relative;
+      margin-top: 50px;
+      padding-bottom: 72px;
+      border-bottom: 1px solid #cccccc;
+    }
+
+    .bp-section-two .bp-st-sub-item .title {
+      position: relative;
+      font-size: 26px;
+      font-weight: 500;
+      color: #141414;
+    }
+
+    .bp-section-two .bp-st-sub-item .label {
+      position: relative;
+      margin-top: 23px;
+      font-size: 16px;
+      font-weight: 400;
+      color: #161616;
+    }
+
+    .bp-section-two .bp-st-sub-item .grid-div {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      column-gap: 20px;
+      row-gap: 50px;
+      margin-top: 51px;
+    }
+
+    .bp-section-two .bp-st-sub-item .grid-div.row-one {
+      row-gap: 0;
+    }
+
+    .bp-section-two .bp-st-sub-item .grid-div .grid-item {
+      position: relative;
+      display: block;
+      text-align: center;
+    }
+
+    .bp-section-two .bp-st-sub-item .grid-div .grid-item .grid-item-content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .bp-section-two .bp-st-sub-item .grid-div .grid-item .grid-item-content .name {
+      font-size: 20px;
+      font-weight: 400;
+      color: #000000;
+      line-height: 23px;
+    }
+
+    .bp-section-two .bp-st-sub-item .grid-div .grid-item .grid-item-content .icon {
+      width: 21px;
+      height: 21px;
+      margin-top: 5px;
+      cursor: pointer;
+    }
+
+    .section-block.block-product .bp-section-three {
+      position: relative;
+
+    }
+
+    .section-block.block-product .bp-section-three .title {
+      position: relative;
+      font-size: 36px;
+      font-weight: 400;
+      color: #141414;
+      margin-bottom: 26px;
+    }
+
+    .section-block.block-product .bp-section-three .version-item {
+      position: relative;
+      padding: 8px;
+    }
+
+    .section-block.block-product .bp-section-three .version-item .title {
+      position: relative;
+      font-size: 24px;
+      font-weight: 400;
+      color: #151515;
+      padding: 10px 0;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .section-block.block-product .bp-section-three .version-item .title:after {
+      content: '';
+      position: absolute;
+      top: 12px;
+      right: 26px;
+      width: 22px;
+      height: 22px;
+      background: url(/wp-content/uploads/custom/icon-add.png) no-repeat;
+      background-size: 100%;
+    }
+
+    .section-block.block-product .bp-section-three .version-item .title.active:after {
+      background: url(/wp-content/uploads/custom/icon-reduce.png) no-repeat;
+      background-size: 100%;
+    }
+
+    .manual-list {
+      position: relative;
+      display: none;
+    }
+
+    .manual-list.active {
+      display: block;
+    }
+
+    .manual-list .manual-item {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 45px 20px 20px;
+    }
+
+    .manual-list .manual-item:nth-of-type(2n) {
+      background: #F8F8F8;
+    }
+
+    .manual-list .manual-item .name {
+      position: relative;
+      font-size: 20px;
+      font-weight: 300;
+      color: #141414;
+      line-height: 29px;
+      cursor: pointer;
+      border-bottom: 1px solid transparent;
+      text-decoration: none;
+      font-family: 'HarmonyOS Sans SC Light';
+      min-width: 70%;
+    }
+
+    .manual-list .manual-item .name:hover {
+      border-bottom: 1px solid #328BEF;
+    }
+
+    .manual-list .manual-item .type {
+      position: relative;
+      font-size: 18px;
+      font-weight: 400;
+      color: #141414;
+    }
+
+    /*.section-block.block-tool {
+        height: 873px;
+    }*/
+
+    .section-block.block-tool .title {
+      font-size: 36px;
+      font-weight: 500;
+      color: #141414;
+      padding: 8px 8px 53px;
+      border-bottom: 1px solid #cccccc;
+    }
+
+    .section-block.block-tool .tools-div {
+      position: relative;
+      display: flex;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .section-block.block-tool .tools-div .tool-item {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .section-block.block-tool .tools-div .tool-item:not(:last-child) {
+      margin-right: 120px;
+    }
+
+    .tools-div .tool-item .name {
+      font-size: 24px;
+      font-weight: 400;
+      color: #141414;
+      margin-top: 20px;
+      text-decoration: none;
+    }
+
+    @media only screen and (min-width: 1501px) and (max-width: 1800px) {
+      .download-center-banner {
+        padding-left: 170px;
+      }
+
+      .download-center-container {
+        margin: 0 180px;
+        padding: 45px 0 170px;
+      }
+    }
+
+    @media only screen and (max-width: 1500px) {
+      .download-center-banner {
+        padding-left: 120px;
+      }
+
+      .download-center-container {
+        margin: 0 120px;
+        padding: 40px 0 120px;
+      }
+    }
+
+    @media only screen and (max-width: 1300px) {
+      /* .bp-section-two .bp-st-sub-item .grid-div {
+           display: block;
+       }*/
+
+      .bp-section-two .bp-st-sub-item .grid-div .grid-item {
+        margin-bottom: 10px;
+      }
+
+      .manual-list .manual-item {
+        padding: 15px 25px 15px 15px;
+      }
+
+      .manual-list .manual-item .name {
+        font-size: 17px;
+        margin-right: 5px;
+      }
+
+      .manual-list .manual-item .type {
+        font-size: 15px;
+      }
+
+      .right-main-content .section-block{
+        padding: 10px;
+      }
+      .download-center{ padding-bottom: 70px; }
+      .sftwr{ margin-top: 35px; }
+    }
+
+    @media only screen and (min-width: 1151px) and (max-width: 1300px) {
+      .download-center-banner {
+        padding-left: 80px;
+      }
+
+      .download-center-container {
+        margin: 0 80px;
+        padding: 40px 0 80px;
+      }
+    }
+
+    @media only screen and (min-width: 1001px) and (max-width: 1150px) {
+      .download-center-banner {
+        padding-left: 60px;
+      }
+
+      .download-center-container {
+        margin: 0 60px;
+        padding: 40px 0 60px;
+      }
+    }
+
+    @media only screen and (min-width: 1001px) {
+      .body, html {
+        overflow: visible !important;
+      }
+
+      #page {
+        overflow: visible !important;
+      }
+    }
+
+    @media only screen and (max-width: 1000px) {
+      .download-center-banner {
+        height: 220px;
+        padding-left: 30px;
+      }
+
+      .download-center-container {
+        position: relative;
+        margin: 0 10px;
+        padding: 30px 0 80px;
+      }
+
+      .left-menu-sidebar {
+        display: block;
+      }
+
+      .right-main-content .section-block {
+        display: block;
+        padding: 5px;
+        margin-top: 15px;
+      }
+
+      .section-block.block-tool .tools-div .tool-item:not(:last-child) {
+        margin-right: 20px;
+      }
+
+      .section-block.block-product .header {
+        flex-direction: column;
+        padding: 2px;
+      }
+
+      .section-block.block-product .header .name {
+        margin-left: 0;
+      }
+      /* 		  .tools-div{
+                    display:flex !important;
+                    flex-direction:row !important;
+                    justify-content: space-between !important;
+                } */
+      .tools-div .tool-item{
+        margin-left:10px !important;
+        margin-right:10px !important;
+        width:100px !important;
+        height:100px !important;
+      }
+      .tools-div .tool-item img{
+
+        width:100px !important;
+        height:100px !important;
+      }
+      /* .download-center-container{
+           height:432rem !important;
+       }*/
+      /*.right-main-content .block-tool{
+          height: 200px !important;
+      }*/
+
+    }
+    .name{
+      font-size: 15px !important;
+      color:#333333 !important;
+      font-family: 'HarmonyOS Sans SC';
+    }
+    .title{
+      font-size: 30px;
+      color:#333333 !important;
+    }
+    .head_title{
+      font-size: 42px !important;
+      color:#f8f8f8 !important;
+    }
+    /*.right-main-content .block-tool{
+        max-height:260px;
+
+  }*/
+    .text-center{ text-align: center;position: relative; }
+    .undrln{ border-top: 5px solid #8b8d94;width: 85px;margin: 0 auto;margin-top: 12px;}
+
+    .border-none, .section-block.block-tool .title, .m-item-sub-menu .sub-item.active{ border: none !important; }
+    .section-block.block-product .bp-section-two, .section-block.block-product .bp-section-three .title{ margin-top: 0; }
+    .section-block.block-product .bp-section-two .bp-st-sub-item, .tools-div{ margin-top: 35px;padding-top: 35px; }
+    .flx{ display: flex; }
+    .left-menu-sidebar{ width: 30%; }
+    .mnual-itm .bp-section-three{ margin-top: 0 !important; }
+    .mt-70{ margin-top: 35px; }
+    .sub-item .header{ padding: 15px; }
+    .section-block.block-product .header .name{ margin-left: 30px;font-family: 'HarmonyOS Sans SC Medium'; }
+    .mnual-itm{ display: none;width: 70%; }
+    .right-main-content .section-block{ display: block; }
+    .manual-list.selected{ display: block; }
+    .mnual-itm.selected{ display: block; }
+    .manual-list .manual-item{padding: 15px;}
+    .title.undr-ttl { font-size: 25px !important;margin-top: 20px !important;visibility: hidden;margin-bottom: 26px !important; }
+    .tools-div{ padding-bottom: 65px;justify-content: center; }
+    .section-block.block-tool .title{ padding: 0; }
+    .bp-st-sub-item, .tools-div{ border-top: 1px solid #cccccc; }
+    /*.download-center-container{ padding-bottom: 120px; }*/
+    .m-item-sub-menu .sub-item.active .header{ box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;background-color: #fff; }
+    .manual-list .manual-item:nth-child( even ) { background: #F8F8F8; }
+    .manual-list .manual-item:nth-child( odd ) { background-color: #fff;box-shadow: rgb(17 12 46 / 15%) 0px 48px 100px 0px; }
+    .manual-list .flx{ justify-content: space-between;gap: 15px; }
+    .right-main-content .block-tool{ padding-left: 0;padding-right: 0;padding-bottom: 0; }
+    .download-center-container{ padding-bottom: 0; }
+    .manual-list .flx>div{ width: 50%; }
+    .lnges{ display: flex;list-style: none !important;justify-content: space-evenly;color: #333;margin: 30px 0 !important;cursor: pointer; }
+    .lnges-menu.ls_active{ color: #e84a49; }
+    .btn{ text-align: center;margin: 50px 0 10px; }
+    a.button{ font-size: 18px;border-radius: 50px;border: 0;font-weight: bold;color: #ffffff;background: #596fa8 !important;text-decoration: none;transition: color .25s ease,border-color .25s ease,background-color .25s ease;border: 1px solid transparent;padding: 12px 30px 12px 30px;font-family: 'HarmonyOS Sans SC'; }
+    a.button:hover{ border-color: #596fa8 !important;color: #596fa8 !important;background-color: transparent !important; }
+    /*.lnges-list .blk{ display: none; }*/
+    .lnges-list.ls_selected .blk{ display: block; }
+    .flx.ls_ful>div{ width: 100%; }
+    .grid-div a{ color: #398EEF;font-weight: 400;font-size: 12px;font-family: 'HarmonyOS Sans SC'; }
+    .slct-flx{ display: flex;justify-content: right;border-bottom: 1px solid #cccccc;padding-bottom: 25px; }
+    .title.text-center{ font-weight: 400 !important;font-size: 42px !important;font-family: 'HarmonyOS Sans SC'; }
+    .bp-st-sub-item p{ font-size: 15px;font-family: 'HarmonyOS Sans SC'; }
+    .dtl { font-weight: 300;font-size: 12px;font-family: 'HarmonyOS Sans SC Light'; }
+    .pdf_date{ font-weight: 300;font-size: 13px;font-family: 'HarmonyOS Sans SC Light'; }
+    .lst_img_section{ background: linear-gradient(0deg, rgb(0 0 0 / 30%), rgb(0 0 0 / 30%)), url(https://download.revopoint3d.com/wp-content/uploads/2022/09/download_revopoint.png);text-align: center;padding: 180px 0 180px;background-size: cover;background-repeat: no-repeat;background-position: 78% 100%; }
+    .lst_img_section > *, .lst_img_section .title{ color: #fff !important; }
+    .lst_img_section .download-center-container{ padding: 0; }
+    .title.last-ttl{ font-weight: 500;font-size: 42px;font-family: 'HarmonyOS Sans SC Medium'; }
+    .inr-sbhdng { font-weight: 300;font-size: 25px;line-height: 70px;font-family: 'HarmonyOS Sans SC Light'; }
+    .inr-price { font-weight: 500;font-size: 30px;font-family: 'HarmonyOS Sans SC Medium'; }
+    .inr-price span { font-weight: 400;font-size: 23px;font-family: 'HarmonyOS Sans SC'; }
+    .btn.btn-lst .button{ font-weight: 400;font-size: 25px;font-family: 'HarmonyOS Sans SC'; }
+    .btn.btn-lst .button:hover { border-color: #fff !important;color: #fff !important;background-color: transparent !important; }
+    .select2-container--default .select2-selection--single{ border: 1px solid #8b8d94;border-radius: 50px; }
+    .select2-container--default .select2-selection--single .select2-selection__rendered{ font-weight: 400;font-size: 20px;font-family: 'HarmonyOS Sans SC'; }
+    .select2.select2-container.select2-container--default{ width: 180px !important; }
+    .select2-container .select2-selection--single .select2-selection__rendered{ padding-left: 20px;padding-right: 25px; }
+    .select2-container .select2-selection--single{ height: 40px;padding: 5px; }
+    .select2-container--default .select2-selection--single .select2-selection__arrow{ top: 7px;right: 7px; }
+    .select2-results__option{ font-size: 12px;font-weight: 400;color: #333;border-bottom: 1px solid #cccccc;font-family: 'HarmonyOS Sans SC'; }
+    .select2-container--open .select2-dropdown{ top: 10px;border: 1px solid #aaa; }
+    .select2-container--default.select2-container--open.select2-container--below .select2-selection--single{ border-radius: 50px; }
+    .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable{ background-color: transparent;color: #333; }
+    .select2-container--default .select2-results>.select2-results__options{ padding: 0 10px 0 30px;}
+    .select2-search input[type=search]:focus{ outline: none;border-color: var(--ast-global-color-0); }
+    .select2-search input[type=search]{ height: 30px;margin-bottom: 5px; }
+    .select2-results ul::-webkit-scrollbar-track { border-radius: 10px;-webkit-box-shadow: inset 0 0 6px rgb(0 0 0 / 30%); }
+    .select2-results ul::-webkit-scrollbar-thumb{ border-radius: 10px;-webkit-box-shadow: inset 0 0 6px #333;background-color: #333333; }
+    .select2-results ul::-webkit-scrollbar{ width: 5px; }
+    span.select2-dropdown.select2-dropdown--below:before { content: "";position: absolute;z-index: 0;top: -5px;left: calc(50% - -65px);width: 7px;height: 7px;transform: rotate(224deg);  background-color: white;border-bottom: 1px solid #aaa;border-right: 1px solid #aaa; }
+    .select2-container--open .select2-dropdown--below{ border-top-left-radius: 4px;border-top-right-radius: 4px; }
+    .select2-container--default .select2-results__option--selected:before { content: "";position: absolute;z-index: 1;left: -20px;top: calc(50% - 9px);width: 14px;height: 14px;background-color: #3C7DC1;border: 1px solid rgb(48,49,51);border-radius: 50%;box-shadow: inset 0 0 0 3px white, 0 0 0 4px white; }
+    .select2-container--default .select2-results__option--selected{ position: relative;background-color: transparent; }
+    .select2-container--open .select2-dropdown--above { top: -10px; }
+    .select2-container--default.select2-container--open.select2-container--above .select2-selection--single{ border-radius: 50px; }
+    .select2-container--default.select2-container--open.select2-container--above:before { border-bottom: 1px solid #aaa;border-right: 1px solid #aaa;content: "";position: absolute;   z-index: 9999;top: -15px;right: calc(50% - 75px);width: 9px;height: 7px;transform: rotate(45deg);background-color: white;border-top: 1px solid #fff;border-left: 1px solid #fff; }
+    .title.text-center.ttl-frst{ margin-bottom: 70px; }
+    @media(max-width:  1025px){
+      .lst_img_section{ padding: 100px 0 100px; }
+      .lst_img_section{ background-position: 55% 100%; }
+    }
+    @media(max-width:  767px){
+      .bp-section-two{ padding: 30px 15px; }
+      .bp-section-two .bp-st-sub-item .grid-div .grid-item{ align-items: center; }
+      .bp-section-two .bp-st-sub-item .grid-div .grid-item .grid-item-content{ flex-direction: column; }
+      .bp-section-two .bp-st-sub-item .grid-div .grid-item .grid-item-content{ margin-left: 10px; }
+      .grid-div img { width: 20%; }
+      .bp-section-two .bp-st-sub-item .grid-div{ column-gap: 20px;row-gap: 20px;grid-template-columns: 1fr 1fr;margin-top: 25px; }
+      .section-block.block-product .bp-section-two .bp-st-sub-item{ padding-bottom: 30px; }
+      .bp-section-two .bp-st-sub-item .grid-div .grid-item .grid-item-content .icon{ width: 15px;height: 15px; }
+      .title.text-center{ font-size: 30px !important; }
+      .section-block.block-product .bp-section-three{ margin-top: 20px; }
+      .mt-70{ margin-top: 30px; }
+      .download-center-body{ display: block;width: 100%; }
+      .section-block.block-product .bp-section-two .bp-st-sub-item, .tools-div { margin-top: 0px;padding-top: 20px; }
+      .title{ font-size: 20px !important; }
+      .undrln{ margin-bottom: 20px; }
+      .section-block.block-product .bp-section-two{ padding-bottom: 0; }
+      .flx{ display: block; }
+      .m-item-sub-menu .sub-item{ padding: 0; }
+      .left-menu-sidebar, .mnual-itm{ width: 100%;margin-bottom: 20px; }
+      .section-block.block-product .header{ flex-direction: row; }
+      .left-menu-sidebar img { width: 20%; }
+      .section-block.block-product .header { padding: 10px; }
+      .tools-div{ display: grid !important;grid-template-columns: 1fr 1fr 1fr; }
+      .tools-div .tool-item img{ width: 75% !important; }
+      .manual-list .flx>div{ width: 100%; }
+      .ttl-frst{ margin-bottom: 25px; }
+      .lnges{ display: grid;grid-template-columns: 1fr 1fr 1fr;margin: 0px auto 15px !important;text-align: center; }
+      .title.undr-ttl{ margin-top: 0 !important;margin-bottom: 0 !important; }
+      .right-main-content{ padding: 0; }
+      .btn{ margin: 15px 0 15px; }
+      .download-center-body > div{ margin-bottom: 0px; }
+      .mnual-itm.selected{ overflow-x: scroll;white-space: nowrap; }
+      .manual-list .manual-item { width: 500px; }
+      .lst_img_section{ padding: 27px 0;background-size: cover;background-repeat: no-repeat;background-position: 55% 100%; }
+      .slct-flx{ justify-content: center; }
+      .btn.btn-lst{ margin-bottom: 0; }
+      .inr-sbhdng{ line-height: 45px; }
+
+      /*Horizontal tab
+       ================
+      .m-item-sub-menu.active{ display: block; }
+       .section-block.block-product .header{ min-height: unset; }*/
+    }
+    .gmode img {width: 70px; height: 70px;}
+  </style>
+</head>
+<body>
+<main class="maincontent">
+
+  <div class="content">
+
+    <section>
+      <div class="revoscan">
+        <div class="rs-left">
+          <img src="https://download.revopoint3d.com/supportsucai/images/rc.png">
+          <div class="rstitle">
+            <h2>Revo Scan 5</h2>
+            <p>3Dスキャン、後処理、複数モデルの合成を一体化した無料ソフトウェア。</p>
+            <a href="/revoscan5" class="lc" style="display: none;">Learn More ></a>
+          </div>
+        </div>
+
+        <div class="rs-right">
+          <div class="rstitle" style="">
+            <h2 style="font-size: 32px;">Revo Scan V5.4.7</h2>
+            <p>Revo Scanは、モデルのスキャン、後処理、複数モデルの合成を一体化し、3Dモデリング作業を簡単に行うことができます。</p>
+            <p><span>対応OS</span>: Windows, macOS, Android, iOS</p>
+            <p><span>対応デバイス</span>: POPシリーズ、MINIシリーズ、 RANGEシリーズ、INSPIRE、MIRACO</p>
+          </div>
+          <div class="rsdownload">
+            <img src="https://cdn.shopifycdn.net/s/files/1/0538/9533/2027/files/pdf.svg" style="margin-right: 30px;">
+            <p style="font-size: 20px;">ユーザーマニュアル</p>
+          </div>
+          <div class="dl" style="margin-left: 74px;">
+            <a href="https://download.revopoint3d.com/support/download/soft/20240702-Revo-Scan-User-Manual.pdf.zip">英語 &gt;</a>
+            <a style="display: none;" href="https://download.revopoint3d.com/supportsucai/download/revoscan5/0927-cn-Revo-Scan-5-PC.pdf.zip">多言語対応 &gt;</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="software" style="margin-top: 16px">
+
+
+        <div class="softwareitem">
+              <img src="https://cdn.shopify.com/s/files/1/0538/9533/2027/files/win.svg">
+              <div class="twotitile">
+                <h3>Windows V5.4.7</h3>
+                <p>更新日付 2024-04-26</p>
+              </div>
+              <div class="dl">
+                <a href="https://download.revopoint3d.com/soft/RevoScan5-5.4.7.822-windows-x86_64.exe" target="_blank">ダウンロード</a>
+                <a href="https://drive.google.com/file/d/1mi6dhBTl16ejSLTDbid_E7ndZxmNIeO-/view?usp=sharing">Google Drive</a>
+              </div>
+            </div>
+            <div class="softwareitem">
+              <img src="https://cdn.shopify.com/s/files/1/0538/9533/2027/files/mac.svg">
+              <div class="twotitile">
+                <h3>Mac V5.4.7</h3>
+                <p>更新日付 2024-04-26</p>
+              </div>
+              <div class="dl">
+                <a href="https://download.revopoint3d.com/soft/RevoScan5-5.4.7.1163-mac-x86_64.pkg" target="_blank">ダウンロード</a>
+                <a href="https://drive.google.com/file/d/1cKh9IdzVKjJhWB3lmde7i4sSjIQLSZoB/view?usp=sharing">Google Drive</a>
+              </div>
+            </div>
+            <div class="softwareitem">
+              <img src="https://cdn.shopify.com/s/files/1/0538/9533/2027/files/ios.svg">
+              <div class="twotitile">
+                <h3>iOS V5.3.5</h3>
+                <p>更新日付 2024-05-08</p>
+              </div>
+              <div class="dl">
+                <a href="https://apps.apple.com/us/app/3d-scanner-app/id1611278474">App Store</a>
+              </div>
+            </div>
+            <div class="softwareitem">
+              <img src="https://cdn.shopify.com/s/files/1/0538/9533/2027/files/anzhuo.svg">
+              <div class="twotitile">
+                <h3>Android V5.3.4</h3>
+                <p>更新日付 2024-05-08</p>
+              </div>
+              <div class="dl">
+                <a href="https://download.revopoint3d.com/soft/RevoScan_V5.3.4.apk">ダウンロード</a>
+                <a href="https://play.google.com/store/apps/details?id=com.revopoint3d.revoscan">Google Play</a>
+              </div>
+            </div>
+
+
+      </div>
+
+    </section>
+
+    <section class="assmode">
+
+      <div class="revoscan">
+        <div class="rs-left">
+          <img src="https://download.revopoint3d.com/supportsucai/images/revopoint.png">
+          <div class="rstitle">
+            <h2>Revoアシスタント</h2>
+            <p>アクセサリーコントロールアプリ</p>
+
+          </div>
+        </div>
+
+        <div class="rs-right">
+          <div class="rstitle" style="">
+            <h2 style="font-size: 32px;margin-top: 0;">Revo アシスタント</h2>
+            <p>Revoアシスタントは、スキャン中に2軸ターンテーブルと大型ターンテーブルをリアルタイムで制御するために設計されています。</p>
+          </div>
+          <div class="gmode">
+            <div class="gmoded" style="display: flex;gap: 30px;align-items: center;">
+              <img src="https://cdn.shopifycdn.net/s/files/1/0538/9533/2027/files/gg.webp">
+              <p>幅広い<br>互換性</p>
+              <img src="https://cdn.shopifycdn.net/s/files/1/0538/9533/2027/files/gg.webp">
+              <p>ワンクリック <br>後処理</p>
+            </div>
+          </div>
+          <div class="rsdownload" style="display: none;">
+            <img src="https://cdn.shopifycdn.net/s/files/1/0538/9533/2027/files/pdf.svg" style="margin-right: 30px;">
+            <p style="font-size: 20px;">User Manual</p>
+          </div>
+          <div class="dl" style="margin-left: 74px;display: none;">
+            <a href="">English &gt;</a>
+            <a href="">Multilingual &gt;</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="software" style="margin-top: 16px">
+
+        <div class="softwareitem">
+          <img src="https://cdn.shopifycdn.net/s/files/1/0538/9533/2027/files/ios.svg">
+          <div class="twotitile">
+            <h3>iOS V1.3.0</h3>
+            <p>更新日時 2024-02-21</p>
+          </div>
+          <div class="dl">
+            <a href="https://apps.apple.com/us/app/revo-pal/id6448081097?ref=w6XUFdORxEA49">App Store</a>
+          </div>
+        </div>
+        <div class="softwareitem">
+          <img src="https://cdn.shopify.com/s/files/1/0538/9533/2027/files/IOS.png" style="width: 100% !important;margin-top: 0;padding: 80px;">
+        </div>
+        <div class="softwareitem">
+          <img src="https://cdn.shopifycdn.net/s/files/1/0538/9533/2027/files/anzhuo.svg">
+          <div class="twotitile">
+            <h3>Android V1.2.1</h3>
+            <p>更新日時 2023-07-28</p>
+          </div>
+          <div class="dl">
+            <a href="https://download.revopoint3d.com/soft/RevoAssistant_V1.2.1_202306130551_release.apk">ダウンロード</a>
+          </div>
+        </div>
+
+        <div class="softwareitem">
+          <img src="https://cdn.shopify.com/s/files/1/0538/9533/2027/files/Android_ba0cf1ed-9c9d-4ee6-86e6-8e444872715a.png" style="width: 100% !important;margin-top: 0;padding: 80px;">
+        </div>
+
+      </div>
+
+
+    </section>
+
+    <div class="supbgtitle">
+
+      <div class="suptltle">
+        <!--<h2>レガシーソフトウェア</h2>-->
+      </div>
+    </div>
+
+    <section class="lsmode">
+
+      <!--<h2 style="font-size: 32px;color: #919191;">以下のソフトウェアは更新停止です。</h2>
+      <div  class="ls">
+
+        <div class="ls-left">
+          <h2>Revoスタジオ</h2>
+          <p>Revo スタジオは、PLY、OBJ、STLの3Dモデルを編集するための使いやすいポストプロセスソフトウェアです。</p>
+        </div>
+
+        <div class="ls-right">
+          <div class="ls-right-item">
+            <img src="https://cdn.shopifycdn.net/s/files/1/0538/9533/2027/files/win.svg">
+            <div class="lssoft">
+              <p>Win V3.0.7.8</p>
+              <p>更新日時 2023-08-11</p>
+              <a href="https://download.revopoint3d.com/wp-content/uploads/download/Revo_Studio_for_win_v3.0.7.8.20230810.zip" class="dl">ダウンロード</a>
+            </div>
+          </div>
+
+          <div class="ls-right-item">
+            <img src="https://cdn.shopifycdn.net/s/files/1/0538/9533/2027/files/mac.svg">
+            <div class="lssoft">
+              <p>Mac V3.0.7.8</p>
+              <p>更新日時 2023-08-11</p>
+              <a href="https://download.revopoint3d.com/wp-content/uploads/download/Revo_Studio_for_mac_v3.0.7.8.20230810.zip" class="dl">ダウンロード</a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div  class="ls" style="margin-top: 60px;">
+
+        <div class="ls-left">
+          <h2>Revo Scan 4</h2>
+          <p>Revo Scan V4は更新停止です。より良いスキャン体験のためにRevo Scan V5をダウンロードしてください。</p>
+        </div>
+
+        <div class="ls-right">
+          <div class="ls-right-item">
+            <img src="https://cdn.shopifycdn.net/s/files/1/0538/9533/2027/files/win.svg">
+            <div class="lssoft">
+              <p>Win V4.3.5</p>
+              <p>更新日時 2024-01-15</p>
+              <a href="https://download.revopoint3d.com/wp-content/uploads/download/Revo_Scan_for_win_v4.3.5.20240111a.zip" class="dl">ダウンロード</a>
+            </div>
+          </div>
+
+          <div class="ls-right-item">
+            <img src="https://cdn.shopifycdn.net/s/files/1/0538/9533/2027/files/mac.svg">
+            <div class="lssoft">
+              <p>Mac V4.3.5</p>
+              <p>更新日時 2024-01-15</p>
+              <a href="https://download.revopoint3d.com/wp-content/uploads/download/Revo_Scan_for_mac_v4.3.5.20240111a.zip" class="dl">ダウンロード</a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>-->
+
+
+    </section>
+
+    <div class="supbgtitle">
+
+      <div class="suptltle">
+        <h2>ドキュメント</h2>
+      </div>
+    </div>
+
+    <section>
+      <div class="download-center">
+
+        <div class="download-center-container">
+          <div class="download-center-body">
+            <div class="right-main-content">
+
+              <!--POP 3D 扫描仪-->
+              <div class="section-block block-product">
+
+
+                <div class="bp-section-three">
+
+                  <div class="slct-flx"><select class="lnges" id="lnges">
+                    <option class="lnges-menu" value="">Languages</option>
+                    <option class="lnges-menu" value="lnges-list_1_1">English</option>
+                    <option class="lnges-menu" value="lnges-list_1_2">French</option>
+                    <option class="lnges-menu" value="lnges-list_1_3">Spanish</option>
+                    <option class="lnges-menu" value="lnges-list_1_4">German</option>
+                    <option class="lnges-menu" value="lnges-list_1_5">Italian</option>
+                    <option class="lnges-menu ls_active" value="lnges-list_1_6">日本語</option>
+                    <option class="lnges-menu" value="lnges-list_1_7">한국어</option>
+                    <option class="lnges-menu" value="lnges-list_1_8">中文</option>
+                    <option class="lnges-menu" value="lnges-list_1_9">中繁</option>
+                  </select></div>
+
+                  <!-- English -->
+                  <div class="lnges-list" id="lnges-list_1_1">
+                    <div class="blk">
+                      <div class="flx mt-70">
+                        <div class="left-menu-sidebar">
+                          <div class="menu-sidebar-content">
+                            <div class="m-item">
+                              <div class="m-item-sub-menu active">
+                                <div data-sub-id="eng_item_1_1" class="sub-item active">
+                                  <div class="header">
+                                    <!-- <img src="/wp-content/uploads/custom/icon-device-pop-3d.png" alt="POP 3D Scanner"/> -->
+                                    <div class="name">POP</div>
+                                  </div>
+                                </div>
+                                <div data-sub-id="eng_item_1_2" class="sub-item">
+                                  <div class="header">
+                                    <!-- <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                    <div class="name">POP 2</div>
+                                  </div>
+                                </div>
+                                <div data-sub-id="eng_item_1_7" class="sub-item">
+                                  <div class="header">
+                                    <!-- <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                    <div class="name">POP 3</div>
+                                  </div>
+                                </div>
+                                <div data-sub-id="eng_item_1_3" class="sub-item">
+                                  <div class="header">
+                                    <!--  <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                    <div class="name">MINI</div>
+                                  </div>
+                                </div>
+                                <div data-sub-id="eng_item_1_10" class="sub-item">
+                                  <div class="header">
+                                    <!--  <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 2 3D Scanner"/> -->
+                                    <div class="name">MINI 2</div>
+                                  </div>
+                                </div>
+                                <div data-sub-id="eng_item_1_4" class="sub-item">
+                                  <div class="header">
+                                    <!--  <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                    <div class="name">RANGE</div>
+                                  </div>
+                                </div>
+                                 <div data-sub-id="eng_item_1_10" class="sub-item">
+                                  <div class="header">
+                                    <!--  <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                    <div class="name">RANGE 2</div>
+                                  </div>
+                                </div>
+                                <div data-sub-id="eng_item_1_8" class="sub-item">
+                                  <div class="header">
+                                    <!-- <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                    <div class="name">INSPIRE</div>
+                                  </div>
+                                </div>
+                                 <div data-sub-id="eng_item_1_9" class="sub-item">
+                                  <div class="header">
+                                    <!-- <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                    <div class="name">MIRACO</div>
+                                  </div>
+                                </div>
+                                <div data-sub-id="eng_item_1_5" class="sub-item">
+                                  <div class="header">
+                                    <div class="name">Revo Studio</div>
+                                  </div>
+                                </div>
+                                <div data-sub-id="eng_item_1_6" class="sub-item">
+                                  <div class="header">
+                                    <div class="name">Scanning Tips</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="manual-list mnual-itm selected" id="eng_item_1_1">
+                          <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/pop/pop-usermanual-en-v3.0.pdf" target="_blank">Revopoint POP User Manual V3.0</a><div class="pdf_date">2022-10-31</div><div class="type">PDF</div></div>
+                          <div class="manual-item"  style="display: none;">><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/POP 3D Scanner _Quick _Start_ Guide V.2.1.4.pdf" target="_blank">POP 3D Scanner _Quick _Start_ Guide V.2.1.4</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+                        </div>
+
+                        <!--POP 2 3D 扫描仪-->
+                        <div id="eng_item_1_2" class="block-product mnual-itm">
+
+
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint POP 2 User Manual English.pdf" target="_blank">Revopoint POP 2 User Manual English V3.0.1 </a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/pop2/pop2-quickstartguide-en-v4.0-2023.4.14.pdf" target="_blank">POP 2 Quick Start Guide V4.0</a><div class="pdf_date">2023-08-09</div><div class="type">PDF</div></div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!--POP 3 3D 扫描仪-->
+                        <div id="eng_item_1_7" class="block-product mnual-itm">
+
+
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item" ><a class="name" href="https://download.revopoint3d.com/support/download/pop3/pop3-quickstartguide-en-v2.0-2024.4.11.pdf" target="_blank">Revopoint POP 3 Quick Start Guide V2.0 </a><div class="pdf_date">2024-04-11</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+
+
+
+
+                        <!--POP mini 3D 扫描仪-->
+                        <div id="eng_item_1_3" class="block-product mnual-itm">
+
+
+                          <div class="bp-section-mn-list">
+                            <div class="bp-section-three">
+                              <div class="manual-list active">
+
+                                <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint%20MINI%20User%20Manual.pdf" target="_blank">Revopoint MINI 3D scanner User Manual English V1.0.1</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+                                <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Dual-axis Turntable Quickstart Guide.pdf" target="_blank">Revopoint Dual-axis Turntable I Quick Start Guide V2.0</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+                                <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Dual-axis Turntable II-QSG--V1.0.pdf" target="_blank">Revopoint Dual-axis Turntable II Quick Start Guide V1.0</a><div class="pdf_date">2023-05-30</div><div class="type">PDF</div></div>
+                                <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint Handheld Stabilizer-User Manual.pdf" target="_blank">Revopoint Handheld Stabilizer-User Manual V1.1</a><div class="pdf_date">2023-2-10</div><div class="type">PDF</div></div>
+
+                                <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/mini/mini-quickstartguide-en-v3.0-2023.7.27.pdf" target="_blank">Revopoint MINI Quick Start Guide V3.0</a><div class="pdf_date">2023-08-09</div><div class="type">PDF</div>
+
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+                        <!-- MINI 2 3D 扫描仪-->
+                        <div id="eng_item_1_10" class="block-product mnual-itm">
+
+
+                          <div class="bp-section-mn-list">
+                            <div class="bp-section-three">
+                              <div class="manual-list active">
+
+                                <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint%20MINI%20User%20Manual.pdf" target="_blank">Revopoint MINI 3D scanner User Manual English V1.0.1</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+                                <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Dual-axis Turntable Quickstart Guide.pdf" target="_blank">Revopoint Dual-axis Turntable I Quick Start Guide V2.0</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+                               
+                                <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/mini2/mini2-quickstartguide-en-v2.0-2024.2.26.pdf" target="_blank">Revopoint MINI 2 Quick Start Guide V1.0</a><div class="pdf_date">2024-02-04</div><div class="type">PDF</div>
+                                
+
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+                        <!--Range 3D 扫描仪-->
+                        <div id="eng_item_1_4" class="block-product mnual-itm">
+                          <div class="bp-section-mn-list">
+                            <div class="bp-section-three">
+                              <div class="manual-list active">
+
+                                <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/range/range-quickstartguide-en-2.0-2023.8.21.pdf" target="_blank">Revopoint Range Quick Start Guide V2.0</a><div class="pdf_date">2023-08-22</div><div class="type">PDF</div></div>
+                                <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Large Turntable-User Manual V1.0.pdf" target="_blank">Revopoint Large Turntable User Manual V1.0</a><div class="pdf_date">2023-04-21</div><div class="type">PDF</div></div>
+
+
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+
+                          <!--Range 2 3D 扫描仪-->
+                        <div id="eng_item_1_10" class="block-product mnual-itm">
+                          <div class="bp-section-mn-list">
+                            <div class="bp-section-three">
+                              <div class="manual-list active">
+
+                                <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/range2/range2-quickstartguide-en-v2.0-2024.3.21.pdf" target="_blank">RANGE 2 Quick Start Guide V2.0</a><div class="pdf_date">2024-03-21</div><div class="type">PDF</div></div>  
+
+
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <!--INSPIRE 3D 扫描仪-->
+                        <div id="eng_item_1_8" class="block-product mnual-itm">
+                          <div class="bp-section-mn-list">
+                            <div class="bp-section-three">
+                              <div class="manual-list active">
+
+                                 <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/inspire/inspire-quickstartguide-en-v1.0-2024.4.15.pdf" target="_blank">Revopoint INSPIRE Quick Start Guide V1.0</a><div class="pdf_date">2024-04-15</div><div class="type">PDF</div></div>
+                                 <div class="manual-item" style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/INSPIRE User  Manual-1027.pdf" target="_blank">Revopoint INSPIRE User  Manual V1.0</a><div class="pdf_date">2023-11-23</div><div class="type">PDF</div></div>
+
+
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+
+
+                        <!--MIRACO 3D 扫描仪-->
+                        <div id="eng_item_1_9" class="block-product mnual-itm">
+                          <div class="bp-section-mn-list">
+                            <div class="bp-section-three">
+                              <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/miraco/miraco-quickstartguide-en-v1.1-2024.4.12.pdf" target="_blank">Revopoint MIRACO Quick Start Guide V1.1</a><div class="pdf_date">2024-04-12</div><div class="type">PDF</div></div>
+
+
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+
+                        
+                        <!-- Revo Studio -->
+                        <div id="eng_item_1_5" class="block-product mnual-itm">
+                          <div class="bp-section-mn-list">
+                            <div class="bp-section-three">
+                              <div class="manual-list active">
+
+                                <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revo-Studio-User-Manual.pdf" target="_blank">Revo Studio User Manual V2.0.0</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <!-- Scanning Skills -->
+                        <div id="eng_item_1_6" class="block-product mnual-itm">
+                          <div class="bp-section-mn-list">
+                            <div class="bp-section-three">
+                              <div class="manual-list active">
+
+                                <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Advanced-Scanning-Tips%20V3.0.pdf" target="_blank">Advanced Scanning Tips tutorial V3.0</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+                <!-- French -->
+                <div class="lnges-list" id="lnges-list_1_2">
+                  <div class="blk">
+                    <div class="flx mt-70">
+                      <div class="left-menu-sidebar">
+                        <div class="menu-sidebar-content">
+                          <div class="m-item">
+                            <div class="m-item-sub-menu active">
+                              <div data-sub-id="fnch_item_1_1" class="sub-item active">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop-3d.png" alt="POP 3D Scanner"/> -->
+                                  <div class="name">POP</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="fnch_item_1_2" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                  <div class="name">POP 2</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="fnch_item_1_7" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                  <div class="name">POP 3</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="fnch_item_1_3" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">MINI</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="fnch_item_1_4" class="sub-item">
+                                <div class="header">
+                                  <div class="name">RANGE</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="fnch_item_1_10" class="sub-item">
+                                <div class="header">
+                                  <div class="name">RANGE 2</div>
+                                </div>
+                              </div>
+                                <div data-sub-id="fnch_item_1_8" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                  <div class="name">INSPIRE</div>
+                                </div>
+                              </div>
+                               <div data-sub-id="fnch_item_1_9" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                  <div class="name">MIRACO</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="fnch_item_1_5" class="sub-item">
+                                <div class="header">
+                                  <div class="name">Revo Studio</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="fnch_item_1_6" class="sub-item">
+                                <div class="header">
+                                  <div class="name">Scanning Tips</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="manual-list mnual-itm selected" id="fnch_item_1_1">
+
+                        <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/pop/pop-usermanual-fr-v3.0.pdf" target="_blank">Revopoint SCANNER POP 3D Manuel d'Utilisateur V3.0</a><div class="pdf_date">2022-10-31</div><div class="type">PDF</div></div>
+
+                        <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/POP 3D Scanner _Quick _Start_ Guide V.2.1.4.pdf" target="_blank">POP 3D Scanner _Quick _Start_ Guide V.2.1.4</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+
+
+                      </div>
+
+
+                      <!--POP 2 3D 扫描仪-->
+                      <div id="fnch_item_1_2" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-three">
+                          <div class="manual-list active">
+
+                            <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint POP 2 3D SCANNER Manuel Utilisateur.pdf" target="_blank">Revopoint POP 2 3D SCANNER Manuel Utilisateur</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+                            <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint POP 2 3D SCANNER Guida Rapida.pdf" target="_blank">Revopoint POP 2 3D SCANNER Guida Rapida
+                            </a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+
+                          </div>
+                        </div>
+                      </div>
+
+                      <!--POP 3 3D 扫描仪-->
+                      <div id="fnch_item_1_7" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-three">
+                          <div class="manual-list active">
+
+                            <div class="manual-item" ><a class="name" href="https://download.revopoint3d.com/support/download/pop3/pop3-quickstartguide-fr-v2.0-2024.3.1.pdf" target="_blank">Revopoint POP 3Guide de Démarrage Rapide V2.0</a><div class="pdf_date">2023-08-22</div><div class="type">PDF</div></div>
+
+
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <!--POP mini 3D 扫描仪-->
+                      <div id="fnch_item_1_3" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint MINI 3D SCANNER Manuel Utilisateur.pdf" target="_blank">Revopoint MINI 3D SCANNER Manuel Utilisateur V1.01</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+                              <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint MINI 3D SCANNER Guide de Démarrage Rapide.pdf" target="_blank">Revopoint MINI 3D SCANNER Guide de Démarrage Rapide</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!--Range 3D 扫描仪-->
+                      <div id="fnch_item_1_4" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/range2/range2-quickstartguide-fr-v2.0-2024.2.23.pdf" target="_blank">RANGE Guide de Démarrage Rapide V2.0</a><div class="pdf_date">2023-08-22</div><div class="type">PDF</div></div>
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                       <!--Range 2 3D 扫描仪-->
+                      <div id="fnch_item_1_10" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/range2/range2-quickstartguide-fr-v2.0-2024.2.23.pdf" target="_blank">RANGE 2 Guide d’Opération Rapide V1.0</a><div class="pdf_date">2024-01-12</div><div class="type">PDF</div></div>
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <!--INSPIRE 3D 扫描仪-->
+                      <div id="fnch_item_1_8" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                             <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/inspire/inspire-quickstartguide-fr-v1.0-2024.4.15.pdf" target="_blank">Revopoint INSPIRE Guide d’Opération Rapide V1.0</a><div class="pdf_date">2024-04-15</div><div class="type">PDF</div></div>
+                                 <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/INSPIRE User Manual-法语-1027.pdf" target="_blank">Revopoint INSPIRE Manuel d'Utilisateur  V1.0</a><div class="pdf_date">2023-11-23</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!--MIRACO 3D 扫描仪-->
+                      <div id="fnch_item_1_9" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                             <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/miraco/miraco-quickstartguide-fr-v1.0-2024.2.1.pdf" target="_blank">Revopoint MIRACO Guide d’Opération Rapide V1.0</a><div class="pdf_date">2024-01-26</div><div class="type">PDF</div></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      
+                      <!-- Revo Studio -->
+                      <div id="fnch_item_1_5" class="block-product mnual-itm">
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revo-Studio-User-Manual.pdf" target="_blank">Revo Studio User Manual V2.0.0</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Scanning Skills -->
+                      <div id="fnch_item_1_6" class="block-product mnual-itm">
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Advanced-Scanning-Tips%20V3.0.pdf" target="_blank">Advanced Scanning Tips tutorial V3.0</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+                <!-- Spanish -->
+                <div class="lnges-list" id="lnges-list_1_3">
+                  <div class="blk">
+                    <div class="flx mt-70">
+                      <div class="left-menu-sidebar">
+                        <div class="menu-sidebar-content">
+                          <div class="m-item">
+                            <div class="m-item-sub-menu active">
+                              <div data-sub-id="spn_item_1_1" class="sub-item active">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop-3d.png" alt="POP 3D Scanner"/> -->
+                                  <div class="name">POP</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="spn_item_1_2" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                  <div class="name">POP 2</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="spn_item_1_7" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                  <div class="name">POP 3</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="spn_item_1_3" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">MINI</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="spn_item_1_4" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">RANGE</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="spn_item_1_10" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">RANGE 2</div>
+                                </div>
+                              </div>
+                               <div data-sub-id="spn_item_1_8" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                  <div class="name">INSPIRE</div>
+                                </div>
+                              </div>
+                               <div data-sub-id="spn_item_1_9" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                  <div class="name">MIRACO</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="spn_item_1_5" class="sub-item">
+                                <div class="header">
+                                  <div class="name">Revo Studio</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="spn_item_1_6" class="sub-item">
+                                <div class="header">
+                                  <div class="name">Scanning Tips</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="manual-list mnual-itm selected" id="spn_item_1_1">
+
+                        <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint ESCÁNER POP 3D Manual de usuario V3.0.pdf" target="_blank">Revopoint ESCÁNER POP 3D Manual de usuario V3.0</a><div class="pdf_date">2022-10-31</div><div class="type">PDF</div></div>
+
+                        <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/POP 3D Scanner _Quick _Start_ Guide V.2.1.4.pdf" target="_blank">POP 3D Scanner _Quick _Start_ Guide V.2.1.4</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+
+
+                      </div>
+
+
+                      <!--POP 2 3D 扫描仪-->
+                      <div id="spn_item_1_2" class="block-product mnual-itm">
+                        <div class="bp-section-three">
+                          <div class="manual-list active">
+
+
+                            <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint Escáner 3D POP 2 Manual de usuario.pdf" target="_blank">Revopoint Escáner 3D POP 2 Manual de usuario</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+                            <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint ESCANER POP 2 3D Guía de inicio rápido.pdf" target="_blank">Revopoint ESCANER POP 2 3D Guía de inicio rápido</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <!--POP 3 3D 扫描仪-->
+                      <div id="spn_item_1_7" class="block-product mnual-itm">
+                        <div class="bp-section-three">
+                          <div class="manual-list active">
+
+
+                            <div class="manual-item" ><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/POP 3 Guía de inicio rápido V2.0-0817-西班牙语.pdf" target="_blank">Revopoint POP 3Guía de inicio rápido V2.0</a><div class="pdf_date">2023-08-22</div><div class="type">PDF</div></div>
+
+
+
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                      <!--POP mini 3D 扫描仪-->
+                      <div id="spn_item_1_3" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint ESCANER MINI 3D Guía de inicio rápido.pdf" target="_blank">Revopoint ESCANER MINI 3D Guía de inicio rápido</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+                              <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint Escáner 3D MINI Manual de usuario.pdf" target="_blank">Revopoint Escáner 3D MINI Manual de usuario V1.01</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--Range 扫描仪-->
+                      <div id="spn_item_1_4" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/RANGE Guía de inicio rápido V2.0-0821.pdf" target="_blank">RANGE Guía de inicio rápido V2.0</a><div class="pdf_date">2023-08-22</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                       <!--Range 2 扫描仪-->
+                      <div id="spn_item_1_10" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/RANGE 2 Guía de inicio rápido V1.0.pdf" target="_blank">RANGE 2 Guía de inicio rápido V1.0</a><div class="pdf_date">2024-01-12</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <!--INSPIRE 扫描仪-->
+                      <div id="spn_item_1_8" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/INSPIRE Guía de inicio rápido-V1.0-2024.4.15.pdf" target="_blank">Revopoint INSPIRE Guía de inicio rápido V1.0</a><div class="pdf_date">2024-04-15</div><div class="type">PDF</div></div>
+                                 <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/INSPIRE User Manual-西班牙语-1027.pdf" target="_blank">Revopoint INSPIRE Manual del Usuario V1.0</a><div class="pdf_date">2023-11-23</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                       <!--MIRACO 扫描仪-->
+                      <div id="spn_item_1_9" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/MIRACO-Guía de Inicio Rápido-V1.0.pdf" target="_blank">Revopoint MIRACO Guía de inicio rápido V1.0</a><div class="pdf_date">2024-01-26</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      
+                      <!-- Revo Studio -->
+                      <div id="spn_item_1_5" class="block-product mnual-itm">
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revo-Studio-User-Manual.pdf" target="_blank">Revo Studio User Manual V2.0.0</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Scanning Skills -->
+                      <div id="spn_item_1_6" class="block-product mnual-itm">
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Advanced-Scanning-Tips%20V3.0.pdf" target="_blank">Advanced Scanning Tips tutorial V3.0</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+
+
+                <!-- German -->
+                <div class="lnges-list" id="lnges-list_1_4">
+                  <div class="blk">
+                    <div class="flx mt-70">
+                      <div class="left-menu-sidebar">
+                        <div class="menu-sidebar-content">
+                          <div class="m-item">
+                            <div class="m-item-sub-menu active">
+                              <div data-sub-id="grmn_item_1_1" class="sub-item active">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop-3d.png" alt="POP 3D Scanner"/> -->
+                                  <div class="name">POP</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="grmn_item_1_2" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                  <div class="name">POP 2</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="grmn_item_1_7" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                  <div class="name">POP 3</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="grmn_item_1_3" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">MINI</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="grmn_item_1_4" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">RANGE</div>
+                                </div>
+                              </div>
+                               <div data-sub-id="grmn_item_1_10" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">RANGE 2</div>
+                                </div>
+                              </div>
+                                <div data-sub-id="grmn_item_1_8" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">INSPIRE</div>
+                                </div>
+                              </div>
+                               <div data-sub-id="grmn_item_1_9" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">MIRACO</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="grmn_item_1_5" class="sub-item">
+                                <div class="header">
+                                  <div class="name">Revo Studio</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="grmn_item_1_6" class="sub-item">
+                                <div class="header">
+                                  <div class="name">Scanning Tips</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="manual-list mnual-itm selected" id="grmn_item_1_1">
+                        <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint POP 3D-SCANNER Bedienungsanleitung V3.0.pdf" target="_blank">Revopoint POP 3D scanner Bedienungsanleitung V3.0</a><div class="pdf_date">2022-10-31</div><div class="type">PDF</div></div>
+
+                        <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/POP 3D Scanner _Quick _Start_ Guide V.2.1.4.pdf" target="_blank">Revopoint POP 3D Scanner _Quick _Start_ Guide V.2.1.4</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+
+
+                      </div>
+
+
+                      <!--POP 2 3D 扫描仪-->
+                      <div id="grmn_item_1_2" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-three">
+                          <div class="manual-list active">
+
+                            <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint POP 2 3D SCANNER Gebrauchsanleitung.pdf" target="_blank">Revopoint POP 2 3D SCANNER Gebrauchsanleitung</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+
+                          </div>
+                        </div>
+                      </div>
+
+                      <!--POP 3 3D 扫描仪-->
+                      <div id="grmn_item_1_7" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-three">
+                          <div class="manual-list active">
+
+                            <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/POP 3 Schnellstartanleitung V2.0-0817-德语.pdf" target="_blank">Revopoint POP 3 Schnellstartanleitung V2.0</a><div class="pdf_date">2023-08-22</div><div class="type">PDF</div></div>
+
+
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <!--POP mini 3D 扫描仪-->
+                      <div id="grmn_item_1_3" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint MINI 3D SCANNER Benutzerhandbuch.pdf" target="_blank">Revopoint MINI 3D SCANNER Benutzerhandbuch V1.01</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--Range 3D 扫描仪-->
+                      <div id="grmn_item_1_4" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/RANGE Schnellstartanleitung V2.0-0821.pdf" target="_blank">RANGE Schnellstartanleitung V2.0 </a><div class="pdf_date">2023-08-22</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                       <!--Range 2 3D 扫描仪-->
+                      <div id="grmn_item_1_10" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/RANGE 2  SchnellstartanIeitung V1.0.pdf" target="_blank">RANGE 2  SchnellstartanIeitung V1.0 </a><div class="pdf_date">2024-01-12</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!--INSPIRE 3D 扫描仪-->
+                      <div id="grmn_item_1_8" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                             <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/INSPIRE-Kurzanleitung-V1.0-2024.4.15.pdf" target="_blank">Revopoint INSPIRE Kurzanleitung V1.0</a><div class="pdf_date">2024-04-12</div><div class="type">PDF</div></div>
+                                 <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/INSPIRE-User  Manual-德语-1027.pdf" target="_blank">Revopoint INSPIRE Benutzerhandbuch V1.0</a><div class="pdf_date">2023-11-23</div><div class="type">PDF</div></div>
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--MIRACO 3D 扫描仪-->
+                      <div id="grmn_item_1_9" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                             <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/MIRACO-Kurzanleitung-V1.0-2024.2.1.pdf" target="_blank">Revopoint MIRACO Kurzanleitung V1.0</a><div class="pdf_date">2024-02-01</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      
+                      <!-- Revo Studio -->
+                      <div id="grmn_item_1_5" class="block-product mnual-itm">
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revo-Studio-User-Manual.pdf" target="_blank">Revo Studio User Manual V2.0.0</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Scanning Skills -->
+                      <div id="grmn_item_1_6" class="block-product mnual-itm">
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Advanced-Scanning-Tips%20V3.0.pdf" target="_blank">Advanced Scanning Tips tutorial V3.0</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- Italian -->
+                <div class="lnges-list" id="lnges-list_1_5">
+                  <div class="blk">
+                    <div class="flx mt-70">
+                      <div class="left-menu-sidebar">
+                        <div class="menu-sidebar-content">
+                          <div class="m-item">
+                            <div class="m-item-sub-menu active">
+                              <div data-sub-id="itln_item_1_1" class="sub-item active">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop-3d.png" alt="POP 3D Scanner"/> -->
+                                  <div class="name">POP</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="itln_item_1_2" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                  <div class="name">POP 2</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="itln_item_1_7" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                  <div class="name">POP 3</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="itln_item_1_3" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">MINI</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="itln_item_1_4" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">Range</div>
+                                </div>
+                              </div>
+                               <div data-sub-id="itln_item_1_10" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">Range 2</div>
+                                </div>
+                              </div>
+                                <div data-sub-id="itln_item_1_8" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">INSPIRE</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="itln_item_1_9" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">MIRACO</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="itln_item_1_5" class="sub-item">
+                                <div class="header">
+                                  <div class="name">Revo Studio</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="itln_item_1_6" class="sub-item">
+                                <div class="header">
+                                  <div class="name">Scanning Tips</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="manual-list mnual-itm selected" id="itln_item_1_1">
+
+                        <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint POP 3D SCANNER Manuale Utente V3.0.pdf" target="_blank">Revopoint POP 3D SCANNER Manuale Utente V3.0</a><div class="pdf_date">2022-10-31</div><div class="type">PDF</div></div>
+
+                        <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/POP 3D Scanner _Quick _Start_ Guide V.2.1.4.pdf" target="_blank">POP 3D Scanner _Quick _Start_ Guide V.2.1.4</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+
+
+                      </div>
+
+
+                      <!--POP 2 3D 扫描仪-->
+                      <div id="itln_item_1_2" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-three">
+                          <div class="manual-list active">
+
+                            <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint POP 2 3D SCANNER Manuale Utente.pdf" target="_blank">Revopoint POP 2 3D SCANNER Manuale Utente V3.0.1</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+                            <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint POP 2 Guida Rapida.pdf" target="_blank">Revopoint POP 2 3D SCANNER Manuale Utente V3.0.1</a><div class="pdf_date">2022-11-30</div><div class="type">PDF</div></div>
+
+
+
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <!--POP 3 3D 扫描仪-->
+                      <div id="itln_item_1_7" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-three">
+                          <div class="manual-list active">
+
+                            <div class="manual-item" ><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/POP 3 Guida Rapida V2.0-0817-意大利语.pdf" target="_blank">Revopoint POP 3 Guida Rapida v2.0</a><div class="pdf_date">2023-08-22</div><div class="type">PDF</div></div>
+
+
+
+
+
+                          </div>
+                        </div>
+                      </div>
+
+                      <!--POP mini 3D 扫描仪-->
+                      <div id="itln_item_1_3" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint MINI 3D SCANNER Manuale Utente.pdf" target="_blank">Revopoint MINI 3D SCANNER Manuale Utente V1.01</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+                              <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint MINI 3D SCANNER Guida Rapida.pdf" target="_blank">Revopoint MINI 3D SCANNER Guida Rapida</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--Range 3D 扫描仪-->
+                      <div id="itln_item_1_4" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/RANGE Guida Rapida V2.0-0821.pdf" target="_blank">RANGE Guida Rapida V2.0</a><div class="pdf_date">2023-08-22</div><div class="type">PDF</div></div>
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                       <!--Range 2 3D 扫描仪-->
+                      <div id="itln_item_1_10" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/RANGE 2 Guida Rapida V1.0.pdf" target="_blank">RANGE 2 Guida Rapida V1.0</a><div class="pdf_date">2024-01-12</div><div class="type">PDF</div></div>
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!--INSPIRE3D 扫描仪-->
+                      <div id="itln_item_1_8" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                             <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/INSPIRE-Guida Rapida-V1.0-2024.4.15.pdf" target="_blank">Revopoint INSPIRE Guida Rapida V1.0</a><div class="pdf_date">2024-04-15</div><div class="type">PDF</div></div>
+                                 <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/INSPIRE-User  Manual-意大利语-1027.pdf" target="_blank">Revopoint INSPIRE Manuale Utente V1.0</a><div class="pdf_date">2023-11-23</div><div class="type">PDF</div></div>
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                       <!--MIRACO 扫描仪-->
+                      <div id="itln_item_1_9" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                             <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/MIRACO-Guida Rapida-V1.0.pdf" target="_blank">Revopoint MIRACO Guida Rapida V1.0</a><div class="pdf_date">2024-01-26</div><div class="type">PDF</div></div>
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <!-- Revo Studio -->
+                      <div id="itln_item_1_5" class="block-product mnual-itm">
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revo-Studio-User-Manual.pdf" target="_blank">Revo Studio User Manual V2.0.0</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Scanning Skills -->
+                      <div id="itln_item_1_6" class="block-product mnual-itm">
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Advanced-Scanning-Tips%20V3.0.pdf" target="_blank">Advanced Scanning Tips tutorial V3.0</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- 日本語 Japanese-->
+                <div class="lnges-list ls_selected" id="lnges-list_1_6">
+                  <div class="blk">
+                    <div class="flx mt-70">
+                      <div class="left-menu-sidebar">
+                        <div class="menu-sidebar-content">
+                          <div class="m-item">
+                            <div class="m-item-sub-menu active">
+                              <div data-sub-id="jpn_item_1_1" class="sub-item active">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop-3d.png" alt="POP 3D Scanner"/> -->
+                                  <div class="name">POP</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="jpn_item_1_2" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                  <div class="name">POP 2</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="jpn_item_1_7" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                  <div class="name">POP 3</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="jpn_item_1_3" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">MINI</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="jpn_item_1_11" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 2 3D Scanner"/> -->
+                                  <div class="name">MINI 2</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="jpn_item_1_4" class="sub-item">
+                                <div class="header">
+                                  <div class="name">Range</div>
+                                </div>
+                              </div>
+                               <div data-sub-id="jpn_item_1_10" class="sub-item">
+                                <div class="header">
+                                  <div class="name">Range 2</div>
+                                </div>
+                              </div>
+                               <div data-sub-id="jpn_item_1_8" class="sub-item">
+                                <div class="header">
+                                  <div class="name">INSPIRE</div>
+                                </div>
+                              </div>
+                               <div data-sub-id="jpn_item_1_9" class="sub-item">
+                                  <div class="header">
+                                    <!-- <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                    <div class="name">MIRACO</div>
+                                  </div>
+                                </div>
+                              <div data-sub-id="jpn_item_1_5" class="sub-item">
+                                <div class="header">
+                                  <div class="name">Revo Studio</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="jpn_item_1_6" class="sub-item">
+                                <div class="header">
+                                  <div class="name">Scanning Tips</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="manual-list mnual-itm selected" id="jpn_item_1_1">
+
+                        <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/pop/pop-usermanual-jp-v3.0.pdf" target="_blank">Revopoint POP 3D スキャナーユーザーマニュアル V3.0</a><div class="pdf_date">2022-12-7</div><div class="type">PDF</div></div>
+
+
+
+                      </div>
+
+
+                      <!--POP 2 3D 扫描仪-->
+                      <div id="jpn_item_1_2" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-three">
+                          <div class="manual-list active">
+
+                            <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint POP 2 3D スキャナーユーザーマニュアル.pdf" target="_blank">Revopoint POP 2 3D スキャナーユーザーマニュアル</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+                            <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/pop2/pop2-quickstartguide-jp-v4.0-2023.4.14.pdf" target="_blank">POP 2 クイックスタートガイドV4.0</a><div class="pdf_date">2023-08-09</div><div class="type">PDF</div></div>
+
+
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <!--POP 3 3D 扫描仪-->
+                      <div id="jpn_item_1_7" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-three">
+                          <div class="manual-list active">
+
+                            <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/pop3/pop3-quickstartguide-jp-v2.0-2024.3.1.pdf"" target="_blank">Revopoint POP 3 クイックスタートガイド V2.0</a><div class="pdf_date">2024-03-01</div><div class="type">PDF</div></div>
+
+
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <!--POP mini 3D 扫描仪-->
+                      <div id="jpn_item_1_3" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/日本語-MINIユーザーマニュアル.pdf" target="_blank">Revopoint MINIユーザーマニュアル V1.01</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/mini/mini-quickstartguide-jp-v3.0-2023.7.27.pdf" target="_blank">MINI クイックスタートガイド V3.0</a><div class="pdf_date">2023-08-09</div><div class="type">PDF</div></div>
+                              <div class="manual-item" style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint 2軸ターンテーブル クイックスタートガイド.pdf" target="_blank">Revopoint 2軸ターンテーブル クイックスタートガイド V2.0</a><div class="pdf_date">2022-09-26</div><div class="type">PDF</div></div>
+                              <div class="manual-item" style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/2軸ターンテーブルII クイックスタートガイド--V1.0.pdf" target="_blank">Revopoint 2軸ターンテーブルII クイックスタートガイド V1.0</a><div class="pdf_date">2023-05-30</div><div class="type">PDF</div></div>
+
+                              <div class="manual-item" style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint ハンドヘルドスタビライザー取扱説明書.pdf" target="_blank">Revopoint ハンドヘルドスタビライザー取扱説明書 V1.1</a><div class="pdf_date">2023-2-10</div><div class="type">PDF</div></div>
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--MINI 2 3D 扫描仪-->
+                      <div id="jpn_item_1_11" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/日本語-MINIユーザーマニュアル.pdf" target="_blank">Revopoint MINIユーザーマニュアル V1.01</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/mini2/mini2-quickstartguide-jp-v2.0-2024.2.26.pdf" target="_blank">MINI 2 クイックスタートガイド V2.0</a><div class="pdf_date">2024-02-26</div><div class="type">PDF</div></div>
+                            
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--Range 3D 扫描仪-->
+                      <div id="jpn_item_1_4" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/range/range-quickstartguide-jp-2.0-2023.8.21.pdf" target="_blank">RANGE 3D スキャナークイックスタートガイドV2.0</a><div class="pdf_date">2023-08-22</div><div class="type">PDF</div></div>
+                              <div class="manual-item" style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/大型ターンテーブル 取扱説明書 V1.0.pdf" target="_blank">大型ターンテーブル 取扱説明書 V1.0</a><div class="pdf_date">2023-04-21</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                        <!--Range 2 3D 扫描仪-->
+                      <div id="jpn_item_1_10" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/range2/range2-quickstartguide-jp-v2.0-2024.2.23.pdf" target="_blank">RANGE 2 クイックスタートガイド V2.0</a><div class="pdf_date">2024-02-23</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--INSPIRE 3D 扫描仪-->
+                      <div id="jpn_item_1_8" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                                 <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/inspire/inspire-quickstartguide-jp-v1.0-2024.4.15.pdf" target="_blank">Revopoint INSPIRE クイックスタートガイド V1.0</a><div class="pdf_date">2024-04-15</div><div class="type">PDF</div></div>
+                                 <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/INSPIRE-User  Manual-日语-1027.pdf" target="_blank">Revopoint INSPIRE ユーザーマニュアル V1.0</a><div class="pdf_date">2023-11-23</div><div class="type">PDF</div></div>
+                              
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                     <!--MIRACO 3D 扫描仪-->
+                        <div id="jpn_item_1_9" class="block-product mnual-itm">
+                         
+                          
+                          <div class="bp-section-mn-list">
+                            <div class="bp-section-three">
+                              <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/miraco/miraco-quickstartguide-jp-v1.0-2024.2.1.pdf" target="_blank">Revopoint MIRACO クイックスタートガイド-V1.0</a><div class="pdf_date">2024-02-01</div><div class="type">PDF</div></div>
+
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      
+                      <!-- Revo Studio -->
+                      <div id="jpn_item_1_5" class="block-product mnual-itm">
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revo-Studio-User-Manual.pdf" target="_blank">Revo Studio User Manual V2.0.0</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Scanning Skills -->
+                      <div id="jpn_item_1_6" class="block-product mnual-itm">
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Advanced-Scanning-Tips%20V3.0.pdf" target="_blank">Advanced Scanning Tips tutorial V3.0</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- 한국어 Korean-->
+                <div class="lnges-list" id="lnges-list_1_7">
+                  <div class="blk">
+                    <div class="flx mt-70">
+                      <div class="left-menu-sidebar">
+                        <div class="menu-sidebar-content">
+                          <div class="m-item">
+                            <div class="m-item-sub-menu active">
+                              <div data-sub-id="kore_item_1_1" class="sub-item active">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop-3d.png" alt="POP 3D Scanner"/> -->
+                                  <div class="name">POP</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="kore_item_1_2" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                  <div class="name">POP 2</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="kore_item_1_7" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                  <div class="name">POP 3</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="kore_item_1_3" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">MINI</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="kore_item_1_4" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">Range</div>
+                                </div>
+                              </div>
+                               <div data-sub-id="kore_item_1_10" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">Range 2</div>
+                                </div>
+                              </div>
+                               <div data-sub-id="kore_item_1_8" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">INSPIRE</div>
+                                </div>
+                              </div>
+                               <div data-sub-id="kore_item_1_9" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">MIRACO</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="kore_item_1_5" class="sub-item">
+                                <div class="header">
+                                  <div class="name">Revo Studio</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="kore_item_1_6" class="sub-item">
+                                <div class="header">
+                                  <div class="name">Scanning Tips</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="manual-list mnual-itm selected" id="kore_item_1_1">
+
+                        <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/POP 3D Scanner _Quick _Start_ Guide V.2.1.4.pdf" target="_blank">POP 3D Scanner _Quick _Start_ Guide V.2.1.4</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+
+
+                      </div>
+
+
+                      <!--POP 2 3D 扫描仪-->
+                      <div id="kore_item_1_2" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-three">
+                          <div class="manual-list active">
+
+                            <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint POP 2 3D 스캐너 사용자 설명서.pdf" target="_blank">Revopoint POP 2 3D 스캐너 사용자 설명서</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+                            <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint POP 2 3D 스캐너 빠른 시작 가이드.pdf" target="_blank">Revopoint POP 2 3D 스캐너 빠른 시작 가이드</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+
+                          </div>
+                        </div>
+                      </div>
+
+                      <!--POP 3 3D 扫描仪-->
+                      <div id="kore_item_1_7" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-three">
+                          <div class="manual-list active">
+
+                            <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/pop3/pop3-quickstartguide-kr-v2.0-2024.3.1.pdf" target="_blank">Revopoint POP_3 빠른 시작 가이드 V2.0</a><div class="pdf_date">2024-03-01</div><div class="type">PDF</div></div>
+
+
+
+
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <!--POP mini 3D 扫描仪-->
+                      <div id="kore_item_1_3" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint MINI 3D 스캐너 사용자 설명서.pdf" target="_blank">Revopoint MINI 3D 스캐너 사용자 설명서 V1.01</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint 듀얼 축 턴테이블 퀵 스타트 가이드.pdf" target="_blank">Revopoint 듀얼 축 턴테이블 퀵 스타트 가이드 V1.0</a><div class="pdf_date">2022-10-28</div><div class="type">PDF</div></div>
+                              <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint MINI 3D 스캐너 빠른 시작 가이드.pdf" target="_blank">Revopoint MINI 3D 스캐너 빠른 시작 가이드</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--Range 3D 扫描仪-->
+                      <div id="kore_item_1_4" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/RANGE 빠른 시작 가이드-V2.0-0821.pdf" target="_blank">RANGE 빠른 시작 가이드 V2.0</a><div class="pdf_date">2023-08-22</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                       <!--Range 2 3D 扫描仪-->
+                      <div id="kore_item_1_10" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/range2/range2-quickstartguide-kr-v2.0-2024.2.23.pdf" target="_blank">RANGE 2 빠른 시작 가이드 V1.0</a><div class="pdf_date">2024-01-12</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!--INSPIRE 3D 扫描仪-->
+                      <div id="kore_item_1_8" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/inspire/inspire-quickstartguide-kr-v1.0-2024.4.15.pdf" target="_blank">Revopoint INSPIRE 빠른 시작 가이드 V1.0</a><div class="pdf_date">2024-04-15</div><div class="type">PDF</div></div>
+                                 <div class="manual-item" style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/INSPIRE-User  Manual-韩语-1117.pdf" target="_blank">Revopoint INSPIRE 사용자 설명서 V1.0</a><div class="pdf_date">2023-11-23</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                       <!--MIRACO 3D 扫描仪-->
+                      <div id="kore_item_1_9" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/miraco/miraco-quickstartguide-kr-v1.0-2024.2.1.pdf" target="_blank">Revopoint MIRACO 빠른 시작 가이드 V1.0</a><div class="pdf_date">2024-02-01</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <!-- Revo Studio -->
+                      <div id="kore_item_1_5" class="block-product mnual-itm">
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revo-Studio-User-Manual.pdf" target="_blank">Revo Studio User Manual V2.0.0</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Scanning Skills -->
+                      <div id="kore_item_1_6" class="block-product mnual-itm">
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Advanced-Scanning-Tips%20V3.0.pdf" target="_blank">Advanced Scanning Tips tutorial V3.0</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- 中文 Chinese-->
+                <div class="lnges-list" id="lnges-list_1_8">
+                  <div class="blk">
+                    <div class="flx mt-70">
+                      <div class="left-menu-sidebar">
+                        <div class="menu-sidebar-content">
+                          <div class="m-item">
+                            <div class="m-item-sub-menu active">
+                              <div data-sub-id="chn_item_1_1" class="sub-item active">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop-3d.png" alt="POP 3D Scanner"/> -->
+                                  <div class="name">POP</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="chn_item_1_2" class="sub-item">
+                                <div class="header">
+                                  <!--  <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                  <div class="name">POP 2</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="chn_item_1_7" class="sub-item">
+                                <div class="header">
+                                  <!--  <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                  <div class="name">POP 3</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="chn_item_1_3" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">MINI</div>
+                                </div>
+                              </div>
+                               <div data-sub-id="chn_item_1_11" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 2 3D Scanner"/> -->
+                                  <div class="name">MINI 2</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="chn_item_1_4" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">Range</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="chn_item_1_10" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">Range 2</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="chn_item_1_8" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">INSPIRE</div>
+                                </div>
+                              </div>
+                               <div data-sub-id="chn_item_1_9" class="sub-item">
+                                  <div class="header">
+                                    <!-- <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                    <div class="name">MIRACO</div>
+                                  </div>
+                                </div>
+                              <div data-sub-id="chn_item_1_5" class="sub-item">
+                                <div class="header">
+                                  <div class="name">Revo Studio</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="chn_item_1_6" class="sub-item">
+                                <div class="header">
+                                  <div class="name">Scanning Tips</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="manual-list mnual-itm selected" id="chn_item_1_1">
+
+                        <div class="manual-item" style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint POP 用户手册 V3.0-中文.pdf" target="_blank">Revopoint POP 用户手册 V3.0-中文</a><div class="pdf_date">2022-10-31</div><div class="type">PDF</div></div>
+
+                        <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/pop/pop-usermanual-cn-v3.0.pdf" target="_blank">POP 3D Scanner _Quick _Start_ Guide V.2.1.4</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+
+
+                      </div>
+
+
+                      <!--POP 2 3D 扫描仪-->
+                      <div id="chn_item_1_2" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-three">
+                          <div class="manual-list active">
+
+                            <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint POP 2 用户手册-中文.pdf" target="_blank">Revopoint POP 2 用户手册-中文 V3.0.1 </a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+                            <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/pop2/pop2-quickstartguide-cn-v4.0-2023.4.14.pdf" target="_blank">Revopoint POP 2 快速操作指南-中文 V4.0</a><div class="pdf_date">2023-08-09</div><div class="type">PDF</div></div>
+
+
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <!--POP 3 3D 扫描仪-->
+                      <div id="chn_item_1_7" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-three">
+                          <div class="manual-list active">
+
+                            <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/pop3/pop3-quickstartguide-cn-v2.0-2024.3.1.pdf" target="_blank">Revopoint POP 3 快速操作指南 V2.0 </a><div class="pdf_date">2024-03-04</div><div class="type">PDF</div></div>
+
+
+                          </div>
+                        </div>
+                      </div>
+
+                      <!--POP mini 3D 扫描仪-->
+                      <div id="chn_item_1_3" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint MINI 用户手册 中文.pdf" target="_blank">Revopoint MINI 用户手册-中文 V1.01</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+                              <div class="manual-item" style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/双轴转台快速指南.pdf" target="_blank">Revopoint双轴转台快速指南-中文 V2.0</a><div class="pdf_date">2022-10-28</div><div class="type">PDF</div></div>
+                              <div class="manual-item" style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/双轴转台 II 快速操作指南-V1.0.pdf" target="_blank">Revopoint双轴转台II快速指南-中文 V1.0</a><div class="pdf_date">2023-05-30</div><div class="type">PDF</div></div>
+                              <div class="manual-item" style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/%E6%89%8B%E6%8C%81%E7%A8%B3%E5%AE%9A%E5%99%A8%E8%AF%B4%E6%98%8E%E4%B9%A6.pdf" target="_blank">Revopoint手持稳定器说明书-中文 V1.1</a><div class="pdf_date">2023-2-10</div><div class="type">PDF</div></div>
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/mini/mini-quickstartguide-cn-v3.0-2023.7.27.pdf" target="_blank">Revopoint MINI快速操作指南-中文 V3.0</a><div class="pdf_date">2023-08-09</div><div class="type">PDF</div></div>
+
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--MINI 2 3D 扫描仪-->
+                      <div id="chn_item_1_11" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint MINI 用户手册 中文.pdf" target="_blank">Revopoint MINI 用户手册-中文 V1.01</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/mini2/mini2-quickstartguide-cn-v2.0-2024.3.22.pdf" target="_blank">Revopoint MINI 2快速操作指南-中文 V1.0</a><div class="pdf_date">2024-02-04</div><div class="type">PDF</div></div>
+
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--Range 3D 扫描仪-->
+                      <div id="chn_item_1_4" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/range/range-quickstartguide-cn-2.0-2023.8.21.pdf" target="_blank">RANGE 快速操作指南 V2.0</a><div class="pdf_date">2023-08-22</div><div class="type">PDF</div></div>
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/电动大转台 用户手册 V1.0.pdf" target="_blank">电动大转台用户手册 V1.0</a><div class="pdf_date">2023-04-21</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--Range 2 3D 扫描仪-->
+                      <div id="chn_item_1_10" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/range2/range2-quickstartguide-cn-v2.0-2024.2.26.pdf" target="_blank">RANGE 2 快速操作指南V1.0</a><div class="pdf_date">2024-01-12</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!--INSPIRE 3D 扫描仪-->
+                      <div id="chn_item_1_8" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/inspire/inspire-quickstartguide-cn-v1.0-2024.4.15.pdf" target="_blank">Revopoint INSPIRE 快速操作指南 V1.0</a><div class="pdf_date">2024-04-15</div><div class="type">PDF</div></div>
+                                 <div class="manual-item" style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/INSPIRE User Manual-中文-1027.pdf" target="_blank">Revopoint INSPIRE 用户手册 V1.0</a><div class="pdf_date">2023-11-23</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                       <!--MIRACO 3D 扫描仪-->
+                        <div id="chn_item_1_9" class="block-product mnual-itm">
+                          
+                          
+                          <div class="bp-section-mn-list">
+                            <div class="bp-section-three">
+                              <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/support/download/miraco/miraco-quickstartguide-cn-v1.0-2024.2.1.pdf" target="_blank">Revopoint MIRACO 三维扫描仪快速操作指南 -V1.0</a><div class="pdf_date">2024-02-01</div><div class="type">PDF</div></div>
+
+
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      
+                      <!-- Revo Studio -->
+                      <div id="chn_item_1_5" class="block-product mnual-itm">
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revo-Studio-User-Manual.pdf" target="_blank">Revo Studio User Manual V2.0.0</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Scanning Skills -->
+                      <div id="chn_item_1_6" class="block-product mnual-itm">
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Advanced-Scanning-Tips%20V3.0.pdf" target="_blank">Advanced Scanning Tips tutorial V3.0</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- 中繁 Last-->
+                <div class="lnges-list" id="lnges-list_1_9">
+                  <div class="blk">
+                    <div class="flx mt-70">
+                      <div class="left-menu-sidebar">
+                        <div class="menu-sidebar-content">
+                          <div class="m-item">
+                            <div class="m-item-sub-menu active">
+                              <div data-sub-id="lst_item_1_1" class="sub-item active">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop-3d.png" alt="POP 3D Scanner"/> -->
+                                  <div class="name">POP</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="lst_item_1_2" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                  <div class="name">POP 2</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="lst_item_1_7" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="/wp-content/uploads/custom/icon-device-pop2-3d.png" alt="POP 2 3D Scanner"/> -->
+                                  <div class="name">POP 3</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="lst_item_1_3" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">MINI</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="lst_item_1_4" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">Range</div>
+                                </div>
+                              </div>
+                               <div data-sub-id="lst_item_1_10" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">Range 2</div>
+                                </div>
+                              </div>
+                               <div data-sub-id="lst_item_1_8" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">INSPIRE</div>
+                                </div>
+                              </div>
+                               <div data-sub-id="lst_item_1_9" class="sub-item">
+                                <div class="header">
+                                  <!-- <img src="https://download.revopoint3d.com/wp-content/uploads/2022/07/30429523e6150582956232cb252acb6.png" alt="MINI 3D Scanner"/> -->
+                                  <div class="name">MIRACO</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="lst_item_1_5" class="sub-item">
+                                <div class="header">
+                                  <div class="name">Revo Studio</div>
+                                </div>
+                              </div>
+                              <div data-sub-id="lst_item_1_6" class="sub-item">
+                                <div class="header">
+                                  <div class="name">Scanning Tips</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="manual-list mnual-itm selected" id="lst_item_1_1">
+
+                        <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint POP 用户手册 V3.0-繁中.pdf" target="_blank">Revopoint POP 用户手册 V3.0-繁中</a><div class="pdf_date">2022-10-31</div><div class="type">PDF</div></div>
+
+                        <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/POP 3D Scanner _Quick _Start_ Guide V.2.1.4.pdf" target="_blank">POP 3D Scanner _Quick _Start_ Guide V.2.1.4</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+
+                      </div>
+
+
+                      <!--POP 2 3D 扫描仪-->
+                      <div id="lst_item_1_2" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-three">
+                          <div class="manual-list active">
+
+                            <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint POP 2 用户手册-繁中.pdf" target="_blank">Revopoint POP 2 用户手册-繁中 V3.0.1 </a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+                            <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint POP 2 快速操作指南-繁中.pdf" target="_blank">Revopoint POP 2 快速操作指南-繁中 V3.0.1</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <!--POP 3 3D 扫描仪-->
+                      <div id="lst_item_1_7" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-three">
+                          <div class="manual-list active">
+
+                            <div class="manual-item" ><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/POP 3-快速操作指南（中繁）-V2.0-2024.4.12.pdf" target="_blank">Revopoint POP 3 快速指南 V2.0 </a><div class="pdf_date">2024-04-12</div><div class="type">PDF</div></div>
+
+
+
+                          </div>
+                        </div>
+                      </div>
+
+                      <!--POP mini 3D 扫描仪-->
+                      <div id="lst_item_1_3" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"  style="display: none;"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Revopoint-MINI用戶手冊-繁中.pdf" target="_blank">Revopoint MINI 用戶手冊 繁中 V1.01</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+                               <div class="manual-item" ><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/MINI 快速操作指南（繁中）- V3.0-230809.pdf" target="_blank">Revopoint MINI快速操作指南_繁中 V3.0</a><div class="pdf_date">2023-08-09</div><div class="type">PDF</div></div>
+
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--Range 3D 扫描仪-->
+                      <div id="lst_item_1_4" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/RANGE 快速操作繁体- V2.0-0821.pdf" target="_blank">RANGE 快速操作指南 繁中 V2.0</a><div class="pdf_date">2023-08-22</div><div class="type">PDF</div></div>
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/电动大转台 用户手册 V1.0.pdf" target="_blank">电动大转台用户手册 V1.0</a><div class="pdf_date">2023-04-21</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    <!--Range 2 3D 扫描仪-->
+                      <div id="lst_item_1_10" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/RANGE 2 快速操作指南繁体版V1.0.pdf" target="_blank">RANGE 2 快速操作指南 繁中 V1.0</a><div class="pdf_date">2024-01-24</div><div class="type">PDF</div></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!--INSPIRE 3D 扫描仪-->
+                      <div id="lst_item_1_8" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/IINSPIRE 快速操作指南（中繁）-V1.0-2024.4.15-V1.0-2024.4.15.pdf" target="_blank">Revopoint INSPIRE快速操作指南 繁中 V1.0</a><div class="pdf_date">2024-04-15</div><div class="type">PDF</div></div>
+                                 <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/INSPIRE User Manual-繁体-1027.pdf" target="_blank">Revopoint INSPIRE 用戶手冊 V1.0</a><div class="pdf_date">2023-11-23</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                       <!--MIRACO 3D 扫描仪-->
+                      <div id="lst_item_1_9" class="block-product mnual-itm">
+
+
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/MIRACO-快速操作指南（中繁）-V1.0-2024.4.12.pdf" target="_blank">Revopoint MIRACO 快速操作指南V1.0</a><div class="pdf_date">2024-04-12</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <!-- Revo Studio -->
+                      <div id="lst_item_1_4" class="block-product mnual-itm">
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Scanning Skills -->
+                      <div id="lst_item_1_5" class="block-product mnual-itm">
+                        <div class="bp-section-mn-list">
+                          <div class="bp-section-three">
+                            <div class="manual-list active">
+
+                              <div class="manual-item"><a class="name" href="https://download.revopoint3d.com/wp-content/uploads/download/Advanced-Scanning-Tips%20V3.0.pdf" target="_blank">Advanced Scanning Tips tutorial V3.0</a><div class="pdf_date">2022-09-09</div><div class="type">PDF</div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+                <!-- <div class="btn"><a class="button" href="https://shop.revopoint3d.com/?ref=dh0L07OOzRuqo&_ga=2.268156552.781985028.1658682821-586470518.1640327512">BUY NOW</a></div> -->
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  </div>
+
+</main>
+
+
+
+</body>
+<script type="text/javascript">
+  jQuery(document).ready(function(){
+    var $ = jQuery;
+
+    const height = $('#primary-menu').height()
+    $('.left-menu-sidebar .menu-sidebar-content').css('top', height)
+    // $('.left-menu-sidebar .sub-item').on('click', function(e) {
+    //     var $parent = $(this).parents('.m-item');
+    //     const $subM = $parent.children().eq(1)
+    //     if ($(this).hasClass('active')) {
+    //         $(this).removeClass('active');
+    //         $subM.removeClass('active');
+    //     } else {
+    //         $(this).addClass('active');
+    //         $subM.addClass('active');
+    //     }
+    // })
+
+
+    $('.left-menu-sidebar .sub-item').on('click', function(e) {
+      const id = $(this).data('sub-id')
+
+      $('.left-menu-sidebar .sub-item').removeClass('active');
+      $(this).addClass('active');
+
+      $('.right-main-content .mnual-itm').removeClass('selected');
+      const $sectionBlock = $(`#${id}`)
+      $sectionBlock.addClass('selected');
+    });
+
+    //Outer tab
+    // $('.lnges .lnges-menu').on('change', function(e) {
+    //   //$('.lnges-list.ls_selected .left-menu-sidebar .sub-item:first-child').addClass('active');
+    //     const id = $(this).data('sub-id');
+
+    //    // $('.left-menu-sidebar .m-item .m-item-sub-menu .sub-item').removeClass('active');
+    //    $('.lnges .lnges-menu').removeClass('ls_active');
+    //     $(this).addClass('ls_active');
+
+    //     $('.lnges-list').removeClass('ls_selected');
+    //     const $sectionBlock = $(`#${id}`);
+    //     $sectionBlock.addClass('ls_selected');
+    //     $('.lnges-list.ls_selected .left-menu-sidebar .sub-item:first-child').addClass('active');
+    //     $('.lnges-list.ls_selected .left-menu-sidebar').siblings('.lnges-list.ls_selected .mnual-itm:nth-child(2)').addClass('selected');
+
+
+
+    // })
+    $('.lnges-list').hide();
+    $('.lnges-list.ls_selected').show();
+    $('.lnges').on('change', function() {
+      const id = $(this).val();
+      //alert(id);
+
+      $('.lnges-list').hide();
+      $('#' + $(this).val()).show();
+      //alert(id);
+      $('.lnges .lnges-menu').removeClass('ls_active');
+      const $sectionBlock = $(`#${id}`);
+      $sectionBlock.addClass('ls_selected');
+      $('.lnges-list.ls_selected .left-menu-sidebar .sub-item:first-child').addClass('active');
+      $('.lnges-list.ls_selected .left-menu-sidebar').siblings('.lnges-list.ls_selected .mnual-itm:nth-child(2)').addClass('selected');
+      //$id.addClass('ls_active');
+    });
+    $("#lnges").select2();
+
+
+
+
+
+
+
+    $('.bp-section-three .version-item .title').on('click', function(e) {
+      var $parent = $(this).parents('.version-item');
+      const $versionList = $parent.children().eq(1)
+      if ($(this).hasClass('active')) {
+        $(this).removeClass('active');
+        $versionList.removeClass('active');
+      } else {
+        $(this).addClass('active');
+        $versionList.addClass('active');
+      }
+    })
+  });
+</script>
+
+
+</html>
+

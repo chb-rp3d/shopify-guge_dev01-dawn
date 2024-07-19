@@ -1,0 +1,150 @@
+{{ 'section-range-down.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .section-{{section.id}}{
+      padding:{{section.settings.padding}};
+  }
+
+  @media screen and (max-width: 768px) {
+      .section-{{section.id}}{
+      padding:{{section.settings.md_padding}};
+  }
+  }
+</style>
+
+<div class="page-layout section-{{section.id}}">
+  <div class="page-layout-content">
+    <div class="section-range-down-container">
+      {% assign items = section.blocks %}
+      <div class="range-down-guide">
+        <div class="range-down-title">
+          {{ items[0].settings.title }}
+        </div>
+        <div class="range-down-text pc-media">{{ items[0].settings.text }}</div>
+        <div class="guide-content">
+          <div class="down-guide-img">
+            {% render 'img-lazyload', image_url: items[0].settings.icon %}
+          </div>
+          <div class="range-down-links">
+            <div class="range-down-text mobile-media">{{ items[0].settings.text }}</div>
+            {% if items[0].settings.url1 != blank %}
+              <a class="range-down-link" href="{{items[0].settings.url1}}">{{ items[0].settings.url_text1 }}</a>
+            {% endif %}
+            {% if items[0].settings.url2 != blank %}
+              <a class="range-down-link" href="{{items[0].settings.url2}}">{{ items[0].settings.url_text2 }}</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="range-down-right">
+        <div class="range-down-software">
+          <div class="software-content">
+            <div class="range-down-title">
+              {{ items[1].settings.title }}
+            </div>
+            <div class="range-down-text pc-media">{{ items[1].settings.text }}</div>
+            <div class="range-down-links">
+              <div class="range-down-text mobile-media">{{ items[1].settings.text }}</div>
+              {% if items[1].settings.url1 != blank %}
+                <a class="range-down-link" href="{{items[1].settings.url1}}">{{ items[1].settings.url_text1 }}</a>
+              {% endif %}
+              {% if items[1].settings.url2 != blank %}
+                <a class="range-down-link" href="{{items[1].settings.url2}}">{{ items[1].settings.url_text2 }}</a>
+              {% endif %}
+            </div>
+          </div>
+          <div class="software-img">
+            {% render 'img-lazyload', image_url: items[1].settings.icon %}
+          </div>
+        </div>
+        <div class="range-down-support">
+          <div class="support-content">
+            <div class="range-down-title">
+              {{ items[2].settings.title }}
+            </div>
+            <div class="range-down-text pc-media">{{ items[2].settings.text }}</div>
+            <div class="range-down-links">
+              <div class="range-down-text mobile-media">{{ items[2].settings.text }}</div>
+              {% if items[2].settings.url1 != blank %}
+                <a class="range-down-link" href="{{items[2].settings.url1}}">{{ items[2].settings.url_text1 }}</a>
+              {% endif %}
+              {% if items[2].settings.url2 != blank %}
+                <a class="range-down-link" href="{{items[2].settings.url2}}">{{ items[2].settings.url_text2 }}</a>
+              {% endif %}
+            </div>
+          </div>
+          <div class="support-img">
+            {% render 'img-lazyload', image_url: items[2].settings.icon %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "section-range-down",
+  "settings": [
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "模块内边距",
+      "default": "136px 20px 0"
+    },
+    {
+      "type": "text",
+      "id": "md_padding",
+      "label": "移动端模块内边距",
+      "default": "46px 20px 0"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "item",
+      "type": "item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "图标"
+        },
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "标题"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "文本"
+        },
+        {
+          "type": "url",
+          "id": "url1",
+          "label": "链接1"
+        },
+        {
+          "type": "text",
+          "id": "url_text1",
+          "label": "链接1 文案"
+        },
+        {
+          "type": "url",
+          "id": "url2",
+          "label": "链接2"
+        },
+        {
+          "type": "text",
+          "id": "url_text2",
+          "label": "链接2 文案"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "section-range-down"
+    }
+  ]
+}
+{% endschema %}

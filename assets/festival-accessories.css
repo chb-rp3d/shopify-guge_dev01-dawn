@@ -1,0 +1,49 @@
+.fla-pcard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+.fla-title {
+    font-size: 48px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.fla-text {
+    text-align: center;
+    background: #000;
+    color: #fff;
+    padding: 13px 0;
+}
+.fla-pcard-item img {
+  background: #fff;
+  width: 270px;
+  margin: auto;
+  padding-bottom: 30px;
+}
+.fla-pcard-item {
+  background: #fff;
+}
+.fla-des p {
+    font-size: 20px;
+    text-align: center;
+    color: #666666;
+}
+.fla-lm {
+    text-align: right;
+    font-size: 20px;
+    color: #0A80FC;
+    margin-top: 23px;
+    margin-bottom: 48px;
+}
+@media screen and (max-width: 768px) {
+  .fla-title {
+    font-size: 24px;
+}
+  .fla-des p {
+    font-size: 14px;
+}
+  .fla-pcard {
+  grid-template-columns: repeat(1, 1fr);
+}
+}
