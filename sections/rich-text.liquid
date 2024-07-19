@@ -1,772 +1,341 @@
-{%- if section.blocks.size > 0 -%}
-  {%- render 'section-spacing-collapsing' -%}
+{{ 'section-rich-text.css' | asset_url | stylesheet_tag }}
 
-  <style>
-    #shopify-section-{{ section.id }} {
-      --rich-text-max-width: {% if section.settings.content_width == 'small' %}650px{% elsif section.settings.content_width == 'medium' %}780px{% else %}100%{% endif %}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
     }
-  </style>
+  }
+{%- endstyle -%}
 
-  <div {% render 'section-properties' %}>
-    {%- assign text_position = section.settings.text_position -%}
-    {%- assign blocks_before_divider = '' -%}
-    {%- assign blocks_after_divider = '' -%}
-
-    {%- for block in section.blocks -%}
-      {%- capture block_content -%}
-        {%- case block.type -%}
-          {%- when 'subheading' -%}
-            {%- if block.settings.text != blank -%}
-              <p class="bold" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
-            {%- endif -%}
-
-          {%- when 'heading' -%}
-            {%- if block.settings.text != blank -%}
-              <p class="{{ block.settings.heading_tag }} hyphenate" {{ block.shopify_attributes }}>
-                {%- render 'styled-text', content: block.settings.text, text_color: block.settings.text_color, gradient: block.settings.gradient -%}
+<div class="isolate{% unless section.settings.full_width %} page-width{% endunless %}">
+  <div class="rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding">
+    <div class="rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}">
+      <div class="rich-text__blocks {{ section.settings.content_alignment }}">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'heading' -%}
+              <h2
+                class="rich-text__heading rte inline-richtext {{ block.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {{ block.shopify_attributes }}
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index }};"
+                {% endif %}
+              >
+                {{ block.settings.heading }}
+              </h2>
+            {%- when 'caption' -%}
+              <p
+                class="rich-text__caption {{ block.settings.text_style }} {{ block.settings.text_style }}--{{ block.settings.text_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {{ block.shopify_attributes }}
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index }};"
+                {% endif %}
+              >
+                {{ block.settings.caption | escape }}
               </p>
-            {%- endif -%}
-
-          {%- when 'richtext' -%}
-            {%- if block.settings.content != blank -%}
-              <div {{ block.shopify_attributes }}>
-                {{- block.settings.content -}}
+            {%- when 'text' -%}
+              <div
+                class="rich-text__text rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {{ block.shopify_attributes }}
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index }};"
+                {% endif %}
+              >
+                {{ block.settings.text }}
               </div>
-            {%- endif -%}
-
-          {%- when 'page' -%}
-            {%- if block.settings.page.content != blank -%}
-              <div {{ block.shopify_attributes }}>
-                {{- block.settings.page.content -}}
-              </div>
-            {%- endif -%}
-
-          {%- when 'liquid' -%}
-            {%- if block.settings.liquid != blank -%}
-              <div {{ block.shopify_attributes }}>
-                {{- block.settings.liquid -}}
-              </div>
-            {%- endif -%}
-
-          {%- when 'image' -%}
-            {%- if block.settings.image != blank -%}
-              <div {{ block.shopify_attributes }} style="margin-block-start: 0">
-                {%- capture image_style_attribute -%}{% if section.settings.text_position == 'center' %}margin-inline: auto;{% endif %}{%- endcapture -%}
-
-                {%- if block.settings.width_mode == 'custom' -%}
-                  {%- capture image_style_attribute -%}{{ image_style_attribute }} --image-max-width: {{ block.settings.max_width }}px; --image-mobile-max-width: {{ block.settings.mobile_max_width }}px{%- endcapture -%}
-                  {%- capture image_sizes_attribute -%}(max-width: 699px) min({{ block.settings.mobile_max_width }}px, 100vw), min({{ block.settings.max_width }}px, 100vw){%- endcapture -%}
-                {%- else -%}
-                  {%- capture image_sizes_attribute -%}min(100vw, var(--page-width)){%- endcapture -%}
+            {%- when 'button' -%}
+              <div
+                class="rich-text__buttons{% if block.settings.button_label != blank and block.settings.button_label_2 != blank %} rich-text__buttons--multiple{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {{ block.shopify_attributes }}
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index }};"
+                {% endif %}
+              >
+                {%- if block.settings.button_label != blank -%}
+                  <a
+                    {% if block.settings.button_link == blank %}
+                      role="link" aria-disabled="true"
+                    {% else %}
+                      href="{{ block.settings.button_link }}"
+                    {% endif %}
+                    class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
+                  >
+                    {{- block.settings.button_label | escape -}}
+                  </a>
                 {%- endif -%}
-
-                {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: 'lazy', sizes: image_sizes_attribute, widths: '200,300,400,500,600,800,1000,1200,1400,1600', style: image_style_attribute -}}
-              </div>
-            {%- endif -%}
-
-          {%- when 'button' -%}
-            {%- if block.settings.text != blank -%}
-              {% render 'button', content: block.settings.text, href: block.settings.url, size: block.settings.size, style: block.settings.style, background: block.settings.background, text_color: block.settings.text_color, block: block %}
-            {%- endif -%}
-
-          {%- when 'icon' -%}
-            {%- capture icon -%}
-              {%- if block.settings.custom_icon != blank -%}
-                {%- capture sizes -%}{{ block.settings.icon_width }}px{%- endcapture -%}
-                {%- capture widths -%}{{ block.settings.icon_width }}, {{ block.settings.icon_width | times: 2 | at_most: block.settings.custom_icon.width }}{%- endcapture -%}
-                {%- capture style -%}--icon-max-width: {{ block.settings.icon_width }}px{%- endcapture -%}
-                {{- block.settings.custom_icon | image_url: width: block.settings.custom_icon.width | image_tag: loading: 'lazy', sizes: sizes, widths: widths, style: style, class: 'image-icon' -}}
-              {%- else -%}
-                {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width -%}
-              {%- endif -%}
-            {%- endcapture -%}
-
-            {%- if icon != blank -%}
-              <div {{ block.shopify_attributes }}>
-                {%- if block.settings.icon_background_type == 'none' -%}
-                  <div {% render 'surface', text_color: block.settings.icon_color %}>
-                    {{- icon -}}
-                  </div>
-                {%- else -%}
-                  {%- capture surface_class -%}icon-block {% if block.settings.icon_background_type == 'circle' %}rounded-full{% endif %}{%- endcapture -%}
-                  <div {% render 'surface', class: surface_class, background: block.settings.icon_background, text_color: block.settings.icon_color, background_fallback: 'bg-secondary' %}>
-                    {{- icon -}}
-                  </div>
+                {%- if block.settings.button_label_2 != blank -%}
+                  <a
+                    {% if block.settings.button_link_2 == blank %}
+                      role="link" aria-disabled="true"
+                    {% else %}
+                      href="{{ block.settings.button_link_2 }}"
+                    {% endif %}
+                    class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}"
+                  >
+                    {{- block.settings.button_label_2 | escape -}}
+                  </a>
                 {%- endif -%}
               </div>
-            {%- endif -%}
-
-          {%- when 'divider' -%}
-            {%- assign divider_index = forloop.index -%}
-        {%- endcase -%}
-      {%- endcapture -%}
-
-      {%- if divider_index == blank or forloop.index < divider_index -%}
-        {%- assign blocks_before_divider = blocks_before_divider | append: block_content -%}
-      {%- else -%}
-        {%- assign blocks_after_divider = blocks_after_divider | append: block_content -%}
-      {%- endif -%}
-    {%- endfor -%}
-
-    {%- if blocks_before_divider != blank and blocks_after_divider != blank -%}
-      <div class="split-rich-text">
-        <div class="prose {% if text_position == 'center' %}justify-items-center text-center{% else %}justify-items-start{% endif %}">
-          {{- blocks_before_divider -}}
-        </div>
-
-        <div class="prose {% if text_position == 'center' %}justify-items-center text-center{% else %}justify-items-start{% endif %}">
-          {{- blocks_after_divider -}}
-        </div>
-      </div>
-    {%- endif -%}
-
-    <div class="rich-text {% if text_position == 'center' %}justify-center{% endif %} {% if blocks_before_divider != blank and blocks_after_divider != blank %}md:hidden{% endif %}">
-      <div class="rich-text__wrapper">
-        <div class="prose {% if text_position == 'center' %}justify-items-center text-center{% else %}justify-items-start{% endif %}">
-          {{- blocks_before_divider -}}
-          {{- blocks_after_divider -}}
-        </div>
+          {%- endcase -%}
+        {%- endfor -%}
       </div>
     </div>
   </div>
-{%- endif -%}
+</div>
 
 {% schema %}
 {
-  "name": "Rich text",
-  "class": "shopify-section--rich-text",
+  "name": "t:sections.rich-text.name",
   "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
   "settings": [
     {
-      "type": "checkbox",
-      "id": "full_width",
-      "label": "Full width",
-      "default": true
-    },
-    {
       "type": "select",
-      "id": "content_width",
-      "label": "Content width",
+      "id": "desktop_content_position",
       "options": [
         {
-          "value": "small",
-          "label": "Small"
-        },
-        {
-          "value": "medium",
-          "label": "Medium"
-        },
-        {
-          "value": "large",
-          "label": "Large"
-        }
-      ],
-      "default": "small"
-    },
-    {
-      "type": "select",
-      "id": "text_position",
-      "label": "Text position",
-      "options": [
-        {
-          "value": "start",
-          "label": "Left"
+          "value": "left",
+          "label": "t:sections.rich-text.settings.desktop_content_position.options__1.label"
         },
         {
           "value": "center",
-          "label": "Center"
+          "label": "t:sections.rich-text.settings.desktop_content_position.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.rich-text.settings.desktop_content_position.options__3.label"
         }
       ],
-      "default": "center"
+      "default": "center",
+      "label": "t:sections.rich-text.settings.desktop_content_position.label",
+      "info": "t:sections.rich-text.settings.desktop_content_position.info"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.rich-text.settings.content_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.rich-text.settings.content_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.rich-text.settings.content_alignment.options__3.label"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.rich-text.settings.content_alignment.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": true,
+      "label": "t:sections.rich-text.settings.full_width.label"
     },
     {
       "type": "header",
-      "content": "Colors",
-      "info": "Gradient replaces solid colors when set."
+      "content": "t:sections.all.padding.section_padding_heading"
     },
     {
-      "type": "color",
-      "id": "background",
-      "label": "Background"
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
     },
     {
-      "type": "color_background",
-      "id": "background_gradient",
-      "label": "Background gradient"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Text"
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
     }
   ],
   "blocks": [
     {
-      "type": "subheading",
-      "name": "Subheading",
-      "settings": [
-        {
-          "type": "text",
-          "id": "text",
-          "label": "Text",
-          "default": "Subheading"
-        }
-      ]
-    },
-    {
       "type": "heading",
-      "name": "Heading",
+      "name": "t:sections.rich-text.blocks.heading.name",
+      "limit": 3,
       "settings": [
         {
-          "type": "text",
-          "id": "text",
-          "label": "Text",
-          "default": "Heading"
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "Talk about your brand",
+          "label": "t:sections.rich-text.blocks.heading.settings.heading.label"
         },
         {
           "type": "select",
-          "id": "heading_tag",
-          "label": "Style",
+          "id": "heading_size",
           "options": [
             {
-              "value": "h0",
-              "label": "H0"
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
             },
             {
               "value": "h1",
-              "label": "H1"
+              "label": "t:sections.all.heading_size.options__2.label"
             },
             {
-              "value": "h2",
-              "label": "H2"
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
             },
             {
-              "value": "h3",
-              "label": "H3"
-            },
-            {
-              "value": "h4",
-              "label": "H4"
-            },
-            {
-              "value": "h5",
-              "label": "H5"
-            },
-            {
-              "value": "h6",
-              "label": "H6"
+              "value": "hxl",
+              "label": "t:sections.all.heading_size.options__4.label"
             }
           ],
-          "default": "h1"
-        },
-        {
-          "type": "color",
-          "id": "text_color",
-          "label": "Text"
-        },
-        {
-          "type": "color_background",
-          "id": "gradient",
-          "label": "Gradient"
+          "default": "h1",
+          "label": "t:sections.all.heading_size.label"
         }
       ]
     },
     {
-      "type": "richtext",
-      "name": "Paragraph",
+      "type": "caption",
+      "name": "t:sections.rich-text.blocks.caption.name",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "caption",
+          "default": "Add a tagline",
+          "label": "t:sections.rich-text.blocks.caption.settings.text.label"
+        },
+        {
+          "type": "select",
+          "id": "text_style",
+          "options": [
+            {
+              "value": "subtitle",
+              "label": "t:sections.rich-text.blocks.caption.settings.text_style.options__1.label"
+            },
+            {
+              "value": "caption-with-letter-spacing",
+              "label": "t:sections.rich-text.blocks.caption.settings.text_style.options__2.label"
+            }
+          ],
+          "default": "caption-with-letter-spacing",
+          "label": "t:sections.rich-text.blocks.caption.settings.text_style.label"
+        },
+        {
+          "type": "select",
+          "id": "text_size",
+          "options": [
+            {
+              "value": "small",
+              "label": "t:sections.rich-text.blocks.caption.settings.caption_size.options__1.label"
+            },
+            {
+              "value": "medium",
+              "label": "t:sections.rich-text.blocks.caption.settings.caption_size.options__2.label"
+            },
+            {
+              "value": "large",
+              "label": "t:sections.rich-text.blocks.caption.settings.caption_size.options__3.label"
+            }
+          ],
+          "default": "medium",
+          "label": "t:sections.rich-text.blocks.caption.settings.caption_size.label"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.rich-text.blocks.text.name",
+      "limit": 3,
       "settings": [
         {
           "type": "richtext",
-          "id": "content",
-          "label": "Content",
-          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
-        }
-      ]
-    },
-    {
-      "type": "page",
-      "name": "Page",
-      "settings": [
-        {
-          "type": "page",
-          "id": "page",
-          "label": "Page"
-        }
-      ]
-    },
-    {
-      "type": "liquid",
-      "name": "Liquid",
-      "settings": [
-        {
-          "type": "liquid",
-          "id": "liquid",
-          "label": "Liquid",
-          "default": "<p>Write custom Liquid code to include widget or dynamic code.</p>"
-        }
-      ]
-    },
-    {
-      "type": "image",
-      "name": "Image",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image",
-          "info": "1600 x 800px .jpg recommended"
-        },
-        {
-          "type": "radio",
-          "id": "width_mode",
-          "label": "Image width",
-          "options": [
-            {
-              "value": "full_width",
-              "label": "Full width"
-            },
-            {
-              "value": "custom",
-              "label": "Custom"
-            }
-          ],
-          "default": "custom"
-        },
-        {
-          "type": "range",
-          "id": "max_width",
-          "min": 100,
-          "max": 1000,
-          "step": 10,
-          "unit": "px",
-          "label": "Maximum width",
-          "default": 600
-        },
-        {
-          "type": "range",
-          "id": "mobile_max_width",
-          "min": 100,
-          "max": 600,
-          "step": 10,
-          "unit": "px",
-          "label": "Mobile maximum width",
-          "default": 400
+          "id": "text",
+          "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+          "label": "t:sections.rich-text.blocks.text.settings.text.label"
         }
       ]
     },
     {
       "type": "button",
-      "name": "Button",
+      "name": "t:sections.rich-text.blocks.buttons.name",
+      "limit": 2,
       "settings": [
         {
-          "type": "select",
-          "id": "style",
-          "label": "Style",
-          "options": [
-            {
-              "value": "outline",
-              "label": "Outline"
-            },
-            {
-              "value": "fill",
-              "label": "Fill"
-            }
-          ],
-          "default": "fill"
-        },
-        {
-          "type": "select",
-          "id": "size",
-          "label": "Size",
-          "options": [
-            {
-              "value": "sm",
-              "label": "Small"
-            },
-            {
-              "value": "base",
-              "label": "Medium"
-            },
-            {
-              "value": "lg",
-              "label": "Large"
-            },
-            {
-              "value": "xl",
-              "label": "X-Large"
-            }
-          ],
-          "default": "xl"
-        },
-        {
           "type": "text",
-          "id": "text",
-          "label": "Text",
-          "default": "Button text"
+          "id": "button_label",
+          "default": "Button label",
+          "label": "t:sections.rich-text.blocks.buttons.settings.button_label_1.label",
+          "info": "t:sections.rich-text.blocks.buttons.settings.button_label_1.info"
         },
         {
           "type": "url",
-          "id": "url",
-          "label": "Link"
+          "id": "button_link",
+          "label": "t:sections.rich-text.blocks.buttons.settings.button_link_1.label"
         },
         {
-          "type": "color",
-          "id": "background",
-          "label": "Background"
+          "type": "checkbox",
+          "id": "button_style_secondary",
+          "default": false,
+          "label": "t:sections.rich-text.blocks.buttons.settings.button_style_secondary_1.label"
         },
         {
-          "type": "color",
-          "id": "text_color",
-          "label": "Text"
-        }
-      ]
-    },
-    {
-      "type": "icon",
-      "name": "Icon",
-      "settings": [
-        {
-          "type": "select",
-          "id": "icon",
-          "label": "Icon",
-          "options": [
-            {
-              "value": "picto-coupon",
-              "label": "Coupon",
-              "group": "Shop"
-            },
-            {
-              "value": "picto-percent",
-              "label": "Percent",
-              "group": "Shop"
-            },
-            {
-              "value": "picto-gift",
-              "label": "Gift",
-              "group": "Shop"
-            },
-            {
-              "value": "picto-star",
-              "label": "Star",
-              "group": "Shop"
-            },
-            {
-              "value": "picto-like",
-              "label": "Like",
-              "group": "Shop"
-            },
-            {
-              "value": "picto-building",
-              "label": "Building",
-              "group": "Shop"
-            },
-            {
-              "value": "picto-love",
-              "label": "Love",
-              "group": "Shop"
-            },
-            {
-              "value": "picto-award-gift",
-              "label": "Award gift",
-              "group": "Shop"
-            },
-            {
-              "value": "picto-happy",
-              "label": "Happy",
-              "group": "Shop"
-            },
-            {
-              "value": "picto-box",
-              "label": "Box",
-              "group": "Shipping"
-            },
-            {
-              "value": "picto-pin",
-              "label": "Pin",
-              "group": "Shipping"
-            },
-            {
-              "value": "picto-timer",
-              "label": "Timer",
-              "group": "Shipping"
-            },
-            {
-              "value": "picto-validation",
-              "label": "Validation",
-              "group": "Shipping"
-            },
-            {
-              "value": "picto-truck",
-              "label": "Truck",
-              "group": "Shipping"
-            },
-            {
-              "value": "picto-return",
-              "label": "Return",
-              "group": "Shipping"
-            },
-            {
-              "value": "picto-earth",
-              "label": "Earth",
-              "group": "Shipping"
-            },
-            {
-              "value": "picto-plane",
-              "label": "Plane",
-              "group": "Shipping"
-            },
-            {
-              "value": "picto-credit-card",
-              "label": "Credit card",
-              "group": "Payment & Security"
-            },
-            {
-              "value": "picto-lock",
-              "label": "Lock",
-              "group": "Payment & Security"
-            },
-            {
-              "value": "picto-shield",
-              "label": "Shield",
-              "group": "Payment & Security"
-            },
-            {
-              "value": "picto-secure-profile",
-              "label": "Secure profile",
-              "group": "Payment & Security"
-            },
-            {
-              "value": "picto-money",
-              "label": "Money",
-              "group": "Payment & Security"
-            },
-            {
-              "value": "picto-recycle",
-              "label": "Recycle",
-              "group": "Ecology"
-            },
-            {
-              "value": "picto-leaf",
-              "label": "Leaf",
-              "group": "Ecology"
-            },
-            {
-              "value": "picto-tree",
-              "label": "Tree",
-              "group": "Ecology"
-            },
-            {
-              "value": "picto-mobile-phone",
-              "label": "Mobile phone",
-              "group": "Communication"
-            },
-            {
-              "value": "picto-phone",
-              "label": "Phone",
-              "group": "Communication"
-            },
-            {
-              "value": "picto-chat",
-              "label": "Chat",
-              "group": "Communication"
-            },
-            {
-              "value": "picto-customer-support",
-              "label": "Customer support",
-              "group": "Communication"
-            },
-            {
-              "value": "picto-operator",
-              "label": "Operator",
-              "group": "Communication"
-            },
-            {
-              "value": "picto-mailbox",
-              "label": "Mailbox",
-              "group": "Communication"
-            },
-            {
-              "value": "picto-envelope",
-              "label": "Envelope",
-              "group": "Communication"
-            },
-            {
-              "value": "picto-comment",
-              "label": "Comment",
-              "group": "Communication"
-            },
-            {
-              "value": "picto-question",
-              "label": "Question",
-              "group": "Communication"
-            },
-            {
-              "value": "picto-send",
-              "label": "Send",
-              "group": "Communication"
-            },
-            {
-              "value": "picto-at-sign",
-              "label": "At sign",
-              "group": "Tech"
-            },
-            {
-              "value": "picto-camera",
-              "label": "Camera",
-              "group": "Tech"
-            },
-            {
-              "value": "picto-wifi",
-              "label": "WiFi",
-              "group": "Tech"
-            },
-            {
-              "value": "picto-bluetooth",
-              "label": "Bluetooth",
-              "group": "Tech"
-            },
-            {
-              "value": "picto-printer",
-              "label": "Printer",
-              "group": "Tech"
-            },
-            {
-              "value": "picto-smart-watch",
-              "label": "Smart watch",
-              "group": "Tech"
-            },
-            {
-              "value": "picto-coffee",
-              "label": "Coffee",
-              "group": "Food & Drink"
-            },
-            {
-              "value": "picto-burger",
-              "label": "Burger",
-              "group": "Food & Drink"
-            },
-            {
-              "value": "picto-beer",
-              "label": "Beer",
-              "group": "Food & Drink"
-            },
-            {
-              "value": "picto-target",
-              "label": "Target",
-              "group": "Other"
-            },
-            {
-              "value": "picto-document",
-              "label": "Document",
-              "group": "Other"
-            },
-            {
-              "value": "picto-jewelry",
-              "label": "Jewelry",
-              "group": "Other"
-            },
-            {
-              "value": "picto-music",
-              "label": "Music",
-              "group": "Other"
-            },
-            {
-              "value": "picto-file",
-              "label": "File",
-              "group": "Other"
-            },
-            {
-              "value": "picto-mask",
-              "label": "Mask",
-              "group": "Other"
-            },
-            {
-              "value": "picto-stop",
-              "label": "Stop",
-              "group": "Other"
-            }
-          ],
-          "default": "picto-coupon"
+          "type": "text",
+          "id": "button_label_2",
+          "label": "t:sections.rich-text.blocks.buttons.settings.button_label_2.label",
+          "info": "t:sections.rich-text.blocks.buttons.settings.button_label_2.info"
         },
         {
-          "type": "image_picker",
-          "id": "custom_icon",
-          "label": "Custom icon",
-          "info": "240 x 240px .png recommended"
+          "type": "url",
+          "id": "button_link_2",
+          "label": "t:sections.rich-text.blocks.buttons.settings.button_link_2.label"
         },
         {
-          "type": "range",
-          "id": "icon_width",
-          "min": 24,
-          "max": 120,
-          "step": 4,
-          "unit": "px",
-          "label": "Icon width",
-          "default": 32
-        },
-        {
-          "type": "select",
-          "id": "icon_background_type",
-          "label": "Icon background type",
-          "options": [
-            {
-              "value": "none",
-              "label": "None"
-            },
-            {
-              "value": "square",
-              "label": "Square"
-            },
-            {
-              "value": "circle",
-              "label": "Circle"
-            }
-          ],
-          "default": "circle"
-        },
-        {
-          "type": "color",
-          "id": "icon_background",
-          "label": "Icon background"
-        },
-        {
-          "type": "color",
-          "id": "icon_color",
-          "label": "Icon color"
-        }
-      ]
-    },
-    {
-      "type": "divider",
-      "name": "Column divider",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "paragraph",
-          "content": "Content before and after this block are divided into two columns (on desktop only)."
+          "type": "checkbox",
+          "id": "button_style_secondary_2",
+          "default": false,
+          "label": "t:sections.rich-text.blocks.buttons.settings.button_style_secondary_2.label"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Rich text",
+      "name": "t:sections.rich-text.presets.name",
       "blocks": [
         {
-          "type": "subheading",
-          "settings": {
-            "text": "Subheading"
-          }
+          "type": "heading"
         },
         {
-          "type": "heading",
-          "settings": {
-            "text": "Heading",
-            "heading_tag": "tw-text-h1"
-          }
+          "type": "text"
         },
         {
-          "type": "richtext"
+          "type": "button"
         }
       ]
     }
