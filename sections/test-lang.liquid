@@ -1,0 +1,40 @@
+<section>
+  <h1>
+    测试标题
+  </h1>
+  <h2>
+    测试多语言-来自模板：{{ 'langs.pages.miraco.name' | t: name: section.settings.title }}
+  </h2>
+  <h3>
+    测试多语言-来自注册表：{{ section.settings.title }}
+  </h3>
+  <h4>
+    {{ 'langs.pages.miraco.label_name' | t }}
+  </h4>
+  <h4>
+    不存在的会不会报错？{{ 'langsss.pagesss.miracoss.label_name' | t }}
+  </h4>
+</section>
+{% schema %}
+  {
+    "name": "Test langs",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "t:sections.langs.settings.common.label"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "heading",
+        "default": "Blog posts",
+        "label": "t:sections.featured-blog.settings.heading.label"
+      },
+    ],
+    "presets": [
+      {
+        "name": "test-langs"
+      }
+    ]
+  }
+{% endschema %}
