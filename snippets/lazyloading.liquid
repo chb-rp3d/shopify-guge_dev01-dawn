@@ -1,5 +1,0 @@
-{% if imgTag == true %}
-  <img class="lazyloading {{ modifier }}" src="{{ 'pixel.png' | asset_url }}" data-src="{{ image }}" alt="{{ imgAlt }}">
-{% else %}
-  <div class="lazyloading {{ modifier }}" data-src="{{ image }}" style="background-image: url({{ 'pixel.png' | asset_url }})"></div>
-{% endif %}

@@ -1,73 +1,68 @@
-{%- if section.settings.liquid != blank -%}
-  {%- render 'section-spacing-collapsing' -%}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
 
-  <style>
-    #shopify-section-{{ section.id }} {
-      {% if section.settings.remove_vertical_spacing %}--section-spacing-block: 0px;{% endif %}
-      {% if section.settings.remove_horizontal_spacing %}--section-spacing-inline: 0px;{% endif %}
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
     }
-  </style>
-
-  <div {% render 'section-properties' %}>
-    {{ section.settings.liquid }}
+  }
+{%- endstyle -%}
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="section-{{ section.id }}-padding">
+    {{ section.settings.custom_liquid }}
   </div>
-{%- endif -%}
+</div>
 
 {% schema %}
 {
-  "name": "Custom Liquid",
-  "class": "shopify-section--custom-liquid",
+  "name": "t:sections.custom-liquid.name",
   "tag": "section",
+  "class": "section",
   "settings": [
     {
-      "type": "checkbox",
-      "id": "full_width",
-      "label": "Full width",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "remove_vertical_spacing",
-      "label": "Remove vertical spacing",
-      "default": false
-    },
-    {
-      "type": "checkbox",
-      "id": "remove_horizontal_spacing",
-      "label": "Remove horizontal spacing",
-      "default": false
-    },
-    {
       "type": "liquid",
-      "id": "liquid",
-      "label": "Liquid",
-      "info": "Add app snippets or other Liquid code to create advanced customizations.",
-      "default": "<p style=\"text-align: center\">Write or copy/paste Liquid code</p>"
+      "id": "custom_liquid",
+      "label": "t:sections.custom-liquid.settings.custom_liquid.label",
+      "info": "t:sections.custom-liquid.settings.custom_liquid.info"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
     },
     {
       "type": "header",
-      "content": "Colors",
-      "info": "Gradient replaces solid colors when set."
+      "content": "t:sections.all.padding.section_padding_heading"
     },
     {
-      "type": "color",
-      "id": "background",
-      "label": "Background"
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
     },
     {
-      "type": "color_background",
-      "id": "background_gradient",
-      "label": "Background gradient"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Text"
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
     }
   ],
   "presets": [
     {
-      "name": "Custom Liquid"
+      "name": "t:sections.custom-liquid.presets.name"
     }
   ]
 }
