@@ -524,13 +524,5 @@
       "expanded": "Formulaire de destinataire de carte-cadeau agrandi",
       "collapsed": "Formulaire de destinataire de carte-cadeau réduit"
     }
-  },
-  "langs": {
-    "pages": {
-      "miraco": {
-        "name": "Je veux envoyer ce produit comme cadeau",
-        "label_name": "E‑mail du destinataire"
-      }
-    }
   }
 }
