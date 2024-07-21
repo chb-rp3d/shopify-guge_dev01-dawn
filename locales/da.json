@@ -512,5 +512,13 @@
       "expanded": "Formularen til modtager af gavekort er vist",
       "collapsed": "Formularen til modtager af gavekort er skjult"
     }
+  },
+  "langs": {
+    "pages": {
+      "miraco": {
+        "name": "Je veux envoyer ce produit comme cadeau",
+        "label_name": "E‑mail du destinataire"
+      }
+    }
   }
 }
